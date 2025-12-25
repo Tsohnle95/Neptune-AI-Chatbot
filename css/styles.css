@@ -1,0 +1,75 @@
+:root {
+    --primary-black: #0F172B;
+    --primary-blue: #2B7FFF;
+    --primary-purple: #5655FF;
+    --text-gray: #8E8DA5;
+    --card-bg: #1A2332;
+    --aura: #1D28EC;
+    --grid: #161B28;
+}
+
+/* Global styling */
+
+html {
+    font-size: 100%;
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    line-height: 1.5;
+    background-color: var(--primary-black);
+    font-size: 1.25rem;
+    color: var(--text-gray);
+}
+
+.inner-container {
+    padding: 1rem;
+
+}
+
+.flex {
+    display: flex;
+}
+
+/*************** Design Auras *************/
+
+
+/*************** Hero Section *************/
+.hero {
+    position: relative;
+    overflow: hidden;
+    background-image:
+        linear-gradient(to right, var(--grid) 3px, transparent 1px),
+        linear-gradient(to bottom, var(--grid) 3px, transparent 1px);
+    background-size: 70px 70px;
+}
+
+.hero h1,
+.hero h2 {
+    font-size: 2.5rem;
+    color: #fff;
+    line-height: 115%;
+    font-weight: bold;
+}
+
+.hero h1 span {
+    display: block;
+}
+
+.hero .chat-now {
+    color: #fff;
+    background-color: var(--primary-purple);
+    padding: .5 rem 1.25rem;
+    border-radius: 10px;
+}
+ 
+.hero .learn-more {
+    color: #fff;
+}
+
+@media (min-width: 1024px) {
+    .hero {
+        background-size: 120px 120px;
+        /* Larger grid for desktop */
+    }
+}
