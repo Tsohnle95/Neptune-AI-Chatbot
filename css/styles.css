@@ -126,7 +126,7 @@ body {
     position: absolute;
     top: 2rem;
     right: -11.5rem;
-    background-image: url('../img/mobile-images/desktop-view.avif');
+    background-image: url('../img/mobile-images/desktop-view.png');
     z-index: 3;
     width: 300px;
     height: 300px;
@@ -142,6 +142,7 @@ body {
 .hero h2 {
     font-size: clamp(2.5rem, 1.6795rem + 4.1026vw, 4.5rem);
     color: #ebe5e5;
+    color: #dacfcf;
     line-height: 115%;
     font-weight: bold;
 }
