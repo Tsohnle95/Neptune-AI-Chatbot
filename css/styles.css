@@ -126,7 +126,7 @@ body {
     position: absolute;
     top: 2rem;
     right: -11.5rem;
-    background-image: url('../img/mobile-images/desktop-view.png');
+    background-image: url('../img/mobile-images/desktop-view.svg');
     z-index: 3;
     width: 300px;
     height: 300px;
