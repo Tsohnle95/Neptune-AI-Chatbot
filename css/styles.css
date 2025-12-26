@@ -1,3 +1,8 @@
+/* 
+SPACING:
+1rem | 1.25rem | 3rem
+*/
+
 :root {
     --primary-black: #0F172B;
     --primary-blue: #2B7FFF;
@@ -45,7 +50,7 @@ body {
             /* Your --aura color at 0% */
         );
     filter: blur(10px);
-    opacity: .38;
+    opacity: .3;
     z-index: -3;
 }
 
@@ -62,7 +67,7 @@ body {
             /* Your --aura color at 0% */
         );
     filter: blur(10px);
-    opacity: .38;
+    opacity: .3;
     z-index: -3;
 }
 
@@ -79,7 +84,7 @@ body {
             /* Your --aura color at 0% */
         );
     filter: blur(10px);
-    opacity: .38;
+    opacity: .3;
     z-index: -3;
 }
 
@@ -150,7 +155,7 @@ body {
 }
 
 .hero p {
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
 }
 
 .hero span {
