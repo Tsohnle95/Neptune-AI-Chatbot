@@ -32,37 +32,139 @@ body {
 }
 
 /*************** Design Auras *************/
+.aura {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    top: -2rem;
+    left: 1rem;
+    background: radial-gradient(circle,
+            rgba(29, 40, 236, 0.8) 0%,
+            /* Your --aura color at 80% */
+            rgba(29, 40, 236, 0) 70%
+            /* Your --aura color at 0% */
+        );
+    filter: blur(10px);
+    opacity: .38;
+    z-index: -3;
+}
+
+.aura-2 {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    top: 10rem;
+    left: -5rem;
+    background: radial-gradient(circle,
+            rgba(29, 40, 236, 0.8) 0%,
+            /* Your --aura color at 80% */
+            rgba(29, 40, 236, 0) 70%
+            /* Your --aura color at 0% */
+        );
+    filter: blur(10px);
+    opacity: .38;
+    z-index: -3;
+}
+
+.aura-3 {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    top: 14rem;
+    left: 9rem;
+    background: radial-gradient(circle,
+            rgba(29, 40, 236, 0.8) 0%,
+            /* Your --aura color at 80% */
+            rgba(29, 40, 236, 0) 70%
+            /* Your --aura color at 0% */
+        );
+    filter: blur(10px);
+    opacity: .38;
+    z-index: -3;
+}
 
 
-/*************** Hero Section *************/
+
+
+/* .aura-1 {
+    transform: translateY(100rem);
+    right: 5rem;
+}
+
+.aura-2 {
+    transform: translateY(115rem);
+    left: 3rem;
+    filter: blur(25px);
+} */
+
+/*************** Hero/Header Section *************/
 .hero {
     position: relative;
     overflow: hidden;
+    margin-bottom: 10rem;
+    z-index: 1;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
     background-image:
         linear-gradient(to right, var(--grid) 3px, transparent 1px),
         linear-gradient(to bottom, var(--grid) 3px, transparent 1px);
     background-size: 70px 70px;
+    z-index: -3;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    top: 2rem;
+    right: -11.5rem;
+    background-image: url('../img/mobile-images/desktop-view.avif');
+    z-index: 3;
+    width: 300px;
+    height: 300px;
+    background-repeat: no-repeat;
+
+}
+
+.hero img {
+    margin: 3rem 0 1rem 0;
 }
 
 .hero h1,
 .hero h2 {
-    font-size: 2.5rem;
-    color: #fff;
+    font-size: clamp(2.5rem, 1.6795rem + 4.1026vw, 4.5rem);
+    color: #ebe5e5;
     line-height: 115%;
     font-weight: bold;
 }
 
-.hero h1 span {
+.hero h1 {
+    margin-bottom: 3rem;
+}
+
+.hero h2 {
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    margin-bottom: 1rem;
+}
+
+.hero span {
     display: block;
 }
 
 .hero .chat-now {
     color: #fff;
     background-color: var(--primary-purple);
-    padding: .5 rem 1.25rem;
-    border-radius: 10px;
+    padding: .35rem 1rem;
+    border-radius: 7px;
+    margin-right: 1rem;
 }
- 
+
 .hero .learn-more {
     color: #fff;
 }
