@@ -17,7 +17,6 @@
 
 <body>
    
-
     <!--Header/Hero-->
     <header class="hero inner-container">
          <!--Blue Auras absolutely positioned-->
@@ -44,27 +43,29 @@
     <!--Start of Main-->
     <main>
         <!--Responsive Section-->
-        <section class="responsive-by-design">
+        <section class="responsive-by-design inner-container">
             <!--Responsive by design div-->
-            <div>
-                <h3>Responsive by Design</h3>
+            <div class="responsive">
+                <h2>Responsive by Design</h2>
                 <p>Neptune AI isn’t just scaled down; it’s reimagined for every screen. Start your conversation on a
                     desktop and continue on the go with zero friction.</p>
             </div>
 
             <!--Desktop view div-->
             <div>
-                <h3>Desktop view: Designed for Productivity</h3>
+                <h2>Desktop view: Designed for Productivity</h2>
                 <p>Maximum visibility for maximum output. The desktop view utilizes every pixel to provide a
                     clutter-free environment where your conversations take center stage.</p>
-                <img src="img/mobile-images/desktop-view.png"
+                <img src="img/mobile-images/desktop-view.svg"
                     alt="A view of the ChatBot page on the larger desktop view.">
+                    <div class="arrow-container">
                 <img src="img/arrow-icon.avif" alt="An arrow showing the conversion from desktop view to mobile view.">
+                </div>
             </div>
 
             <!--Mobile view div-->
             <div>
-                <h3>Mobile View: Fluid & Responsive</h3>
+                <h2>Mobile View: Fluid & Responsive</h2>
                 <p>Seamlessly adapted for smaller screens. From high-fidelity animations to a condensed navigation menu,
                     the mobile experience is fast, focused, and always accessible.</p>
             </div>
@@ -72,39 +73,39 @@
         </section>
 
         <!--Tech Stack Cards Section-->
-        <section class="tech-stack">
+        <section class="tech-stack inner-container">
             <h2>Integrated Technologies</h2>
             <p>Neptune’s utilizes a traditional techstack found in millions of state-of-the-art WebApps.</p>
             <!--tech stack cards html, css, js, node-->
 
 
             <div class="card">
-                <img src="img/html-icon.avif" alt="HTML icon.">
-                <h4>HTML</h4>
+                <img src="img/html-icon.avif" alt="HTML icon." class="tech-stack-card-icon">
+                <h3>HTML</h3>
                 <p>The structural foundation of Neptune AI, ensuring a clean, semantic, and accessible layout for every
                     conversation.</p>
             </div>
 
             <!--Card 2-->
             <div class="card">
-                <img src="img/css-icon.avif" alt="CSS icon.">
-                <h4>CSS</h4>
+                <img src="img/css-icon.avif" alt="CSS icon." class="tech-stack-card-icon">
+                <h3>CSS</h3>
                 <p>Powering our sleek, modern aesthetic with responsive designs and fluid animations tailored for any
                     device.</p>
             </div>
 
             <!--Card 3-->
             <div class="card">
-                <img src="img/js-icon.avif" alt="JavaScript icon.">
-                <h4>JavaScript</h4>
+                <img src="img/js-icon.avif" alt="JavaScript icon." class="tech-stack-card-icon">
+                <h3>JavaScript</h3>
                 <p>The engine behind the interactivity, enabling real-time message processing and a dynamic user
                     interface.</p>
             </div>
 
             <!--Card 4-->
             <div class="card">
-                <img src="img/node-icon.avif" alt="Node.js icon.">
-                <h4>Node.js</h4>
+                <img src="img/node-icon.avif" alt="Node.js icon." class="tech-stack-card-icon">
+                <h3>Node.js</h3>
                 <p>The robust backend powerhouse managing high-speed data flow and scalable server-side operations.</p>
             </div>
         </section>
@@ -113,21 +114,23 @@
     <!--End of Main-->
 
     <!--Footer-->
-    <footer>
-        <h3>Boost your productivity. Launch into a new orbit with Neptune.</h3>
+    <footer class="inner-container">
+        <h2>Boost your productivity. Launch into a new orbit with Neptune.</h2>
         <p>Powered by Gemma2:2b • 2B Parameters • 100% Locally Hosted</p>
 
-        <button>
+        <button class="chat-now">
             Chat Now
         </button>
 
-        <button>
+        <button class="learn-more">
             Learn More →
         </button>
 
         <hr>
+        <div>
         <p>My Github</p>
         <img src="img/github-icon.avif" alt="Click this button to visit my Github page.">
+        </div>
 
     </footer>
     <!--End of Footer-->

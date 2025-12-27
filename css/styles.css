@@ -1,6 +1,6 @@
 /* 
 SPACING:
-1rem | 1.25rem | 3rem
+.5rem | 1rem | 1.25rem | 2rem | 3rem | 10rem
 */
 
 :root {
@@ -36,6 +36,29 @@ body {
     display: flex;
 }
 
+/********* HEADINGS **********/
+.hero h1,
+.hero h2 {
+    font-size: clamp(2.5rem, 1.6795rem + 4.1026vw, 4.5rem);
+    color: #ebe5e5;
+    color: #dacfcf;
+    line-height: 115%;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 2.0625rem;
+    color: #fff;
+    font-size: bold;
+     line-height: 115%;
+}
+
+h3 {
+    color: #fff;
+    font-size: clamp(1.6875rem, 1.5593rem + 0.641vw, 2rem);
+     line-height: 115%;
+}
+
 /*************** Design Auras *************/
 .aura {
     position: absolute;
@@ -45,9 +68,7 @@ body {
     left: 1rem;
     background: radial-gradient(circle,
             rgba(29, 40, 236, 0.8) 0%,
-            /* Your --aura color at 80% */
             rgba(29, 40, 236, 0) 70%
-            /* Your --aura color at 0% */
         );
     filter: blur(10px);
     opacity: .3;
@@ -62,9 +83,7 @@ body {
     left: -5rem;
     background: radial-gradient(circle,
             rgba(29, 40, 236, 0.8) 0%,
-            /* Your --aura color at 80% */
             rgba(29, 40, 236, 0) 70%
-            /* Your --aura color at 0% */
         );
     filter: blur(10px);
     opacity: .3;
@@ -79,28 +98,12 @@ body {
     left: 9rem;
     background: radial-gradient(circle,
             rgba(29, 40, 236, 0.8) 0%,
-            /* Your --aura color at 80% */
             rgba(29, 40, 236, 0) 70%
-            /* Your --aura color at 0% */
         );
     filter: blur(10px);
     opacity: .3;
     z-index: -3;
 }
-
-
-
-
-/* .aura-1 {
-    transform: translateY(100rem);
-    right: 5rem;
-}
-
-.aura-2 {
-    transform: translateY(115rem);
-    left: 3rem;
-    filter: blur(25px);
-} */
 
 /*************** Hero/Header Section *************/
 .hero {
@@ -138,15 +141,6 @@ body {
     margin: 3rem 0 1rem 0;
 }
 
-.hero h1,
-.hero h2 {
-    font-size: clamp(2.5rem, 1.6795rem + 4.1026vw, 4.5rem);
-    color: #ebe5e5;
-    color: #dacfcf;
-    line-height: 115%;
-    font-weight: bold;
-}
-
 .hero h1 {
     margin-bottom: 3rem;
 }
@@ -163,7 +157,7 @@ body {
     display: block;
 }
 
-.hero .chat-now {
+.chat-now {
     color: #fff;
     background-color: var(--primary-purple);
     padding: .35rem 1rem;
@@ -171,7 +165,7 @@ body {
     margin-right: 1rem;
 }
 
-.hero .learn-more {
+.learn-more {
     color: #fff;
 }
 
@@ -180,4 +174,97 @@ body {
         background-size: 120px 120px;
         /* Larger grid for desktop */
     }
+}
+
+
+
+
+
+
+
+
+
+
+/*************** Responsive by design Section *************/
+.responsive-by-design {
+    margin-bottom: 10rem;
+}
+
+.responsive {
+    margin-bottom: 10rem;
+}
+
+.responsive-by-design div p {
+    margin: .5rem 0 1rem 0;
+}
+
+.arrow-container {
+    display: flex;
+    margin: 1rem 0 2rem 0;
+    justify-content: center;
+}
+
+
+
+
+
+
+
+
+
+/*************** Tech Stack Section *************/
+.tech-stack {
+    margin-bottom: 10rem;
+}
+
+.tech-stack > p {
+    margin-bottom: 2rem;
+}
+
+.tech-stack .card {
+    background-color: var(--card-bg);
+    border-radius: 40px;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.tech-stack-card-icon {
+    width: clamp(5rem, 4.4872rem + 2.5641vw, 6.25rem);
+}
+
+
+
+
+
+
+
+
+
+/*************** Footer Section *************/
+footer hr {
+border: none;
+border-top: 2px solid var(--grid);
+margin: 0 -1rem;
+}
+
+footer p {
+    margin: .5rem 0 1rem 0;
+}
+
+footer p:last-of-type {
+    color: #fff;
+}
+
+footer button:last-of-type {
+    margin-bottom: 10rem;
+}
+
+footer div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
