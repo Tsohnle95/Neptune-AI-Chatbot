@@ -49,7 +49,7 @@ body {
 h2 {
     font-size: 2.0625rem;
     color: #fff;
-    font-size: bold;
+    font-weight: bold;
      line-height: 115%;
 }
 
@@ -113,6 +113,7 @@ h3 {
     z-index: 1;
 }
 
+/* hero grid */
 .hero::before {
     content: "";
     position: absolute;
@@ -123,7 +124,7 @@ h3 {
     background-size: 70px 70px;
     z-index: -3;
 }
-
+/* hero image */
 .hero::after {
     content: "";
     position: absolute;
@@ -187,15 +188,20 @@ h3 {
 
 /*************** Responsive by design Section *************/
 .responsive-by-design {
-    margin-bottom: 10rem;
+    margin-bottom: 9rem;
 }
 
 .responsive {
-    margin-bottom: 10rem;
+    margin-bottom: 12rem;
 }
 
-.responsive-by-design div p {
+.responsive-by-design .desktop-view p {
     margin: .5rem 0 1rem 0;
+}
+
+.responsive-by-design .mobile-view p {
+    margin: .5rem 0 .5rem 0;
+
 }
 
 .arrow-container {
@@ -214,7 +220,7 @@ h3 {
 
 /*************** Tech Stack Section *************/
 .tech-stack {
-    margin-bottom: 10rem;
+    margin-bottom: 8rem;
 }
 
 .tech-stack > p {
@@ -245,10 +251,8 @@ h3 {
 
 
 /*************** Footer Section *************/
-footer hr {
-border: none;
-border-top: 2px solid var(--grid);
-margin: 0 -1rem;
+footer {
+    position: relative;
 }
 
 footer p {
@@ -260,11 +264,112 @@ footer p:last-of-type {
 }
 
 footer button:last-of-type {
+    /* margin-bottom: 12rem; */
+}
+
+.grid-container {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    padding-top: 5rem;
+    padding-bottom: 4rem;
     margin-bottom: 10rem;
 }
 
-footer div {
+footer .chat-now {
+    color: #fff;
+    background-color: var(--primary-purple);
+    padding: .35rem 1rem;
+    border-radius: 7px;
+    margin-right: 1rem;
+}
+
+.github {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 1rem;
 }
+/* footer grid */
+.grid-container::before {
+    content: "";
+    position: absolute;
+    inset: 0; 
+    background-image:
+        linear-gradient(to right, var(--grid) 3px, transparent 1px),
+        linear-gradient(to bottom, var(--grid) 3px, transparent 1px);
+    background-size: 70px 70px;
+    z-index: -22;
+}
+
+
+/* footer auras */
+.footer-aura {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    bottom: 35rem;
+    left: -4rem;
+    background: radial-gradient(circle,
+            rgba(29, 40, 236, 0.8) 0%,
+            rgba(29, 40, 236, 0) 70%
+        );
+    filter: blur(10px);
+    opacity: .3;
+    z-index: 2;
+}
+
+.footer-aura-1 {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    bottom: 38rem;
+    right: 0;
+    background: radial-gradient(circle,
+            rgba(29, 40, 236, 0.8) 0%,
+            rgba(29, 40, 236, 0) 70%
+        );
+    filter: blur(30px);
+    opacity: .4;
+    z-index: 2;
+}
+
+.footer-aura-2 {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    bottom: 24rem;
+    left: -2rem;
+    background: radial-gradient(circle,
+            rgba(29, 40, 236, 0.8) 0%,
+            rgba(29, 40, 236, 0) 70%
+        );
+    filter: blur(60px);
+    opacity: .6;
+    z-index: 2;
+}
+
+.footer-aura-3 {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    bottom: 20rem;
+    right: 0rem;
+    background: radial-gradient(circle,
+            rgba(29, 40, 236, 0.8) 0%,
+            rgba(29, 40, 236, 0) 70%
+        );
+    filter: blur(60px);
+    opacity: 1;
+    z-index: 2;
+}
+
+footer hr {
+    border: none;
+    border-top: 3px solid var(--grid);
+}
+
+
+
+
+
