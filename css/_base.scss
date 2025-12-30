@@ -1,0 +1,68 @@
+/* 
+SPACING:
+.5rem | 1rem | 1.25rem | 2rem | 3rem | 10rem
+*/
+
+:root {
+    --primary-black: #0F172B;
+    --primary-blue: #2B7FFF;
+    --primary-purple: #5655FF;
+    --text-gray: #8E8DA5;
+    --card-bg: #1A2332;
+    --aura: #1D28EC;
+    --grid: #161B28;
+}
+
+html {
+    font-size: 100%;
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    line-height: 1.5;
+    background-color: white;
+    font-size: 1.25rem;
+    color: var(--text-gray);
+}
+
+main {
+ background-color: var(--primary-black);
+}
+
+.inner-container {
+  padding:  clamp(1rem, 0.4286rem + 2.8571vw, 4rem);
+  /* padding: 4rem; */
+  max-width: 2000px;
+  margin: 0 auto;
+
+}
+
+.flex {
+    display: flex;
+}
+
+/********* HEADINGS **********/
+.hero h1,
+.hero h2 {
+    font-size: clamp(2.5rem, 2rem + 2.5vw, 4.5rem);
+    color: #ebe5e5;
+    color: #dacfcf;
+    line-height: 115%;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 2.0625rem;
+    color: #fff;
+    font-weight: bold;
+    line-height: 115%;
+}
+
+h3 {
+    color: #fff;
+    font-size: clamp(1.6875rem, 1.5593rem + 0.641vw, 2rem);
+    line-height: 115%;
+}
+
+
+

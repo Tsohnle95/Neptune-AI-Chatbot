@@ -1,0 +1,22 @@
+.responsive-by-design {
+    margin-bottom: 9rem;
+}
+
+.responsive {
+    margin-bottom: 12rem;
+}
+
+.responsive-by-design .desktop-view p {
+    margin: .5rem 0 1rem 0;
+}
+
+.responsive-by-design .mobile-view p {
+    margin: .5rem 0 .5rem 0;
+
+}
+
+.arrow-container {
+    display: flex;
+    margin: 1rem 0 2rem 0;
+    justify-content: center;
+}

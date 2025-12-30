@@ -1,0 +1,100 @@
+/*************** Hero Design Auras *************/
+.aura {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    top: -2rem;
+    left: 1rem;
+    background: radial-gradient(circle,
+            rgba(29, 40, 236, 0.8) 0%,
+            rgba(29, 40, 236, 0) 70%);
+    filter: blur(10px);
+    opacity: .3;
+    z-index: -3;
+}
+
+.aura-2 {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    top: 10rem;
+    left: -5rem;
+    background: radial-gradient(circle,
+            rgba(29, 40, 236, 0.8) 0%,
+            rgba(29, 40, 236, 0) 70%);
+    filter: blur(10px);
+    opacity: .3;
+    z-index: -3;
+}
+
+.aura-3 {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    top: 14rem;
+    left: 9rem;
+    background: radial-gradient(circle,
+            rgba(29, 40, 236, 0.8) 0%,
+            rgba(29, 40, 236, 0) 70%);
+    filter: blur(10px);
+    opacity: .3;
+    z-index: -3;
+}
+
+
+/********** Footer Design Auras **********/
+.footer-aura {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    left: -4rem;
+    background: radial-gradient(circle,
+            rgba(29, 40, 236, 0.8) 0%,
+            rgba(29, 40, 236, 0) 70%);
+    filter: blur(10px);
+    opacity: .3;
+    z-index: 2;
+}
+
+.footer-aura-1 {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    left: 8rem;
+    background: radial-gradient(circle,
+            rgba(29, 40, 236, 0.8) 0%,
+            rgba(29, 40, 236, 0) 70%);
+    filter: blur(30px);
+    opacity: .3;
+    z-index: 2;
+    padding-top: 22rem;
+}
+
+.footer-aura-2 {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    margin-top: 17rem;
+    left: 9rem;
+    background: radial-gradient(circle,
+            rgba(29, 40, 236, 0.8) 0%,
+            rgba(29, 40, 236, 0) 70%);
+    filter: blur(40px);
+    opacity: .6;
+    z-index: 2;
+}
+
+
+.footer-aura-3 {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    margin-top: 13rem;
+    left: -4rem;
+    background: radial-gradient(circle,
+            rgba(29, 40, 236, 0.8) 0%,
+            rgba(29, 40, 236, 0) 70%);
+    filter: blur(30px);
+    opacity: .3;
+    z-index: 2;
+}

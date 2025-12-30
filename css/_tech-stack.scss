@@ -1,0 +1,23 @@
+.tech-stack {
+    margin-bottom: 8rem;
+}
+
+.tech-stack>p {
+    margin-bottom: 2rem;
+}
+
+.tech-stack .card {
+    background-color: var(--card-bg);
+    border-radius: 40px;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.tech-stack-card-icon {
+    width: clamp(5rem, 4.4872rem + 2.5641vw, 6.25rem);
+}
+
