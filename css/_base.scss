@@ -31,6 +31,8 @@ main {
 
 .inner-container {
   padding:  clamp(1rem, 0.4286rem + 2.8571vw, 4rem);
+//   padding:  clamp(1rem, 0rem + 5vw, 5rem);
+padding:  clamp(1rem, 0.25rem + 3.75vw, 4rem);
   /* padding: 4rem; */
   max-width: 2000px;
   margin: 0 auto;

@@ -9,7 +9,7 @@
             rgba(29, 40, 236, 0.8) 0%,
             rgba(29, 40, 236, 0) 70%);
     filter: blur(10px);
-    opacity: .3;
+    opacity: .4;
     z-index: -3;
 }
 
@@ -40,6 +40,116 @@
     opacity: .3;
     z-index: -3;
 }
+
+@media (width >= 550px) {
+    .aura-4 {
+         position: absolute;
+         transform: rotate(25deg);
+    width: 70%;
+    height: 600px;
+    top: -3rem;
+    left: 55%;
+    background: linear-gradient(to right,
+            rgba(29, 40, 236, 0.8) 0%,
+            rgba(29, 40, 236, 0) 70%);
+    filter: blur(85px);
+    opacity: .7;
+    z-index: -3;
+    }
+
+    .aura-3 {
+        // top: 18rem;
+        display: none;
+    }
+
+    .aura-2 {
+        top: 7rem;
+        filter:blur(20px);
+    }
+    .aura {
+        filter: blur(60px);
+        width: 400px;
+        height: 400px;
+        left: 0rem;
+        // display: none;
+    }
+}
+
+@media (width > 700px) {
+    .aura {
+        width: 600px;
+        height: 600px;
+        left: -6rem;
+        // display: none;
+    }
+
+    .aura-2 {
+        display: none;
+    }
+    .aura-4 {
+        top: -1rem;
+        height: 700px;
+        filter:blur(120px);
+    }
+}
+
+@media (width > 950px) {
+    .aura {
+        width: 800px;
+        height: 500px;
+        left: -10rem;
+        top: 1.5rem;
+    }
+}
+
+@media (width > 1050px) {
+    .aura {
+        width: 1000px;
+        height: 400px;
+        left: -15rem;
+        top: 2.5rem;
+    }
+
+    .aura-4 {
+        height: 800px;
+        top: -3rem;
+        filter:blur(110px);
+        // opacity: 0.45;
+    }
+}
+
+@media (width > 1200px) {
+    .aura {
+        width: 1200px;
+        height: 400px;
+        left: -20rem;
+        top: 5rem;
+    }
+}
+
+@media (width > 1350px) {
+    .aura {
+        width: 1400px;
+        height: 400px;
+        left: -20rem;
+        top: 5rem;
+    }
+}
+
+@media (width > 1600px) {
+    .aura-4 {
+        top: -2rem;
+        height: 900px;
+        transform: rotate(45deg);
+        width: 40%;
+        left:60%;
+    }
+}
+
+
+
+/********** Hero/Header Aura Media queries **********/
+
 
 
 /********** Footer Design Auras **********/

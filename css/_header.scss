@@ -5,10 +5,8 @@ header {
 .hero {
     position: relative;
     overflow: hidden;
-    padding-bottom: 10rem;
     z-index: 1;
     padding-bottom: clamp(3rem, -0.2542rem + 16.2712vw, 15rem);
-    /* padding-top: 2rem; */
 }
 
 .hero .span4 {
@@ -40,7 +38,7 @@ header {
 .chat-now {
     color: #fff;
     background-color: var(--primary-purple);
-    padding: .35rem 1rem;
+    padding: .6rem 1rem;
     border-radius: 7px;
     margin-right: 1rem;
 }
@@ -152,7 +150,7 @@ header {
     }
 
     .hero img {
-        margin-top: unset;
+        // margin-top: unset;
     }
 
     /* hero grid */

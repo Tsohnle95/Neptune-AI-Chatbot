@@ -125,6 +125,7 @@ main {
 
 .inner-container {
   padding: clamp(1rem, 0.4286rem + 2.8571vw, 4rem);
+  padding: clamp(1rem, 0.25rem + 3.75vw, 4rem);
   /* padding: 4rem; */
   max-width: 2000px;
   margin: 0 auto;
@@ -164,10 +165,8 @@ header {
 .hero {
   position: relative;
   overflow: hidden;
-  padding-bottom: 10rem;
   z-index: 1;
   padding-bottom: clamp(3rem, -0.2542rem + 16.2712vw, 15rem);
-  /* padding-top: 2rem; */
 }
 
 .hero .span4 {
@@ -199,7 +198,7 @@ header {
 .chat-now {
   color: #fff;
   background-color: var(--primary-purple);
-  padding: 0.35rem 1rem;
+  padding: 0.6rem 1rem;
   border-radius: 7px;
   margin-right: 1rem;
 }
@@ -297,9 +296,6 @@ header {
   }
   .hero p {
     max-width: 28ch;
-  }
-  .hero img {
-    margin-top: unset;
   }
   /* hero grid */
   .hero::before {
@@ -580,7 +576,7 @@ header {
   left: 1rem;
   background: radial-gradient(circle, rgba(29, 40, 236, 0.8) 0%, rgba(29, 40, 236, 0) 70%);
   filter: blur(10px);
-  opacity: 0.3;
+  opacity: 0.4;
   z-index: -3;
 }
 
@@ -608,6 +604,95 @@ header {
   z-index: -3;
 }
 
+@media (width >= 550px) {
+  .aura-4 {
+    position: absolute;
+    transform: rotate(25deg);
+    width: 70%;
+    height: 600px;
+    top: -3rem;
+    left: 55%;
+    background: linear-gradient(to right, rgba(29, 40, 236, 0.8) 0%, rgba(29, 40, 236, 0) 70%);
+    filter: blur(85px);
+    opacity: 0.7;
+    z-index: -3;
+  }
+  .aura-3 {
+    display: none;
+  }
+  .aura-2 {
+    top: 7rem;
+    filter: blur(20px);
+  }
+  .aura {
+    filter: blur(60px);
+    width: 400px;
+    height: 400px;
+    left: 0rem;
+  }
+}
+@media (width > 700px) {
+  .aura {
+    width: 600px;
+    height: 600px;
+    left: -6rem;
+  }
+  .aura-2 {
+    display: none;
+  }
+  .aura-4 {
+    top: -1rem;
+    height: 700px;
+    filter: blur(120px);
+  }
+}
+@media (width > 950px) {
+  .aura {
+    width: 800px;
+    height: 500px;
+    left: -10rem;
+    top: 1.5rem;
+  }
+}
+@media (width > 1050px) {
+  .aura {
+    width: 1000px;
+    height: 400px;
+    left: -15rem;
+    top: 2.5rem;
+  }
+  .aura-4 {
+    height: 800px;
+    top: -3rem;
+    filter: blur(110px);
+  }
+}
+@media (width > 1200px) {
+  .aura {
+    width: 1200px;
+    height: 400px;
+    left: -20rem;
+    top: 5rem;
+  }
+}
+@media (width > 1350px) {
+  .aura {
+    width: 1400px;
+    height: 400px;
+    left: -20rem;
+    top: 5rem;
+  }
+}
+@media (width > 1600px) {
+  .aura-4 {
+    top: -2rem;
+    height: 900px;
+    transform: rotate(45deg);
+    width: 40%;
+    left: 60%;
+  }
+}
+/********** Hero/Header Aura Media queries **********/
 /********** Footer Design Auras **********/
 .footer-aura {
   position: absolute;
