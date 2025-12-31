@@ -145,7 +145,7 @@ main {
 }
 
 h2 {
-  font-size: 2.0625rem;
+  font-size: clamp(2.0625rem, 1.9029rem + 0.7979vw, 3rem);
   color: #fff;
   font-weight: bold;
   line-height: 115%;
@@ -775,6 +775,60 @@ h3 {
   justify-content: center;
 }
 
+@media (width >= 850px) {
+  .responsive-by-design .desktop-view .flex-container {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 3rem;
+  }
+  .responsive-by-design .desktop-view .flex-container div:nth-of-type(2) {
+    width: 60%;
+  }
+  .responsive-by-design .desktop-view .flex-container div:nth-of-type(1) {
+    width: 40%;
+  }
+  .responsive {
+    margin-bottom: 2.5rem;
+  }
+  .responsive p {
+    max-width: 50ch;
+  }
+  .arrow-container {
+    display: none;
+  }
+  .desktop-view {
+    margin-bottom: 10rem;
+  }
+}
+@media (width > 1050px) {
+  .responsive-by-design .desktop-view .flex-container {
+    align-items: center;
+  }
+}
+@media (width > 1200px) {
+  .responsive-by-design .desktop-view .flex-container {
+    gap: 4rem;
+  }
+}
+@media (width >= 1300px) {
+  .responsive-by-design .desktop-view .flex-container {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 3rem;
+  }
+  .responsive-by-design .desktop-view .flex-container div:nth-of-type(2) {
+    width: 60%;
+  }
+  .responsive-by-design .desktop-view .flex-container div:nth-of-type(1) {
+    width: 40%;
+  }
+  .responsive {
+    margin-bottom: 2.5rem;
+  }
+  .responsive p {
+    max-width: 50ch;
+  }
+}
 .tech-stack {
   margin-bottom: 8rem;
 }
