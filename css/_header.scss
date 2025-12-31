@@ -1,5 +1,5 @@
 header {
-    background-color: var(--primary-black);
+    // background-color: var(--primary-black);
 }
 
 .hero {
@@ -7,6 +7,7 @@ header {
     overflow: hidden;
     z-index: 1;
     padding-bottom: clamp(3rem, -0.2542rem + 16.2712vw, 15rem);
+    margin-bottom: 10rem;
 }
 
 .hero .span4 {

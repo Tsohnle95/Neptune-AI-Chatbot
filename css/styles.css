@@ -117,6 +117,7 @@ body {
   background-color: white;
   font-size: 1.25rem;
   color: var(--text-gray);
+  background-color: var(--primary-black);
 }
 
 main {
@@ -156,15 +157,12 @@ h3 {
   line-height: 115%;
 }
 
-header {
-  background-color: var(--primary-black);
-}
-
 .hero {
   position: relative;
   overflow: hidden;
   z-index: 1;
   padding-bottom: clamp(3rem, -0.2542rem + 16.2712vw, 15rem);
+  margin-bottom: 10rem;
 }
 
 .hero .span4 {
@@ -756,7 +754,7 @@ header {
 }
 
 .responsive-by-design {
-  margin-bottom: 9rem;
+  margin-bottom: 10rem;
 }
 
 .responsive {
@@ -803,10 +801,8 @@ header {
 footer {
   position: relative;
   background-color: white;
-}
-
-footer .inner-container {
   background-color: var(--primary-black);
+  padding-bottom: 2rem;
 }
 
 footer p {
@@ -846,7 +842,6 @@ footer .chat-now {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 1rem;
 }
 
 /* footer grid */
