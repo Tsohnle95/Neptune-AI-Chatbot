@@ -20,6 +20,7 @@
     justify-content: center;
 }
 
+
 .mobile-view-div img {
     min-width: 0;
     max-width: 371px;
@@ -129,6 +130,6 @@
     }
         .mobile-view div:nth-of-type(2) {
         width: unset;
-        max-width: 35rem;
+        max-width: 30rem;
     }
 }
