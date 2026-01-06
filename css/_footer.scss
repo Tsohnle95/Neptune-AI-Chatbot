@@ -16,7 +16,7 @@ footer p:last-of-type {
 footer .grid-container {
     position: relative;
     z-index: 1;
-   padding: 8rem 0;
+   padding: 8rem 0 4rem 0;
     margin-bottom: 10rem;
 }
 
@@ -24,6 +24,8 @@ footer .grid-container {
     position: relative;
     overflow: hidden;
 }
+
+
 
 footer .chat-now {
     color: #fff;
