@@ -5,24 +5,18 @@ background-color: var(--primary-black);
 padding-bottom: 2rem;
 }
 
-
 footer p {
-    margin: .5rem 0 1rem 0;
+    margin: .5rem 0 1.25rem 0;
 }
 
 footer p:last-of-type {
     color: #fff;
 }
 
-footer button:last-of-type {
-    /* margin-bottom: 12rem; */
-}
-
-.grid-container {
+footer .grid-container {
     position: relative;
     z-index: 1;
-    padding-top: 5rem;
-    padding-bottom: 4rem;
+   padding: 8rem 0;
     margin-bottom: 10rem;
 }
 
@@ -60,4 +54,10 @@ footer .chat-now {
 footer hr {
     border: none;
     border-top: 3px solid var(--grid);
+}
+
+@media (width >= 735px) {
+    footer .inner-container {
+    text-align: center;
+}
 }

@@ -11,8 +11,19 @@
 }
 
 .responsive-by-design .mobile-view p {
-    margin: .5rem 0 .5rem 0;
+    margin: .5rem 0 1rem 0;
+    max-width: 70ch;
+}
 
+.mobile-view-div {
+    display: flex;
+    justify-content: center;
+}
+
+.mobile-view-div img {
+    min-width: 0;
+    max-width: 371px;
+    
 }
 
 .arrow-container {
@@ -21,7 +32,12 @@
     justify-content: center;
 }
 
-@media (width >= 850px) {
+// .mobile-view .mobile-view-div {
+// display: flex;
+// justify-content: center;
+// }
+
+@media (width >=850px) {
     .responsive-by-design .desktop-view .flex-container {
         display: flex;
         flex-direction: row-reverse;
@@ -41,17 +57,43 @@
     }
 
     .responsive p {
-    max-width: 50ch;
+        max-width: 50ch;
+    }
+
+    .arrow-container {
+        display: none;
+    }
+
+    .desktop-view {
+        margin-bottom: 10rem;
+    }
+
+    .mobile-view {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5rem;
+    }
+
+    .mobile-view div:nth-of-type(1) {
+        width: 60%;
+    }
+    
+        .mobile-view div:nth-of-type(2) {
+        width: 40%;
+        max-width: 35rem;
+    }
+
+    .mobile-view-div img {
+    min-width: 0;
+    max-width: unset;
+    
 }
 
-.arrow-container {
-    display: none;
+    
 }
 
-.desktop-view {
-    margin-bottom: 10rem;
-}
-}
+
 
 @media (width > 1050px) {
     .responsive-by-design .desktop-view .flex-container {
@@ -65,7 +107,7 @@
     }
 }
 
-@media (width >= 1300px) {
+@media (width >=1300px) {
     .responsive-by-design .desktop-view .flex-container {
         display: flex;
         flex-direction: row-reverse;
@@ -85,6 +127,6 @@
     }
 
     .responsive p {
-    max-width: 50ch;
-}
+        max-width: 50ch;
+    }
 }
