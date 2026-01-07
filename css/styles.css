@@ -176,8 +176,6 @@ h3 {
 
 .hero img {
   margin: 0rem 0 1rem 0;
-  /* width: 100px; */
-  /* width: 65px; */
   width: clamp(4.0625rem, 3.267rem + 3.9773vw, 6.25rem);
   height: auto;
 }
