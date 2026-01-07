@@ -1,8 +1,10 @@
 footer {
-    position: relative;
-background-color: white;
-background-color: var(--primary-black);
-padding-bottom: 2rem;
+    overflow: hidden;
+    // padding: 300rem;
+}
+
+footer>div {
+    padding-top: 15rem;
 }
 
 footer p {
@@ -16,23 +18,12 @@ footer p:last-of-type {
 footer .grid-container {
     position: relative;
     z-index: 1;
-   padding: 8rem 0 4rem 0;
+    padding: 8rem 0 4rem 0;
     margin-bottom: 10rem;
 }
 
 .aura-container {
     position: relative;
-    overflow: hidden;
-}
-
-
-
-footer .chat-now {
-    color: #fff;
-    background-color: var(--primary-purple);
-    padding: .35rem 1rem;
-    border-radius: 7px;
-    margin-right: 1rem;
 }
 
 .github {
@@ -41,7 +32,17 @@ footer .chat-now {
     align-items: center;
 }
 
-/* footer grid */
+footer hr {
+    border: none;
+    border-top: 3px solid var(--grid);
+}
+
+@media (width >=735px) {
+    footer .content-container {
+        text-align: center;
+    }
+}
+
 .grid-container::before {
     content: "";
     position: absolute;
@@ -51,15 +52,45 @@ footer .chat-now {
         linear-gradient(to bottom, var(--grid) 3px, transparent 1px);
     background-size: 70px 70px;
     z-index: -22;
+    margin: 0 -10rem;
 }
 
-footer hr {
-    border: none;
-    border-top: 3px solid var(--grid);
+@media (width > 540px) {
+
+    /* footer grid */
+    .grid-container::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(to right, var(--grid) 3px, transparent 1px),
+            linear-gradient(to bottom, var(--grid) 3px, transparent 1px);
+        background-size: 100px 100px;
+        z-index: -22;
+        margin: 0 -10rem;
+    }
 }
 
-@media (width >= 735px) {
-    footer .inner-container {
-    text-align: center;
+@media (width > 750px) {
+    .grid-container::before {
+        background-size: 130px 130px;
+    }
 }
+
+@media (width > 920px) {
+    .grid-container::before {
+        background-size: 160px 160px;
+    }
+}
+
+@media (width > 1200px) {
+    .grid-container::before {
+        background-size: 190px 190px;
+    }
+}
+
+@media (width > 1300px) {
+    .grid-container::before {
+        background-size: 240px 240px;
+    }
 }
