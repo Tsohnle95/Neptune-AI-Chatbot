@@ -1,0 +1,23 @@
+
+/* hero buttons */
+.chat-now {
+    color: #fff;
+    background-color: var(--primary-purple);
+    padding: .6rem 1rem;
+    border-radius: 7px;
+    margin-right: 1rem;
+}
+
+.chat-now:hover,
+.learn-more:hover {
+    cursor: pointer;
+}
+
+.learn-more {
+    color: #fff;
+}
+
+/* js components - remove classes from page when user clicks chat now */
+.chatbot {
+    display: none;
+}

@@ -1,3 +1,5 @@
+
+/* hero content */ 
 .hero {
     position: relative;
     overflow: hidden;
@@ -27,19 +29,6 @@
 .hero p {
     margin-bottom: 1.5rem;
     max-width: 60ch;
-}
-
-/* hero buttons */
-.chat-now {
-    color: #fff;
-    background-color: var(--primary-purple);
-    padding: .6rem 1rem;
-    border-radius: 7px;
-    margin-right: 1rem;
-}
-
-.learn-more {
-    color: #fff;
 }
 
 /* hero grid */

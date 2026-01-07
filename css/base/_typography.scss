@@ -1,0 +1,28 @@
+/********* HEADINGS **********/
+.hero h1,
+.hero h2 {
+    font-size: clamp(2.5rem, 2rem + 2.5vw, 4.5rem);
+    color: #ebe5e5;
+    color: #fff;
+
+    color: #f1ebeb;
+
+    line-height: 115%;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: clamp(2.0625rem, 1.9029rem + 0.7979vw, 3rem);
+    color: #fff;
+      color: #f1ebeb;
+    // font-size: 33px;
+    font-weight: bold;
+    line-height: 115%;
+}
+
+h3 {
+    color: #fff;
+      color: #f1ebeb;
+    font-size: 24px;
+    line-height: 115%;
+}

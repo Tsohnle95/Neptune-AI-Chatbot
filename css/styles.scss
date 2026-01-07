@@ -1,8 +1,11 @@
-@use 'reset';
-@use 'base';
-@use 'header';
-@use 'design-auras';
-@use 'responsive-section';
-@use 'tech-stack';
-@use 'footer';
+@use 'base/reset';
+@use 'base/base';
+@use 'base/typography';
+@use 'layout/landing-page/header';
+@use 'components/design-auras';
+@use 'components/buttons-js-components';
+@use 'layout/landing-page/responsive-section';
+@use 'layout/landing-page/tech-stack';
+@use 'layout/landing-page/footer';
+@use 'layout/chatbot-page/chatbot';
 

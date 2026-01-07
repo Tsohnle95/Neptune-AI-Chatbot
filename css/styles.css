@@ -162,6 +162,7 @@ h3 {
   line-height: 115%;
 }
 
+/* hero content */
 .hero {
   position: relative;
   overflow: hidden;
@@ -191,19 +192,6 @@ h3 {
 .hero p {
   margin-bottom: 1.5rem;
   max-width: 60ch;
-}
-
-/* hero buttons */
-.chat-now {
-  color: #fff;
-  background-color: var(--primary-purple);
-  padding: 0.6rem 1rem;
-  border-radius: 7px;
-  margin-right: 1rem;
-}
-
-.learn-more {
-  color: #fff;
 }
 
 /* hero grid */
@@ -807,6 +795,29 @@ h3 {
     opacity: 0.3;
   }
 }
+/* hero buttons */
+.chat-now {
+  color: #fff;
+  background-color: var(--primary-purple);
+  padding: 0.6rem 1rem;
+  border-radius: 7px;
+  margin-right: 1rem;
+}
+
+.chat-now:hover,
+.learn-more:hover {
+  cursor: pointer;
+}
+
+.learn-more {
+  color: #fff;
+}
+
+/* js components - remove classes from page when user clicks chat now */
+.chatbot {
+  display: none;
+}
+
 .responsive-by-design {
   margin-bottom: 10rem;
 }
