@@ -42,20 +42,20 @@
 }
 
 /********** Hero/Header Aura Media queries **********/
-@media (width >= 550px) {
+@media (width >=550px) {
     .aura-4 {
-         position: absolute;
-         transform: rotate(25deg);
-    width: 70%;
-    height: 600px;
-    top: -3rem;
-    left: 55%;
-    background: linear-gradient(to right,
-            rgba(29, 40, 236, 0.8) 0%,
-            rgba(29, 40, 236, 0) 70%);
-    filter: blur(85px);
-    opacity: .7;
-    z-index: -3;
+        position: absolute;
+        transform: rotate(25deg);
+        width: 70%;
+        height: 600px;
+        top: -3rem;
+        left: 55%;
+        background: linear-gradient(to right,
+                rgba(29, 40, 236, 0.8) 0%,
+                rgba(29, 40, 236, 0) 70%);
+        filter: blur(85px);
+        opacity: .7;
+        z-index: -3;
     }
 
     .aura-3 {
@@ -65,14 +65,14 @@
 
     .aura-2 {
         top: 7rem;
-        filter:blur(20px);
+        filter: blur(20px);
     }
+
     .aura {
         filter: blur(60px);
         width: 400px;
         height: 400px;
         left: 0rem;
-        // display: none;
     }
 }
 
@@ -81,16 +81,16 @@
         width: 600px;
         height: 600px;
         left: -6rem;
-        // display: none;
     }
 
     .aura-2 {
         display: none;
     }
+
     .aura-4 {
         top: -1rem;
         height: 700px;
-        filter:blur(120px);
+        filter: blur(120px);
     }
 }
 
@@ -114,8 +114,7 @@
     .aura-4 {
         height: 800px;
         top: -3rem;
-        filter:blur(110px);
-        // opacity: 0.45;
+        filter: blur(110px);
     }
 }
 
@@ -143,7 +142,7 @@
         height: 900px;
         transform: rotate(45deg);
         width: 40%;
-        left:60%;
+        left: 60%;
     }
 }
 
@@ -192,40 +191,25 @@
     pointer-events: none
 }
 
-// .footer-aura-3 {
-//     position: absolute;
-//     width: 300px;
-//     height: 300px;
-//     margin-top: 13rem;
-//     left: -4rem;
-//     background: radial-gradient(circle,
-//             rgba(29, 40, 236, 0.8) 0%,
-//             rgba(29, 40, 236, 0) 70%);
-//     filter: blur(30px);
-//     opacity: .3;
-//     z-index: 2;
-// }
-
-@media (width >= 420px ) {
+@media (width >=420px) {
     .footer-aura-1 {
         width: 400px;
     }
-
 }
 
-@media (width >= 520px ) {
+@media (width >=520px) {
     .footer-aura-1 {
         width: 200px;
         height: 1400px;
-         background: linear-gradient(to right,
-            rgba(29, 40, 236, 0.8) 0%,
-            rgba(29, 40, 236, 0) 70%);
-    filter: blur(85px);
-    opacity: .7;
-    padding-top: unset;
-    left: 35rem;
-    transform: rotate(65deg);
-    top: -35rem;
+        background: linear-gradient(to right,
+                rgba(29, 40, 236, 0.8) 0%,
+                rgba(29, 40, 236, 0) 70%);
+        filter: blur(85px);
+        opacity: .7;
+        padding-top: unset;
+        left: 35rem;
+        transform: rotate(65deg);
+        top: -35rem;
     }
 
     .footer-aura-2 {
@@ -235,49 +219,45 @@
 
 @media (width > 630px) {
     .footer-aura-1 {
-         width: 800px;
+        width: 800px;
         height: 1500px;
         top: -20rem;
         left: 0rem;
-         opacity: .3;
+        opacity: .3;
     }
-       .footer-aura {
+
+    .footer-aura {
         display: none;
     }
 }
 
 @media (width > 840px) {
     .footer-aura-1 {
-          width: 800px;
+        width: 800px;
         height: 1500px;
         top: -15rem;
         left: 5rem;
-         opacity: .3;
+        opacity: .3;
 
     }
-
-  
 }
 
 @media (width > 1290px) {
     .footer-aura-1 {
-         width: 800px;
+        width: 800px;
         height: 1500px;
         top: -15rem;
         left: 17rem;
-         opacity: .3;
+        opacity: .3;
     }
 }
 
 @media (width > 1640px) {
-     .footer-aura-1 {
-         width: 1000px;
+    .footer-aura-1 {
+        width: 1000px;
         height: 1500px;
         top: -10rem;
         left: 17rem;
-         opacity: .3;
+        opacity: .3;
     }
-
-   
-
 }
