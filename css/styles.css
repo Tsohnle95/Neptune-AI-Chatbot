@@ -99,6 +99,7 @@ SPACING:
 */
 :root {
   --primary-black: #0F172B;
+  --button-background: #121724;
   --primary-blue: #2B7FFF;
   --primary-purple: #5655FF;
   --text-gray: #8E8DA5;
@@ -106,6 +107,7 @@ SPACING:
   --aura: #1D28EC;
   --grid: #161B28;
   --card-text: #86899C;
+  --headings: #f1ebeb;
 }
 
 html {
@@ -140,24 +142,20 @@ main {
 .hero h1,
 .hero h2 {
   font-size: clamp(2.5rem, 2rem + 2.5vw, 4.5rem);
-  color: #ebe5e5;
-  color: #fff;
-  color: #f1ebeb;
+  color: var(--headings);
   line-height: 115%;
   font-weight: bold;
 }
 
 h2 {
   font-size: clamp(2.0625rem, 1.9029rem + 0.7979vw, 3rem);
-  color: #fff;
-  color: #f1ebeb;
+  color: var(--headings);
   font-weight: bold;
   line-height: 115%;
 }
 
 h3 {
-  color: #fff;
-  color: #f1ebeb;
+  color: var(--headings);
   font-size: 24px;
   line-height: 115%;
 }
@@ -814,8 +812,19 @@ h3 {
 }
 
 /* js components - remove classes from page when user clicks chat now */
-.chatbot {
+.chatbot-content {
   display: none;
+}
+
+/* tech stack section card buttons */
+.tech-stack .card a {
+  color: var(--headings);
+  font-size: 14px;
+  font-weight: bold;
+  background-color: var(--button-background);
+  padding: 0.5rem 2.25rem;
+  margin-top: 1rem;
+  border-radius: 25px;
 }
 
 .responsive-by-design {
@@ -976,7 +985,8 @@ h3 {
 }
 
 .tech-stack-card-icon {
-  width: 5rem;
+  width: 80px;
+  height: 80px;
 }
 
 .tech-flex1,
