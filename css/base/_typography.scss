@@ -5,6 +5,7 @@
    color: var(--headings);
     line-height: 115%;
     font-weight: bold;
+font-family: var(--mona);
 }
 
 h2 {
@@ -12,10 +13,12 @@ h2 {
       color: var(--headings);
     font-weight: bold;
     line-height: 115%;
+font-family: var(--mona);
 }
 
 h3 {
     color: var(--headings);
     font-size: 24px;
     line-height: 115%;
+   font-family: var(--mona) ;
 }

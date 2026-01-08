@@ -1,0 +1,73 @@
+.chatbot-content header {
+    .header-container {
+        background-color: var(--card-bg);
+        display: flex;
+        justify-content: space-between;
+        height: 5rem;
+        max-width: 2000px;
+        padding: 0 1rem;
+        position: relative;
+
+        .flex {
+            gap: 1rem;
+        }
+
+        .header-svg1 {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+
+            img:nth-of-type(1) {
+                width: 1.25rem;
+            }
+
+            img:nth-of-type(2) {
+                width: 1.25rem;
+            }
+
+        }
+
+        .svg-2 {
+            width: 1.25rem;
+        }
+
+        .chatbot-header-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            h2 {
+                font-size: 1.15rem;
+            }
+
+            p {
+                font-weight: 300;
+                font-size: 16px;
+            }
+        }
+    }
+
+}
+    /* toggle menu */
+        nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: var(--card-bg);
+            padding: 1rem;
+            width: 80%;
+            height: 100vh;
+            overflow: hidden;
+            transform: translateX(-100%);
+            transition: .4s ease;
+
+
+            .flex {
+                align-items: baseline;
+                justify-content: space-between;
+            }
+        }
+
+        .show-nav {
+            transform: translateX(0);
+        }

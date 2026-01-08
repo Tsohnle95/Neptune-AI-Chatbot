@@ -8,17 +8,19 @@ SPACING:
     --button-background: #121724;
     --primary-blue: #2B7FFF;
     --primary-purple: #5655FF;
+    --menu-gray: #90A1B9;
     --text-gray: #8E8DA5;
     --card-bg: #1A2332;
     --aura: #1D28EC;
     --grid: #161B28;
     --card-text: #86899C;
     --headings: #f1ebeb;
+    --mona: "Mona Sans", sans-serif;
+    --inter: "Inter", sans-serif;
 }
 
 html {
     font-size: 100%;
-    font-family: "Mona Sans", sans-serif;
     scroll-behavior: smooth;
 }
 
@@ -28,6 +30,7 @@ body {
     font-size: 1.25rem;
     color: var(--text-gray);
     background-color: var(--primary-black);
+    font-family: var(--inter);
 }
 
 main {
@@ -42,6 +45,14 @@ main {
 
 .flex {
     display: flex;
+}
+
+/* chatbot dom structure */
+.chatbot-content {
+height: 100dvh;
+display: flex;
+flex-direction: column;
+// justify-content: space-between;
 }
 
 

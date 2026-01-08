@@ -102,17 +102,19 @@ SPACING:
   --button-background: #121724;
   --primary-blue: #2B7FFF;
   --primary-purple: #5655FF;
+  --menu-gray: #90A1B9;
   --text-gray: #8E8DA5;
   --card-bg: #1A2332;
   --aura: #1D28EC;
   --grid: #161B28;
   --card-text: #86899C;
   --headings: #f1ebeb;
+  --mona: "Mona Sans", sans-serif;
+  --inter: "Inter", sans-serif;
 }
 
 html {
   font-size: 100%;
-  font-family: "Mona Sans", sans-serif;
   scroll-behavior: smooth;
 }
 
@@ -122,6 +124,7 @@ body {
   font-size: 1.25rem;
   color: var(--text-gray);
   background-color: var(--primary-black);
+  font-family: var(--inter);
 }
 
 main {
@@ -138,6 +141,13 @@ main {
   display: flex;
 }
 
+/* chatbot dom structure */
+.chatbot-content {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
 /********* HEADINGS **********/
 .hero h1,
 .hero h2 {
@@ -145,6 +155,7 @@ main {
   color: var(--headings);
   line-height: 115%;
   font-weight: bold;
+  font-family: var(--mona);
 }
 
 h2 {
@@ -152,12 +163,14 @@ h2 {
   color: var(--headings);
   font-weight: bold;
   line-height: 115%;
+  font-family: var(--mona);
 }
 
 h3 {
   color: var(--headings);
   font-size: 24px;
   line-height: 115%;
+  font-family: var(--mona);
 }
 
 /* hero content */
@@ -812,10 +825,18 @@ h3 {
 }
 
 /* js components - remove classes from page when user clicks chat now */
+/*********** disable landing page while working ***********/
+/*********** disable landing page while working ***********/
+/*********** disable landing page while working ***********/
+/*********** disable landing page while working ***********/
 .chatbot-content {
   display: none;
 }
 
+/*********** disable landing page while working ***********/
+/*********** disable landing page while working ***********/
+/*********** disable landing page while working ***********/
+/*********** disable landing page while working ***********/
 /* tech stack section card buttons */
 .tech-stack .card a {
   color: var(--headings);
@@ -1093,4 +1114,72 @@ footer hr {
   .grid-container::before {
     background-size: 240px 240px;
   }
+}
+.chatbot-content header .header-container {
+  background-color: var(--card-bg);
+  display: flex;
+  justify-content: space-between;
+  height: 5rem;
+  max-width: 2000px;
+  padding: 0 1rem;
+  position: relative;
+}
+.chatbot-content header .header-container .flex {
+  gap: 1rem;
+}
+.chatbot-content header .header-container .header-svg1 {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.chatbot-content header .header-container .header-svg1 img:nth-of-type(1) {
+  width: 1.25rem;
+}
+.chatbot-content header .header-container .header-svg1 img:nth-of-type(2) {
+  width: 1.25rem;
+}
+.chatbot-content header .header-container .svg-2 {
+  width: 1.25rem;
+}
+.chatbot-content header .header-container .chatbot-header-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.chatbot-content header .header-container .chatbot-header-text h2 {
+  font-size: 1.15rem;
+}
+.chatbot-content header .header-container .chatbot-header-text p {
+  font-weight: 300;
+  font-size: 16px;
+}
+
+/* toggle menu */
+nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--card-bg);
+  padding: 1rem;
+  width: 80%;
+  height: 100vh;
+  overflow: hidden;
+  transform: translateX(-100%);
+  transition: 0.4s ease;
+}
+nav .flex {
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.show-nav {
+  transform: translateX(0);
+}
+
+.chatbot-content .chat-area {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
 }/*# sourceMappingURL=styles.css.map */

@@ -17,10 +17,31 @@
     color: #fff;
 }
 
+
+
 /* js components - remove classes from page when user clicks chat now */
+// .chatbot-content {
+//     display: none;
+// }
+
+/*********** disable landing page while working ***********/
+/*********** disable landing page while working ***********/
+/*********** disable landing page while working ***********/
+/*********** disable landing page while working ***********/
+.landing-page-content {
+    // display: none;
+}
+
 .chatbot-content {
     display: none;
 }
+
+
+/*********** disable landing page while working ***********/
+/*********** disable landing page while working ***********/
+/*********** disable landing page while working ***********/
+/*********** disable landing page while working ***********/
+
 
 /* tech stack section card buttons */
 .tech-stack .card a {
@@ -30,6 +51,8 @@ font-weight: bold;
 background-color: var(--button-background);
 padding: .5rem 2.25rem;
 margin-top: 1rem;
-// width: 60%;
 border-radius: 25px;
 }
+
+
+
