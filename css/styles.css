@@ -111,6 +111,8 @@ SPACING:
   --headings: #f1ebeb;
   --mona: "Mona Sans", sans-serif;
   --inter: "Inter", sans-serif;
+  --chatbot-border: #314158;
+  --chatbot-darkgray: #62748E;
 }
 
 html {
@@ -824,24 +826,6 @@ h3 {
   color: #fff;
 }
 
-/* js components - remove classes from page when user clicks chat now */
-/*********** disable landing page while working ***********/
-/*********** disable landing page while working ***********/
-/*********** disable landing page while working ***********/
-/*********** disable landing page while working ***********/
-.chatbot-content {
-  display: none;
-}
-
-/*********** disable landing page while working ***********/
-/*********** disable landing page while working ***********/
-/*********** disable landing page while working ***********/
-/*********** disable landing page while working ***********/
-/* center toggle button hamburger menu */
-.toggle-btn {
-  display: flex;
-}
-
 /* tech stack section card buttons */
 .tech-stack .card a {
   color: var(--headings);
@@ -851,6 +835,27 @@ h3 {
   padding: 0.5rem 2.25rem;
   margin-top: 1rem;
   border-radius: 25px;
+}
+
+/* js components - remove classes from page when user clicks chat now */
+/*********** disable landing page while working ***********/
+/*********** disable landing page while working ***********/
+/*********** disable landing page while working ***********/
+/*********** disable landing page while working ***********/
+.landing-page-content {
+  display: none;
+}
+
+.chatbot-content header .show-nav {
+  transform: translateX(0);
+}
+.chatbot-content header nav {
+  transform: translateX(-100%);
+}
+
+/* center toggle button hamburger menu */
+.toggle-btn {
+  display: flex;
 }
 
 .responsive-by-design {
@@ -1165,20 +1170,88 @@ nav {
   top: 0;
   left: 0;
   background-color: var(--card-bg);
-  padding: 1rem;
   width: 80%;
   height: 100vh;
   overflow: hidden;
-  transform: translateX(-100%);
   transition: 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 nav .flex {
   align-items: baseline;
   justify-content: space-between;
+  margin-bottom: 1rem;
+  font-size: 16px;
 }
-
-.show-nav {
-  transform: translateX(0);
+nav .menu-header {
+  border-bottom: 1px solid var(--chatbot-border);
+  color: var(--headings);
+  padding: 1.25rem 1rem;
+  font-weight: 300;
+}
+nav .menu-header button {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  background-color: var(--primary-purple);
+  width: 100%;
+  border-radius: 10px;
+  padding: 0 1.5rem;
+  font-size: 16px;
+}
+nav .menu-header button span {
+  font-size: 25px;
+}
+nav .nav-content {
+  flex-grow: 1;
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 2rem;
+}
+nav .nav-content::-webkit-scrollbar {
+  width: 6px;
+  /* slims out the scrollbar */
+}
+nav .nav-content::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  /* Soft gray */
+  border-radius: 10px;
+}
+nav .nav-content::-webkit-scrollbar-track {
+  background: transparent;
+  /* Makes it look like it's floating on the menu */
+}
+nav .nav-content::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+nav .nav-content .nav-content-div {
+  overflow-x: hidden;
+  white-space: nowrap;
+  font-size: 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.35rem;
+  flex-shrink: 0;
+}
+nav .nav-content .nav-content-div .chat-title {
+  color: var(--headings);
+  font-weight: 300;
+}
+nav .nav-content .nav-content-div .chat-text {
+  color: var(--chatbot-darkgray);
+}
+nav .nav-content .nav-content-div .chat-time {
+  color: var(--chatbot-darkgray);
+}
+nav .nav-footer {
+  font-size: 16px;
+  padding: 1rem;
+  color: var(--chatbot-darkgray);
+  border-top: 1px solid var(--chatbot-border);
 }
 
 .chatbot-content .chat-area {
