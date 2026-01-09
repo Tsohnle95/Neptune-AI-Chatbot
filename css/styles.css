@@ -1211,7 +1211,6 @@ nav .nav-content {
   flex-direction: column;
   padding: 2rem 2rem;
   gap: 1rem;
-  margin-top: -1rem;
 }
 nav .nav-content::-webkit-scrollbar {
   width: 5px;
@@ -1273,6 +1272,8 @@ nav .nav-footer {
   padding: 1rem;
   color: red;
   border-top: 1px solid var(--chatbot-border);
+}
+nav .nav-footer p {
   max-width: -moz-fit-content;
   max-width: fit-content;
 }
