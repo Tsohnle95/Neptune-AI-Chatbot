@@ -1209,21 +1209,20 @@ nav .nav-content {
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
-  padding: 2rem;
+  padding: 2rem 2rem;
+  gap: 1rem;
+  margin-top: -1rem;
 }
 nav .nav-content::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
   /* slims out the scrollbar */
 }
 nav .nav-content::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.2);
-  /* Soft gray */
+  background-color: rgb(103, 103, 103);
   border-radius: 10px;
 }
 nav .nav-content::-webkit-scrollbar-track {
   background: transparent;
-  /* Makes it look like it's floating on the menu */
 }
 nav .nav-content::-webkit-scrollbar-thumb:hover {
   background-color: rgba(0, 0, 0, 0.4);
@@ -1233,9 +1232,12 @@ nav .nav-content .nav-content-div {
   white-space: nowrap;
   font-size: 16px;
   display: flex;
+  border-left: 3px solid transparent;
+  transition: all 0.2s ease;
   align-items: flex-start;
   gap: 0.35rem;
   flex-shrink: 0;
+  padding: 1rem 0;
 }
 nav .nav-content .nav-content-div .chat-title {
   color: var(--headings);
@@ -1247,11 +1249,38 @@ nav .nav-content .nav-content-div .chat-text {
 nav .nav-content .nav-content-div .chat-time {
   color: var(--chatbot-darkgray);
 }
+nav .nav-content-div:hover,
+nav .nav-content-div:focus {
+  background-color: rgba(255, 255, 255, 0.03);
+  /* Very faint white overlay */
+  border-left-color: var(--primary-purple);
+  /* Or your dark red: rgb(152, 48, 48) */
+  padding-left: 12px;
+  /* Slight shift to the right adds "energy" */
+}
+nav button:hover,
+nav button:focus {
+  background-color: #9d71fd;
+  /* Lighter purple */
+  outline: none;
+  /* A purple glow that blends into your dark background */
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+  transform: translateY(-2px);
+  /* Slight lift */
+}
 nav .nav-footer {
   font-size: 16px;
   padding: 1rem;
-  color: var(--chatbot-darkgray);
+  color: red;
   border-top: 1px solid var(--chatbot-border);
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+}
+nav .nav-footer p:hover,
+nav .nav-footer p:focus {
+  opacity: 1;
+  color: #FF5F5F;
+  text-shadow: 0 0 8px rgba(255, 95, 95, 0.4);
 }
 
 .chatbot-content .chat-area {
