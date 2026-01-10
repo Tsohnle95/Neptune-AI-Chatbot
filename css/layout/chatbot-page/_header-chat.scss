@@ -1,4 +1,17 @@
-.chatbot-content header {
+/*Flexes the navigation against the header and chat area on desktop view simulating a dashboard*/
+.chatbot-content {
+    .header-dashboard-flex-container {
+        @media (width >=1000px) {
+            display: flex;
+        }
+
+        .header-chat-area-wrapper {
+            flex: 1;
+        }
+    }
+}
+
+header {
     .header-container {
         background-color: var(--card-bg);
         display: flex;
@@ -49,11 +62,11 @@
                 .toggle-btn {
                     display: none;
                 }
+
                 .left-arrow {
                     display: none;
                 }
             }
-
         }
 
         .svg-2 {
@@ -64,7 +77,6 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-
 
             h2 {
                 font-size: 1.15rem;
@@ -87,7 +99,6 @@
             }
         }
     }
-
 }
 
 /* toggle menu */
@@ -104,10 +115,16 @@ nav {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    z-index: 1;
+
+    .close-btn {
+        width: 20px;
+    }
 
     @media (width >=1000px) {
         position: static;
         width: 18rem;
+
         border-right: 2px solid rgba(49, 65, 88, 0.5);
 
         .close-btn {
@@ -120,7 +137,6 @@ nav {
         justify-content: space-between;
         margin-bottom: 1rem;
         font-size: 16px;
-
     }
 
     .menu-header {
@@ -165,7 +181,6 @@ nav {
 
         &::-webkit-scrollbar {
             width: 5px;
-            /* slims out the scrollbar */
         }
 
         &::-webkit-scrollbar-thumb {
@@ -187,6 +202,7 @@ nav {
 
         .nav-content-div {
             border-left: 3px solid transparent;
+
             &:hover,
             &:focus {
                 background-color: rgba(255, 255, 255, 0.03);
@@ -206,6 +222,10 @@ nav {
                 flex-shrink: 0;
                 padding: 1rem 0;
                 cursor: pointer;
+
+                img {
+                    width: 20px;
+                }
             }
 
             @media (width >=1000px) {
@@ -213,8 +233,6 @@ nav {
                 border-radius: 14px;
                 padding: 0 3rem 0 1rem;
             }
-
-
 
             .chat-title {
                 color: var(--headings);
@@ -234,12 +252,9 @@ nav {
     button:hover,
     button:focus {
         background-color: #9d71fd;
-        /* Lighter purple */
         outline: none;
-        /* A purple glow that blends into your dark background */
         box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
         transform: translateY(-2px);
-        /* Slight lift */
     }
 
     .nav-footer {
@@ -250,8 +265,8 @@ nav {
 
         p {
             max-width: fit-content;
-             max-width: unset;
-                text-align: center;
+            max-width: unset;
+            text-align: center;
             cursor: pointer;
 
             @media (width >=1000px) {
@@ -259,7 +274,6 @@ nav {
                 text-align: center;
             }
         }
-
     }
 
     .nav-footer p:hover,
@@ -268,6 +282,4 @@ nav {
         color: #FF5F5F;
         text-shadow: 0 0 8px rgba(255, 95, 95, 0.4);
     }
-
-
 }

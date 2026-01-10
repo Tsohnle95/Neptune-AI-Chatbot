@@ -14,27 +14,6 @@ chatButtons.forEach(button => {
     });
 });
 
-
-
-
-// return landing page content and remove chatbot content
-//disabled this as it prevents hamburger menu from showing
-
-// let returnButtons = document.querySelectorAll('.chatbot-content');
-
-// returnButtons.forEach(element => {
-//     element.addEventListener('click', () => {
-//           //hide chatbot content
-//         element.style.display = 'none';
-//         //reveal landingpage content
-//         pageOne.style.display = 'block';
-//     });
-// });
-
-
-
-
-
 /**************** TOGGLE BUTTONS  **************** /
 /* hamburger-menu */
 btn = document.querySelector('.toggle-btn');

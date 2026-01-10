@@ -1,4 +1,3 @@
-
 /* hero buttons */
 .chat-now {
     color: #fff;
@@ -19,24 +18,17 @@
 
 /* tech stack section card buttons */
 .tech-stack .card a {
-color: var(--headings);
-font-size: 14px;
-font-weight: bold;
-background-color: var(--button-background);
-padding: .5rem 2.25rem;
-margin-top: 1rem;
-border-radius: 25px;
+    color: var(--headings);
+    font-size: 14px;
+    font-weight: bold;
+    background-color: var(--button-background);
+    padding: .5rem 2.25rem;
+    margin-top: 1rem;
+    border-radius: 25px;
 }
 
-/* js components - remove classes from page when user clicks chat now */
-// .chatbot-content {
-//     display: none;
-// }
+/*********** disable landing page while working by commenting out chatbot-content, and uncommenting landing-page-content ***********/
 
-/*********** disable landing page while working ***********/
-/*********** disable landing page while working ***********/
-/*********** disable landing page while working ***********/
-/*********** disable landing page while working ***********/
 .landing-page-content {
     // display: none;
 }
@@ -45,27 +37,22 @@ border-radius: 25px;
     display: none;
 }
 
-.chatbot-content header {
-    .show-nav {
+.chatbot-content .header-dashboard-flex-container {
+    nav {
+        transform: translateX(-100%);
+
+        @media (width >=1000px) {
             transform: translateX(0);
+            transition: 0s;
         }
+    }
 
-        nav {
-            transform: translateX(-100%);
-            @media (width >= 1000px) {
-                transform: translateX(0);
-                transition: 0s;
-            }
-        }
-
+    .show-nav {
+        transform: translateX(0);
+    }
 }
 
 /* center toggle button hamburger menu */
 .toggle-btn {
     display: flex;
 }
-
-
-
-
-
