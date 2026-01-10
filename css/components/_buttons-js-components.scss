@@ -52,7 +52,10 @@ border-radius: 25px;
 
         nav {
             transform: translateX(-100%);
-
+            @media (width >= 1000px) {
+                transform: translateX(0);
+                transition: 0s;
+            }
         }
 
 }
