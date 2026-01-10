@@ -10,7 +10,7 @@
         border-bottom: 2px solid rgba(49, 65, 88, 0.5);
 
         @media (width >=1000px) {
-            padding: unset;
+            padding: 0 1rem 0 0;
         }
 
         .flex {
@@ -47,6 +47,9 @@
                 display: block;
 
                 .toggle-btn {
+                    display: none;
+                }
+                .left-arrow {
                     display: none;
                 }
             }
@@ -247,8 +250,8 @@ nav {
 
         p {
             max-width: fit-content;
-            //  max-width: unset;
-            //     text-align: center;
+             max-width: unset;
+                text-align: center;
             cursor: pointer;
 
             @media (width >=1000px) {

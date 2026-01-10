@@ -842,7 +842,7 @@ h3 {
 /*********** disable landing page while working ***********/
 /*********** disable landing page while working ***********/
 /*********** disable landing page while working ***********/
-.chatbot-content {
+.landing-page-content {
   display: none;
 }
 
@@ -1143,7 +1143,7 @@ footer hr {
 }
 @media (width >= 1000px) {
   .chatbot-content header .header-container {
-    padding: unset;
+    padding: 0 1rem 0 0;
   }
 }
 .chatbot-content header .header-container .flex {
@@ -1176,6 +1176,9 @@ footer hr {
     display: block;
   }
   .chatbot-content header .header-container .header-svg1 .toggle-btn {
+    display: none;
+  }
+  .chatbot-content header .header-container .header-svg1 .left-arrow {
     display: none;
   }
 }
@@ -1350,6 +1353,8 @@ nav .nav-footer {
 nav .nav-footer p {
   max-width: -moz-fit-content;
   max-width: fit-content;
+  max-width: unset;
+  text-align: center;
   cursor: pointer;
 }
 @media (width >= 1000px) {
