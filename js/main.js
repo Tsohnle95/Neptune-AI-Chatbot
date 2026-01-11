@@ -1,13 +1,13 @@
 console.log('Hello World!');
 
 //remove landing page content and bring in chatbot content
-let pageOne = document.querySelector('.landing-page-content'); 
-let chatButtons = document.querySelectorAll('.chat-now'); 
+let pageOne = document.querySelector('.landing-page-content');
+let chatButtons = document.querySelectorAll('.chat-now');
 
 chatButtons.forEach(button => {
     button.addEventListener('click', () => {
         // hide landing-page elements
-       pageOne.style.display = 'none';
+        pageOne.style.display = 'none';
         //reveal chatbot elements
         let chatBotContent = document.querySelector('.chatbot-content');
         chatBotContent.style.display = 'flex';
@@ -30,8 +30,8 @@ closeBtn.addEventListener('click', () => {
 
 /* closes hamburger menu if user clicks outside of it*/
 window.addEventListener('click', (event) => {
-    if (nav.classList.contains('show-nav') && 
-        !nav.contains(event.target) && 
+    if (nav.classList.contains('show-nav') &&
+        !nav.contains(event.target) &&
         !btn.contains(event.target)) {
         nav.classList.remove('show-nav');
     }
