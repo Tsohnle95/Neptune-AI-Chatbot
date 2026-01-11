@@ -1505,7 +1505,7 @@ nav .nav-footer p:focus {
   align-items: center;
   background-color: var(--card-bg);
   width: 100%;
-  padding: 1rem;
+  padding: 0.75rem 1rem;
 }
 .chatbot-content .chat-area footer form {
   width: 100%;
@@ -1516,7 +1516,7 @@ nav .nav-footer p:focus {
 .chatbot-content .chat-area footer form .input-container button {
   position: absolute;
   right: 1rem;
-  top: 1rem;
+  top: 0.625rem;
 }
 .chatbot-content .chat-area footer form .input-container button img {
   width: 30px;
@@ -1524,10 +1524,11 @@ nav .nav-footer p:focus {
 }
 .chatbot-content .chat-area footer form input {
   background-color: var(--primary-black);
-  height: 62px;
+  height: 50px;
   border-radius: 16px;
   width: 100%;
   padding: 1rem;
+  border: 1px solid var(--chatbot-border);
 }
 .chatbot-content .chat-area footer p {
   margin: unset;
