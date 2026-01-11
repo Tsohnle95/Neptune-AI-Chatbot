@@ -8,7 +8,7 @@
     position: relative;
     gap: 1rem;
     font-size: 16px;
-    padding: 1rem;
+    // padding: 1rem;
 
     .chat-content-div {
         display: flex;
@@ -125,15 +125,48 @@
         }
 
     }
+
+    footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--card-bg);
+        width: 100%;
+        padding: 1rem;
+
+        form {
+            .input-container {
+                position: relative;
+                button {
+                    position: absolute;
+                    right: 1rem;
+                    top: 1rem;
+                    img {
+                        width: 30px;
+                        height: 30px;
+                    }
+                }
+            }
+
+            width: 100%;
+
+            input {
+                background-color: var(--primary-black);
+                height: 62px;
+                border-radius: 16px;
+                width: 100%;
+                padding: 1rem;
+            }
+        }
+
+        p {
+            margin: unset;
+        }
+    }
 }
 
 .header-chat-area-wrapper {
     height: 100dvh;
     display: flex;
     flex-direction: column;
-
-    footer {
-        display: flex;
-        justify-content: center;
-    }
 }
