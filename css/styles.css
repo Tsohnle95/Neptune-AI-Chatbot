@@ -1505,37 +1505,95 @@ nav .nav-footer p:focus {
   align-items: center;
   background-color: var(--card-bg);
   width: 100%;
-  padding: 0.75rem 1rem;
+  padding: 0.75rem 1rem 1.25rem 1rem;
+  overflow: visible;
+}
+@media (width >= 800px) {
+  .chatbot-content .chat-area footer {
+    background-color: var(--primary-black);
+    width: 73%;
+  }
 }
 .chatbot-content .chat-area footer form {
+  position: relative;
+  display: flex;
   width: 100%;
 }
 .chatbot-content .chat-area footer form .input-container {
   position: relative;
+  width: 100%;
+  height: 50px;
+  z-index: 1;
+}
+@media (width >= 800px) {
+  .chatbot-content .chat-area footer form .input-container::After, .chatbot-content .chat-area footer form .input-container::before {
+    content: "";
+    position: absolute;
+    height: calc(100% + 6px);
+    width: calc(100% + 6px);
+    background-image: conic-gradient(from var(--angle), #05df72, #2b7fff, #9810fa, #2b7fff, #05df72);
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -1;
+    border-radius: 19px;
+    animation: 3s spin linear infinite;
+  }
+  .chatbot-content .chat-area footer form .input-container::before {
+    filter: blur(0.7rem);
+    opacity: 0.4;
+  }
 }
 .chatbot-content .chat-area footer form .input-container button {
   position: absolute;
   right: 1rem;
-  top: 0.625rem;
+  top: 1.75rem;
+  transform: translateY(-50%);
+  z-index: 3;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 .chatbot-content .chat-area footer form .input-container button img {
   width: 30px;
   height: 30px;
 }
 .chatbot-content .chat-area footer form input {
-  background-color: var(--primary-black);
-  height: 50px;
-  border-radius: 16px;
+  display: block;
   width: 100%;
-  padding: 1rem;
+  height: 100%;
+  background-color: var(--primary-black);
   border: 1px solid var(--chatbot-border);
+  border-radius: 16px;
+  color: white;
+  padding: 1rem 3.5rem 1rem 1rem;
+  outline: none;
+  position: relative;
+  z-index: 2;
 }
-.chatbot-content .chat-area footer p {
-  margin: unset;
+.chatbot-content .chat-area footer form input::-moz-placeholder {
+  color: var(--chatbot-darkgray);
+}
+.chatbot-content .chat-area footer form input::placeholder {
+  color: var(--chatbot-darkgray);
 }
 
 .header-chat-area-wrapper {
   height: 100dvh;
   display: flex;
   flex-direction: column;
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes spin {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
 }/*# sourceMappingURL=styles.css.map */

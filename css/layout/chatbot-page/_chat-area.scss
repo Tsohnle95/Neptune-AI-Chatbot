@@ -132,16 +132,64 @@
         align-items: center;
         background-color: var(--card-bg);
         width: 100%;
-        padding: .75rem 1rem;
+        padding: .75rem 1rem 1.25rem 1rem;
+        overflow: visible;
+
+        @media (width >=800px) {
+            background-color: var(--primary-black);
+            width: 73%;
+        }
 
         form {
+            position: relative;
+            display: flex;
+            width: 100%;
+
             .input-container {
                 position: relative;
+                width: 100%;
+                height: 50px;
+                z-index: 1;
+
+                @media (width >= 800px) {
+                    &::After,
+                &::before {
+                    content: '';
+                    position: absolute;
+                    height: calc(100% + 6px);
+                    width: calc(100% + 6px);
+
+                    background-image: conic-gradient(from var(--angle),
+                            #05df72,
+                            #2b7fff,
+                            #9810fa,
+                            #2b7fff,
+                            #05df72);
+
+                    top: 50%;
+                    left: 50%;
+                    translate: -50% -50%;
+                    z-index: -1;
+                    border-radius: 19px;
+                    animation: 3s spin linear infinite;
+                }
+
+                &::before {
+                    filter: blur(.7rem);
+                    opacity: 0.4;
+                }
+                }
+                
 
                 button {
                     position: absolute;
                     right: 1rem;
-                    top: .625rem;
+                    top: 1.75rem;
+                    transform: translateY(-50%);
+                    z-index: 3;
+                    background: none;
+                    border: none;
+                    cursor: pointer;
 
                     img {
                         width: 30px;
@@ -150,21 +198,23 @@
                 }
             }
 
-            width: 100%;
-
             input {
-                background-color: var(--primary-black);
-                height: 50px;
-                border-radius: 16px;
+                display: block;
                 width: 100%;
-                padding: 1rem;
+                height: 100%;
+                background-color: var(--primary-black);
                 border: 1px solid var(--chatbot-border);
+                border-radius: 16px;
+                color: white;
+                padding: 1rem 3.5rem 1rem 1rem;
+                outline: none;
+                position: relative;
+                z-index: 2;
 
+                &::placeholder {
+                    color: var(--chatbot-darkgray);
+                }
             }
-        }
-
-        p {
-            margin: unset;
         }
     }
 }
@@ -173,4 +223,20 @@
     height: 100dvh;
     display: flex;
     flex-direction: column;
+}
+
+@property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes spin {
+    from {
+        --angle: 0deg;
+    }
+
+    to {
+        --angle: 360deg;
+    }
 }
