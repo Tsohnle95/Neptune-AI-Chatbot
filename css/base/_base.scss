@@ -30,17 +30,16 @@ html {
 
 body {
     line-height: 1.5;
-    background-color: white;
     font-size: 1.25rem;
     color: var(--text-gray);
-    // background-color: var(--primary-black);
+    background-color: var(--primary-black);
     font-family: var(--inter);
 }
 
 .chatbot-content,
 .landing-page-content {
     background-color: var(--primary-black);
-    max-width: 2000px;
+    // max-width: 2000px;
     margin: 0 auto;
 
 }

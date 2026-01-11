@@ -123,16 +123,15 @@ html {
 
 body {
   line-height: 1.5;
-  background-color: white;
   font-size: 1.25rem;
   color: var(--text-gray);
+  background-color: var(--primary-black);
   font-family: var(--inter);
 }
 
 .chatbot-content,
 .landing-page-content {
   background-color: var(--primary-black);
-  max-width: 2000px;
   margin: 0 auto;
 }
 
@@ -841,7 +840,7 @@ h3 {
 }
 
 /*********** disable landing page while working by commenting out chatbot-content, and uncommenting landing-page-content ***********/
-.chatbot-content {
+.landing-page-content {
   display: none;
 }
 
@@ -1145,7 +1144,6 @@ header .header-container {
   display: flex;
   justify-content: space-between;
   height: 5rem;
-  max-width: 2000px;
   padding: 0 1rem;
   position: relative;
   border-bottom: 2px solid rgba(49, 65, 88, 0.5);
