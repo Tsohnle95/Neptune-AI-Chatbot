@@ -1471,8 +1471,10 @@ nav .nav-footer p:focus {
   border: 1px solid var(--chatbot-border);
   border-radius: 14px;
   background-color: var(--chatbot-suggestion-background);
-  padding: 1rem;
+  padding: 0.5rem;
   width: clamp(18rem, 13.3333rem + 23.3333vw, 25rem);
+  cursor: pointer;
+  font-size: 12px;
 }
 .chatbot-content .chat-area .chat-content-div .recommendation-flex-container > .ai-chat-recommendation:hover, .chatbot-content .chat-area .chat-content-div .recommendation-flex-container > .ai-chat-recommendation:focus {
   background-color: rgba(255, 255, 255, 0.03);
