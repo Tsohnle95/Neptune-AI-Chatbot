@@ -102,6 +102,9 @@ SPACING:
   --button-background: #121724;
   --primary-blue: #2B7FFF;
   --primary-purple: #5655FF;
+  --chatbot-border: #314158;
+  --chatbot-darkgray: #62748E;
+  --chatbot-suggestion-background: rgba(29, 41, 61, 0.5);
   --menu-gray: #90A1B9;
   --text-gray: #8E8DA5;
   --card-bg: #1A2332;
@@ -111,8 +114,6 @@ SPACING:
   --headings: #f1ebeb;
   --mona: "Mona Sans", sans-serif;
   --inter: "Inter", sans-serif;
-  --chatbot-border: #314158;
-  --chatbot-darkgray: #62748E;
 }
 
 html {
@@ -125,12 +126,14 @@ body {
   background-color: white;
   font-size: 1.25rem;
   color: var(--text-gray);
-  background-color: var(--primary-black);
   font-family: var(--inter);
 }
 
-main {
+.chatbot-content,
+.landing-page-content {
   background-color: var(--primary-black);
+  max-width: 2000px;
+  margin: 0 auto;
 }
 
 .inner-container {
@@ -1180,6 +1183,7 @@ header .header-container .header-svg1 .toggle-btn {
 @media (width >= 1000px) {
   header .header-container .header-svg1 {
     display: block;
+    margin-left: 1rem;
   }
   header .header-container .header-svg1 .toggle-btn {
     display: none;
@@ -1384,5 +1388,123 @@ nav .nav-footer p:focus {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   overflow: hidden;
+  position: relative;
+  gap: 1rem;
+  font-size: 16px;
+  padding: 1rem;
+}
+.chatbot-content .chat-area .chat-content-div {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  flex-grow: 1;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.chatbot-content .chat-area .chat-content-div > .hi-neptune {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+.chatbot-content .chat-area .chat-content-div > .hi-neptune p:first-of-type {
+  font-size: clamp(1rem, 0.4167rem + 2.9167vw, 1.875rem);
+}
+.chatbot-content .chat-area .chat-content-div > .hi-neptune p:last-of-type {
+  font-size: clamp(1rem, 0.9167rem + 0.4167vw, 1.125rem);
+}
+@media (width > 800px) {
+  .chatbot-content .chat-area .chat-content-div > .hi-neptune {
+    gap: 1rem;
+  }
+}
+.chatbot-content .chat-area .chat-content-div > .hi-neptune img {
+  width: 80px;
+}
+.chatbot-content .chat-area .chat-content-div > .hi-neptune p {
+  color: white;
+}
+.chatbot-content .chat-area .chat-content-div > .hi-neptune p:last-of-type {
+  color: var(--menu-gray);
+}
+.chatbot-content .chat-area .chat-content-div .recommendation-flex-main-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+@media (width >= 800px) {
+  .chatbot-content .chat-area .chat-content-div .recommendation-flex-main-container {
+    gap: 1rem;
+  }
+}
+@media (width > 1200px) {
+  .chatbot-content .chat-area .chat-content-div .recommendation-flex-main-container {
+    gap: 1.5rem;
+  }
+}
+.chatbot-content .chat-area .chat-content-div .recommendation-flex-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+}
+@media (width >= 800px) {
+  .chatbot-content .chat-area .chat-content-div .recommendation-flex-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+}
+@media (width > 1200px) {
+  .chatbot-content .chat-area .chat-content-div .recommendation-flex-container {
+    gap: 1.5rem;
+  }
+}
+.chatbot-content .chat-area .chat-content-div .recommendation-flex-container > .ai-chat-recommendation {
+  display: flex;
+  gap: 0.5rem;
+  border: 1px solid var(--chatbot-border);
+  border-radius: 14px;
+  background-color: var(--chatbot-suggestion-background);
+  padding: 1rem;
+  width: clamp(18rem, 13.3333rem + 23.3333vw, 25rem);
+}
+.chatbot-content .chat-area .chat-content-div .recommendation-flex-container > .ai-chat-recommendation:hover, .chatbot-content .chat-area .chat-content-div .recommendation-flex-container > .ai-chat-recommendation:focus {
+  background-color: rgba(255, 255, 255, 0.03);
+  border-left: 2px solid var(--chatbot-border);
+  border-left-color: var(--primary-purple);
+  padding-left: 12px;
+}
+@media (width >= 800px) {
+  .chatbot-content .chat-area .chat-content-div .recommendation-flex-container > .ai-chat-recommendation {
+    width: clamp(20rem, 5rem + 24vw, 32rem);
+  }
+}
+.chatbot-content .chat-area .chat-content-div .recommendation-flex-container > .ai-chat-recommendation img {
+  width: 20px;
+  height: 20px;
+}
+.chatbot-content .chat-area .chat-content-div .recommendation-flex-container p {
+  color: white;
+}
+.chatbot-content .chat-area .chat-content-div .recommendation-flex-container p:last-of-type {
+  color: var(--menu-gray);
+}
+.chatbot-content .chat-area .chat-content-div .recommendation-flex-container .ai-chat-recommendation {
+  background-color: var(--card-bg);
+}
+
+.header-chat-area-wrapper {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+.header-chat-area-wrapper footer {
+  display: flex;
+  justify-content: center;
 }/*# sourceMappingURL=styles.css.map */
