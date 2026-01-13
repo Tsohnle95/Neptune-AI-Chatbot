@@ -48,14 +48,15 @@ submitPrompt.forEach(prompt => {
     })
 })
 
-/* prevent form submission */
+/* prevent form submission when user submits a prompt*/
 const submitBtn = document.querySelector('#submit');
 submitBtn.addEventListener('click', (event) => {
     event.preventDefault();
 });
 
 
-let userChatDiv = document.querySelector('.user-chat-div');
-if (userChatDiv) {
-    userChatDiv.style = 'flex-direction: row-reverse';
-}
+/* puts the users chat messages on the right side of the screen */
+let userChatDiv = document.querySelectorAll('.user-chat-div');
+userChatDiv.forEach(div => {
+    div.style = 'flex-direction: row-reverse';
+});
