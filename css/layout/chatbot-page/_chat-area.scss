@@ -232,29 +232,16 @@
     flex-grow: 1;
     width: 100%;
     border-radius: 24px;
-    padding: 1rem;
+
+    /* ADD THESE */
     display: flex;
+    /* Makes it a flex parent */
     flex-direction: column;
-    gap: 2rem;
-    overflow-y: auto;
-
-    &::-webkit-scrollbar {
-        width: 5px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-        background-color: rgb(103, 103, 103);
-        border-radius: 10px;
-    }
-
-    &::-webkit-scrollbar-track {
-        background: transparent;
-        margin: 1rem 0;
-    }
-
-    &::-webkit-scrollbar-thumb:hover {
-        background-color: rgba(0, 0, 0, 0.4);
-    }
+    /* Stacks children vertically */
+    overflow: hidden;
+    /* Keeps the background blur inside the corners */
+    min-height: 0;
+    /* The magic fix for flex scrolling */
 
     @media (width >=800px) {
         width: 95%;
@@ -269,7 +256,6 @@
         right: 0;
         bottom: 0;
         width: 100%;
-        height: 100vh;
         background: linear-gradient(90deg,
                 rgba(5, 223, 114, 0.4) 0%,
                 rgba(43, 127, 255, 0.4) 50%,
@@ -279,6 +265,28 @@
         opacity: 0.4;
         z-index: -1;
         border-radius: 24px;
+    }
+
+    .scroll-container {
+        overflow-y: auto;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem; 
+
+        &::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: rgb(103, 103, 103);
+            border-radius: 10px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: transparent;
+            margin: 1rem 0;
+        }
     }
 
     .ai-chat-div {
@@ -312,6 +320,7 @@
         .chat-time {
             color: var(--chatbot-darkgray);
             font-size: 14px;
+            text-align: right;
         }
 
         &>div:nth-of-type(2) img {

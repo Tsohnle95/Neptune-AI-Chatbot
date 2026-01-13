@@ -30,7 +30,7 @@
 /*********** disable landing page while working by commenting out chatbot-content, and uncommenting landing-page-content ***********/
 
 .landing-page-content {
-    display: none;
+    // display: none;
 }
 
 .chatbot-content {
@@ -38,11 +38,11 @@
 }
 
 .chat-content-div {
-    display: none !important;
+    // display: none !important;
 }
 
 .dialogue-box {
-    // display: none;
+    display: none !important;
 }
 
 .chatbot-content .header-dashboard-flex-container {

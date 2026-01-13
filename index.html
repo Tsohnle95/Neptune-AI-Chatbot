@@ -347,6 +347,7 @@
                 <div class="chat-area">
 
                     <div class="chat-content-div">
+
                         <div class="hi-neptune">
                             <img src="img/svg/neptune-icon.svg" alt="Neptune AI icon">
                             <p>Hi, I'm Neptune</p>
@@ -357,7 +358,7 @@
                         <div class="recommendation-flex-main-container">
                             <div class="recommendation-flex-container">
 
-                                <div class="ai-chat-recommendation">
+                                <div class="ai-chat-recommendation submit-prompt">
                                     <img src="img/lightbulb.png" alt="lightbulb icon">
                                     <div>
                                         <p>Explain a concept</p>
@@ -365,7 +366,7 @@
                                     </div>
                                 </div>
 
-                                <div class="ai-chat-recommendation">
+                                <div class="ai-chat-recommendation submit-prompt">
                                     <img src="img/wrench.png" alt="wrench icon">
                                     <div>
                                         <p>Debug code</p>
@@ -375,7 +376,7 @@
                             </div>
 
 
-                            <div class="recommendation-flex-container">
+                            <div class="recommendation-flex-container submit-prompt">
                                 <div class="ai-chat-recommendation">
                                     <img src="img/star.png" alt="star icon">
                                     <div>
@@ -384,7 +385,7 @@
                                     </div>
                                 </div>
 
-                                <div class="ai-chat-recommendation">
+                                <div class="ai-chat-recommendation submit-prompt">
                                     <img src="img/books.png" alt="books icon">
                                     <div>
                                         <p>Best practices</p>
@@ -398,35 +399,36 @@
                     <!--dialogue box-->
                     <div class="dialogue-box">
 
+                        <div class="scroll-container">
+                            
+                            <div class="ai-chat-div">
+                                <div>
+                                    <img src="img/svg/neptune-icon.svg" alt="Neptune ai icon">
+                                </div>
+                                <div>
+                                    <p class="chat-content">
+                                        Hello! i'm your AI assistant. How can I help you?
+                                    </p>
+                                    <p class="chat-time">
+                                        04:58 PM
+                                    </p>
+                                </div>
+                            </div>
 
-                        <div class="ai-chat-div">
-                            <div>
-                                <img src="img/svg/neptune-icon.svg" alt="Neptune ai icon">
+                            <div class="user-chat-div">
+                                <div>
+                                    <p class="chat-content">
+                                        Explain how async/await works in JavaScript
+                                    </p>
+                                    <p class="chat-time">
+                                        04:59 PM
+                                    </p>
+                                </div>
+                                <div>
+                                    <img src="img/svg/neptune-icon.svg" alt="Neptune ai icon">
+                                </div>
                             </div>
-                            <div>
-                                <p class="chat-content">
-                                    Hello! i'm your AI assistant. How can I help you?
-                                </p>
-                                <p class="chat-time">
-                                    04:58 PM
-                                </p>
-                            </div>
-                        </div>
 
-                        
-
-                        <div class="user-chat-div">
-                            <div>
-                                <p class="chat-content">
-                                    Explain how async/await works in JavaScript
-                                </p>
-                                <p class="chat-time">
-                                    04:59 PM
-                                </p>
-                            </div>
-                            <div>
-                                <img src="img/svg/neptune-icon.svg" alt="Neptune ai icon">
-                            </div>
                         </div>
 
                     </div>
@@ -436,7 +438,8 @@
                             <div class="input-container">
                                 <input type="text" id="chat-input" name="chat-input" placeholder="Type your message...">
 
-                                <button type="submit"><img src="img/svg/rocket.svg" alt="send button icon"></button>
+                                <button type="submit" id="submit"><img src="img/svg/rocket.svg" alt="send button icon"
+                                        class="submit-prompt"></button>
                             </div>
                         </form>
                     </footer>
@@ -447,11 +450,6 @@
             </div> <!--end of chatbot content-->
         </div>
     </div>
-
-
-
-
-
 
 </body>
 

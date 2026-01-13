@@ -37,4 +37,21 @@ window.addEventListener('click', (event) => {
     }
 });
 
+/* removes chat-content-div and brings in dialogue div after user clicks a submit prompt button */
+const chatContent = document.querySelector('.chat-content-div');
+const dialogueBox = document.querySelector('.dialogue-box');
+const submitPrompt = document.querySelectorAll('.submit-prompt');
+submitPrompt.forEach(prompt => {
+    prompt.addEventListener('click', () => {
+        chatContent.style.display = 'none';
+        dialogueBox.style.setProperty('display', 'block', 'important');
+    })
+})
+
+/* prevent form submission */
+const submitBtn = document.querySelector('#submit');
+submitBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+});
+
 
