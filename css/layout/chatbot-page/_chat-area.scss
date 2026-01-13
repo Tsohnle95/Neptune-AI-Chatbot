@@ -135,7 +135,7 @@
 
         @media (width >=800px) {
             background-color: var(--primary-black);
-            width: 95%;
+            width: 80%;
         }
 
         form {
@@ -232,44 +232,32 @@
     flex-grow: 1;
     width: 100%;
     border-radius: 24px;
-
-    /* ADD THESE */
     display: flex;
-    /* Makes it a flex parent */
     flex-direction: column;
-    /* Stacks children vertically */
     overflow: hidden;
-    /* Keeps the background blur inside the corners */
     min-height: 0;
-    /* The magic fix for flex scrolling */
+    // &::before {
+    //     content: "";
+    //     position: absolute;
+    //     top: 0;
+    //     left: 0;
+    //     right: 0;
+    //     bottom: 0;
+    //     width: 100%;
+    //     background: linear-gradient(90deg,
+    //             rgba(5, 223, 114, 0.4) 0%,
+    //             rgba(43, 127, 255, 0.4) 50%,
+    //             rgba(152, 16, 250, 0.4) 100%);
 
-    @media (width >=800px) {
-        width: 95%;
-        margin: 2rem auto 1rem auto;
-    }
-
-    &::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        width: 100%;
-        background: linear-gradient(90deg,
-                rgba(5, 223, 114, 0.4) 0%,
-                rgba(43, 127, 255, 0.4) 50%,
-                rgba(152, 16, 250, 0.4) 100%);
-
-        filter: blur(8px);
-        opacity: 0.4;
-        z-index: -1;
-        border-radius: 24px;
-    }
+    //     filter: blur(8px);
+    //     opacity: 0.4;
+    //     z-index: -1;
+    //     border-radius: 24px;
+    // }
 
     .scroll-container {
         overflow-y: auto;
-        padding: 1rem;
+        padding: 1.5rem;
         display: flex;
         flex-direction: column;
         gap: 2rem; 
@@ -311,6 +299,7 @@
     .user-chat-div {
         display: flex;
         gap: .5rem;
+        // align-items: ;
 
         .chat-content {
             color: var(--chat-dialogue-text);
@@ -323,8 +312,8 @@
             text-align: right;
         }
 
-        &>div:nth-of-type(2) img {
-            width: 2rem;
+        &>div:nth-of-type(1) img {
+            width: 2.5rem;
         }
     }
 }

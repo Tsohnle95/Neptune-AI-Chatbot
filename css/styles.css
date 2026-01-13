@@ -1169,6 +1169,9 @@ header .header-container .flex .desktop-arrow {
     display: block;
   }
 }
+header .header-container button {
+  cursor: pointer;
+}
 header .header-container .header-svg1 {
   display: flex;
   gap: 1rem;
@@ -1514,7 +1517,7 @@ nav .nav-footer p:focus {
 @media (width >= 800px) {
   .chatbot-content .chat-area footer {
     background-color: var(--primary-black);
-    width: 95%;
+    width: 80%;
   }
 }
 .chatbot-content .chat-area footer form {
@@ -1592,39 +1595,14 @@ nav .nav-footer p:focus {
   flex-grow: 1;
   width: 100%;
   border-radius: 24px;
-  /* ADD THESE */
   display: flex;
-  /* Makes it a flex parent */
   flex-direction: column;
-  /* Stacks children vertically */
   overflow: hidden;
-  /* Keeps the background blur inside the corners */
   min-height: 0;
-  /* The magic fix for flex scrolling */
-}
-@media (width >= 800px) {
-  .chatbot-content .chat-area .dialogue-box {
-    width: 95%;
-    margin: 2rem auto 1rem auto;
-  }
-}
-.chatbot-content .chat-area .dialogue-box::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  background: linear-gradient(90deg, rgba(5, 223, 114, 0.4) 0%, rgba(43, 127, 255, 0.4) 50%, rgba(152, 16, 250, 0.4) 100%);
-  filter: blur(8px);
-  opacity: 0.4;
-  z-index: -1;
-  border-radius: 24px;
 }
 .chatbot-content .chat-area .dialogue-box .scroll-container {
   overflow-y: auto;
-  padding: 1rem;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -1668,8 +1646,8 @@ nav .nav-footer p:focus {
   font-size: 14px;
   text-align: right;
 }
-.chatbot-content .chat-area .dialogue-box .user-chat-div > div:nth-of-type(2) img {
-  width: 2rem;
+.chatbot-content .chat-area .dialogue-box .user-chat-div > div:nth-of-type(1) img {
+  width: 2.5rem;
 }
 
 .header-chat-area-wrapper {

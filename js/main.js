@@ -55,3 +55,7 @@ submitBtn.addEventListener('click', (event) => {
 });
 
 
+let userChatDiv = document.querySelector('.user-chat-div');
+if (userChatDiv) {
+    userChatDiv.style = 'flex-direction: row-reverse';
+}
