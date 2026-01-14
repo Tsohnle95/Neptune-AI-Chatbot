@@ -71,14 +71,8 @@ suggestedAiChats.forEach(chat => {
         let userChatDiv = document.querySelector('.user-chat-div');
         // userChatDiv.classList.add('')
         userChatDiv.querySelector('.chat-content').innerText = textToTransfer;
-
     })
-})
-
-
-
-
-
+});
 
 
 
