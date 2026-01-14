@@ -841,7 +841,7 @@ h3 {
 }
 
 /*********** disable landing page while working by commenting out chatbot-content, and uncommenting landing-page-content ***********/
-.chatbot-content {
+.landing-page-content {
   display: none;
 }
 

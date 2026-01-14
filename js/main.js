@@ -37,6 +37,18 @@ window.addEventListener('click', (event) => {
     }
 });
 
+/* prevent form submission when user submits a prompt, store input value in a variable, clear input and focus input for users next message */
+let capturedMessage = '';
+const form = document.querySelector('form');
+const formInput = document.querySelector('#chat-input');
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    capturedMessage = formInput.value;
+    console.log(capturedMessage);
+    formInput.value = '';
+    formInput.focus();
+})
+
 /* removes chat-content-div and brings in dialogue div after user clicks a submit prompt button */
 const chatContent = document.querySelector('.chat-content-div');
 const dialogueBox = document.querySelector('.dialogue-box');
@@ -45,14 +57,12 @@ submitPrompt.forEach(prompt => {
     prompt.addEventListener('click', () => {
         chatContent.style.display = 'none';
         dialogueBox.style.setProperty('display', 'block', 'important');
+        formInput.focus();
     })
 })
 
-/* prevent form submission when user submits a prompt*/
-const submitBtn = document.querySelector('#submit');
-submitBtn.addEventListener('click', (event) => {
-    event.preventDefault();
-});
+
+
 
 
 /* puts the users chat messages on the right side of the screen */
