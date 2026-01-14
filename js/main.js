@@ -37,6 +37,8 @@ window.addEventListener('click', (event) => {
     }
 });
 
+/* FORM SUBMISSION AND AI / USER MESSAGE CONTENT DISTRIBUTION */
+
 /* prevent form submission when user submits a prompt, store input value in a variable, clear input and focus input for users next message */
 let capturedMessage = '';
 const form = document.querySelector('form');
@@ -59,7 +61,22 @@ submitPrompt.forEach(prompt => {
         dialogueBox.style.setProperty('display', 'block', 'important');
         formInput.focus();
     })
+});
+
+/* carries content over from recommendation prompts to the dialogue box for ai submission after user clicks a recommendation */
+let suggestedAiChats = document.querySelectorAll('.ai-chat-recommendation');
+suggestedAiChats.forEach(chat => {
+    chat.addEventListener('click', () => {
+        let textToTransfer = chat.querySelector('.recommendation-content').innerText;
+        let userChatDiv = document.querySelector('.user-chat-div');
+        // userChatDiv.classList.add('')
+        userChatDiv.querySelector('.chat-content').innerText = textToTransfer;
+
+    })
 })
+
+
+
 
 
 
