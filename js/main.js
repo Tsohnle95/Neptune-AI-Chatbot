@@ -1,18 +1,35 @@
 console.log('Hello World!');
 
-//remove landing page content and bring in chatbot content
+// Global variables
 let pageOne = document.querySelector('.landing-page-content');
+let chatBotContent = document.querySelector('.chatbot-content');
 let chatButtons = document.querySelectorAll('.chat-now');
+const dialogueBox = document.querySelector('.dialogue-box');
+const chatContent = document.querySelector('.chat-content-div');
 
+//removes landing page and brings in initial chat area
 chatButtons.forEach(button => {
     button.addEventListener('click', () => {
-        // hide landing-page elements
-        pageOne.style.display = 'none';
+        pageOne.classList.add('hidden');
         //reveal chatbot elements
-        let chatBotContent = document.querySelector('.chatbot-content');
-        chatBotContent.style.display = 'flex';
+        chatBotContent.classList.remove('hidden');
     });
 });
+
+
+// brings the user back a page when they click the arrow button in the header
+const closeArrow = document.querySelector('.left-arrow');
+closeArrow.addEventListener('click', (event) => {
+    if (pageOne.classList.contains('hidden') && !chatBotContent.classList.contains('hidden') && dialogueBox.classList.contains('hidden')) {
+        chatBotContent.classList.add('hidden');
+        pageOne.classList.remove('hidden');
+    }
+    else {
+        dialogueBox.classList.add('hidden');
+        chatContent.classList.remove('hidden');
+    }
+});
+
 
 /**************** TOGGLE BUTTONS  **************** /
 /* hamburger-menu */
@@ -52,15 +69,13 @@ form.addEventListener('submit', (event) => {
 })
 
 /* removes chat-content-div and brings in dialogue div after user clicks a submit prompt button */
-const chatContent = document.querySelector('.chat-content-div');
-const dialogueBox = document.querySelector('.dialogue-box');
 const submitPrompt = document.querySelectorAll('.submit-prompt');
 submitPrompt.forEach(prompt => {
     prompt.addEventListener('click', () => {
-        chatContent.style.display = 'none';
-        dialogueBox.style.setProperty('display', 'block', 'important');
+        chatContent.classList.add('hidden');
+        dialogueBox.classList.remove('hidden');
         formInput.focus();
-    })
+    });
 });
 
 /* carries content over from recommendation prompts to the dialogue box for ai submission after user clicks a recommendation */
@@ -69,7 +84,6 @@ suggestedAiChats.forEach(chat => {
     chat.addEventListener('click', () => {
         let textToTransfer = chat.querySelector('.recommendation-content').innerText;
         let userChatDiv = document.querySelector('.user-chat-div');
-        // userChatDiv.classList.add('')
         userChatDiv.querySelector('.chat-content').innerText = textToTransfer;
     })
 });
@@ -81,3 +95,6 @@ let userChatDiv = document.querySelectorAll('.user-chat-div');
 userChatDiv.forEach(div => {
     div.style = 'flex-direction: row-reverse';
 });
+
+
+

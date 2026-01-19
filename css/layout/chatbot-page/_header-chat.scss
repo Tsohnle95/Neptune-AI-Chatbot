@@ -48,6 +48,10 @@ header {
             gap: 1rem;
             align-items: center;
 
+            .left-arrow {
+                
+            }
+         
             img:nth-of-type(1) {
                 width: 1.25rem;
             }
@@ -61,14 +65,10 @@ header {
             }
 
             @media (width >=1000px) {
-                display: block;
+                // display: block;
                 margin-left: 1rem;
 
                 .toggle-btn {
-                    display: none;
-                }
-
-                .left-arrow {
                     display: none;
                 }
             }
