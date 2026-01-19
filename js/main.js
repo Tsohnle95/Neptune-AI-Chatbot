@@ -31,8 +31,7 @@ closeArrow.addEventListener('click', (event) => {
 });
 
 
-/**************** TOGGLE BUTTONS  **************** /
-/* hamburger-menu */
+/* hamburger-menu toggle button */
 btn = document.querySelector('.toggle-btn');
 nav = document.querySelector('nav');
 btn.addEventListener('click', () => {
@@ -65,7 +64,7 @@ form.addEventListener('submit', (event) => {
     capturedMessage = formInput.value;
     console.log(capturedMessage);
     formInput.value = '';
-    formInput.focus();
+    // formInput.focus();
 })
 
 /* removes chat-content-div and brings in dialogue div after user clicks a submit prompt button */
@@ -87,8 +86,6 @@ suggestedAiChats.forEach(chat => {
         userChatDiv.querySelector('.chat-content').innerText = textToTransfer;
     })
 });
-
-
 
 /* puts the users chat messages on the right side of the screen */
 let userChatDiv = document.querySelectorAll('.user-chat-div');
