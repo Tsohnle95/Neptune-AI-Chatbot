@@ -73,7 +73,7 @@ submitPrompt.forEach(prompt => {
     prompt.addEventListener('click', () => {
         chatContent.classList.add('hidden');
         dialogueBox.classList.remove('hidden');
-        formInput.focus();
+        // formInput.focus();
     });
 });
 
