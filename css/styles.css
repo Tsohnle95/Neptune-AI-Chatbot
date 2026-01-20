@@ -1173,6 +1173,9 @@ header .header-container .header-svg1 {
   gap: 1rem;
   align-items: center;
 }
+header .header-container .header-svg1 .left-arrow {
+  cursor: pointer;
+}
 header .header-container .header-svg1 img:nth-of-type(1) {
   width: 1.25rem;
 }
