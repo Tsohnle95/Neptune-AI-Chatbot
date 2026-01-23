@@ -33,7 +33,10 @@
     // display: none;
 }
 
-
+.user-chat-div {
+    display: flex; 
+    flex-direction: row-reverse;
+}
 
 .chat-content-div {
     // display: none !important;

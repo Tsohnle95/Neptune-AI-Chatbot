@@ -841,6 +841,11 @@ h3 {
 }
 
 /*********** disable landing page while working by commenting out chatbot-content, and uncommenting landing-page-content ***********/
+.user-chat-div {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
 .hidden {
   display: none !important;
 }
