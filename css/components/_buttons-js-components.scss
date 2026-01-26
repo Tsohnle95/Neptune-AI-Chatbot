@@ -29,22 +29,13 @@
 
 /*********** disable landing page while working by commenting out chatbot-content, and uncommenting landing-page-content ***********/
 
-.landing-page-content {
-    // display: none;
-}
+
 
 .user-chat-div {
     display: flex; 
     flex-direction: row-reverse;
 }
 
-.chat-content-div {
-    // display: none !important;
-}
-
-.dialogue-box {
-    // display: none !important;
-}
 
 .hidden {
     display: none !important;

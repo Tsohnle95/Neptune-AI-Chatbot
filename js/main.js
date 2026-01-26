@@ -9,7 +9,7 @@ const chatContent = document.querySelector('.chat-content-div');
 const scrollContainer = document.querySelector('.scroll-container');
 let userChatDiv = document.querySelectorAll('.user-chat-div');
 
-//removes landing page and brings in initial chat area
+//removes landing page and brings in initial chat area when user clicks chat now
 chatButtons.forEach(button => {
     button.addEventListener('click', () => {
         pageOne.classList.add('hidden');
@@ -55,32 +55,31 @@ window.addEventListener('click', (event) => {
     }
 });
 
-/* FORM SUBMISSION AND AI / USER MESSAGE CONTENT DISTRIBUTION */
+//creates user message div structure. Used when a user submits a prompt, or clicks on a suggested prompt.
+const createUserMessageDiv = (messageContent) => {
+    const userMessageDiv = document.createElement('div');
+    const userMessageImageContainer = document.createElement('div');
+    const userChatContentContainer = document.createElement('div');
+    const chatContentParagraph = document.createElement('p');
+    const chatContentTime = document.createElement('p');
+    const createImg = document.createElement('img');
+    createImg.src = 'img/user-icon.png';
+    
+    chatContentParagraph.innerText = messageContent;
 
-/* prevent form submission when user submits a prompt, store input value in a variable, clear input and focus input for users next message */
-// let capturedMessage = '';
-// const form = document.querySelector('form');
-// const formInput = document.querySelector('#chat-input');
-// form.addEventListener('submit', (event) => {
-//     event.preventDefault();
-//     capturedMessage = formInput.value;
-//     console.log(capturedMessage);
-//     formInput.value = '';
-// })
+    userMessageDiv.appendChild(userMessageImageContainer);
+    userMessageDiv.appendChild(userChatContentContainer);
+    userChatContentContainer.appendChild(chatContentParagraph);
+    userMessageImageContainer.appendChild(createImg);
 
+    userMessageDiv.classList.add('user-chat-div');
+    chatContentParagraph.classList.add('chat-content');
+    chatContentTime.classList.add('chat-time');
 
-/* puts the users chat messages on the right side of the screen */
-/* removes chat-content-div and brings in dialogue div after user clicks a submit prompt button */
-// const submitPrompt = document.querySelectorAll('.submit-prompt');
-// submitPrompt.forEach(prompt => {
-//     prompt.addEventListener('click', () => {
-//         chatContent.classList.add('hidden');
-//         dialogueBox.classList.remove('hidden');
-//         // formInput.focus();
-//     });
-// });
+    return userMessageDiv;
+}
 
-
+//handles form submission. builds user message div, adds input value to message element, and appends to scroll container.
 const form = document.querySelector('form');
 form.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -90,43 +89,23 @@ form.addEventListener('submit', (event) => {
         chatContent.classList.add('hidden');
         dialogueBox.classList.remove('hidden');
     }
-
-
-    //build user chat div
-    const userMessageDiv = document.createElement('div');
-    const userMessageImageContainer = document.createElement('div');
-    const userChatContentContainer = document.createElement('div');
-    const chatContentParagraph = document.createElement('p');
-    const chatContentTime = document.createElement('p');
-    const createImg = document.createElement('img');
-    createImg.src = 'img/user-icon.png';
-
-    //transfer input content to message content
-    chatContentParagraph.innerText = message;
-
-    //append div structures to create user chat div
-    userMessageDiv.appendChild(userMessageImageContainer);
-    userMessageDiv.appendChild(userChatContentContainer);
-    userChatContentContainer.appendChild(chatContentParagraph);
-    userMessageImageContainer.appendChild(createImg);
-
-    //add constructed user div to scroll container 
-    scrollContainer.appendChild(userMessageDiv);
-
-    //add classes to user chat div
-    userMessageDiv.classList.add('user-chat-div');
-    chatContentParagraph.classList.add('chat-content');
-    chatContentTime.classList.add('chat-time');
-
+    //call createUserMessageDiv to build message structure, append it to chat container, and reset form.
+    const newChatMessage = createUserMessageDiv(message);
+    scrollContainer.appendChild(newChatMessage);
     form.reset();
 });
-
 
 
 /* removes chat-content-div and brings in dialogue div after user clicks a submit prompt button */
 const submitPrompt = document.querySelectorAll('.submit-prompt');
 submitPrompt.forEach(prompt => {
     prompt.addEventListener('click', () => {
+        const message = prompt.querySelector('.recommendation-content').innerText;
+        //create the user message div structure
+        const newChatMessage = createUserMessageDiv(message);
+        //append user div to scroll container
+        scrollContainer.appendChild(newChatMessage);
+
         chatContent.classList.add('hidden');
         dialogueBox.classList.remove('hidden');
         // formInput.focus();
@@ -134,17 +113,6 @@ submitPrompt.forEach(prompt => {
 });
 
 
-/* carries content over from recommendation prompts to the dialogue box for ai submission after user clicks a recommendation */
-let suggestedAiChats = document.querySelectorAll('.ai-chat-recommendation');
-suggestedAiChats.forEach(chat => {
-    chat.addEventListener('click', () => {
-        let textToTransfer = chat.querySelector('.recommendation-content').innerText;
-        let userChatDiv = document.querySelector('.user-chat-div');
-        userChatDiv.querySelector('.chat-content').innerText = textToTransfer;
-    })
-});
-
-// i need to build and add the user chat div to the scroll container when these buttons are clicked. it doesnt work when i remove the user chat div html, as i am only transferring the values between one another, not constructing a new div with the values inside it.
 
 
 
