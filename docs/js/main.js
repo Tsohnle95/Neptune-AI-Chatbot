@@ -175,7 +175,33 @@ submitPrompt.forEach(prompt => {
     });
 });
 
+//scrolls to the bottom of the chat container as messages fill the container
+const scrollToBottom = () => {
+    // forces the last element in the container into view
+    const lastChild = scrollContainer.lastElementChild;
+    if (lastChild) {
+        lastChild.scrollIntoView({ behavior: "smooth", block: "end" });
+    }
 
+    // safeguard: force container scroll position just in case
+    // using a slight delay to ensure the browser has recalculated the new height after element is added
+    setTimeout(() => {
+        scrollContainer.scrollTop = scrollContainer.scrollHeight;
+    }, 50);
+};
+
+const observer = new MutationObserver((mutationsList) => {
+    //  scroll to bottom after container's content changes (message is added)
+    scrollToBottom();
+});
+
+// observe children being added | text changing
+observer.observe(scrollContainer, {
+    childList: true,
+    subtree: true,
+    characterData: true,
+    attributes: true     // watches for attribute changes (like class changes)
+});
 
 
 
