@@ -21,7 +21,7 @@ export const handleChat = async (req, res) => {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                model: "gemma2:2b",
+                model: "llama3.2:1b",
                 prompt: prompt,
                 stream: false,
                 options: { num_predict: 250 }
