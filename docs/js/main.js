@@ -64,7 +64,7 @@ const createUserMessageDiv = (messageContent) => {
     const chatContentTime = document.createElement('p');
     const createImg = document.createElement('img');
     createImg.src = 'img/user-icon.png';
-    
+
     chatContentParagraph.innerText = messageContent;
 
     userMessageDiv.appendChild(userMessageImageContainer);
@@ -79,22 +79,85 @@ const createUserMessageDiv = (messageContent) => {
     return userMessageDiv;
 }
 
+//creates AI message structure 
+const createAiMessageDiv = (prompt) => {
+    const aiChatDiv = document.createElement('div');
+    const aiMessageImageContainer = document.createElement('div');
+    const aiChatContentDiv = document.createElement('div');
+    const chatContent = document.createElement('p');
+    const chatTime = document.createElement('p');
+    const createImg = document.createElement('img');
+    createImg.src = 'img/svg/neptune-icon.svg';
+
+    chatContent.innerText = prompt;
+
+    aiChatDiv.appendChild(aiMessageImageContainer);
+    aiMessageImageContainer.appendChild(createImg);
+    aiChatDiv.appendChild(aiChatContentDiv);
+    aiChatContentDiv.appendChild(chatContent);
+    aiChatContentDiv.appendChild(chatTime);
+
+    aiChatDiv.classList.add('ai-chat-div');
+    chatContent.classList.add('chat-content');
+    chatTime.classList.add('chat-time');
+
+    return aiChatDiv;
+}
+
+
+// <div class="ai-chat-div">
+//     <div class="aiMessageImageContainer">
+//         <img src="img/svg/neptune-icon.svg" alt="Neptune ai icon">
+//     </div>
+//     <div class=="aiChatContentDiv">
+//         <p class="chat-content">
+//         </p>
+//         <p class="chat-time">
+//             04:58 PM
+//         </p>
+//     </div>
+// </div>
+
 //handles form submission. builds user message div, adds input value to message element, and appends to scroll container.
 const form = document.querySelector('form');
-form.addEventListener('submit', (event) => {
+form.addEventListener('submit', async (event) => {
     event.preventDefault();
     let formInput = event.target.elements['chat-input'];
     let message = formInput.value;
+    form.reset();
+
+    //call createUserMessageDiv to build message structure, append it to chat container, and reset form.
+    const newChatMessage = createUserMessageDiv(message);
+    scrollContainer.appendChild(newChatMessage);
+
     if (!chatContent.classList.contains('hidden') && dialogueBox.classList.contains('hidden')) {
         chatContent.classList.add('hidden');
         dialogueBox.classList.remove('hidden');
     }
-    //call createUserMessageDiv to build message structure, append it to chat container, and reset form.
-    const newChatMessage = createUserMessageDiv(message);
-    scrollContainer.appendChild(newChatMessage);
-    form.reset();
-});
 
+    //send the message to the llm through the backend
+    try {
+        const response = await fetch('http://localhost:3000/api/chat', {
+            method: 'post',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ prompt: message })
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        const newAiMessage = createAiMessageDiv(data.response);
+
+        scrollContainer.appendChild(newAiMessage);
+        console.log('Response from backend:', data);
+
+    } catch (error) {
+        console.error('Error', error)
+    }
+});
 
 /* removes chat-content-div and brings in dialogue div after user clicks a submit prompt button */
 const submitPrompt = document.querySelectorAll('.submit-prompt');
