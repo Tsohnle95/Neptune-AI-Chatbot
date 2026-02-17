@@ -3,3 +3,8 @@ node_modules
 package-lock.json
 pnpm-lock.yaml
 .env
+backend-commands.md
+server-instructions1.png
+server-instructions2.png
+server-instructions3.png
+

@@ -7,10 +7,8 @@ import chatRoutes from './routes/chatRoutes.js';
 const app = express();
 
 app.use(cors({
-    //origin of allowed connections
-  origin: ['http://localhost:5173', 'https://tsohnle95.github.io'] //allow all origins for testing
- // We only expect POST requests
-//   origin: 'https://tsohnle95.github.io'
+// allow connections specified in .env 
+  origin: process.env.ALLOWED_ORIGIN
 }));
 
 
@@ -21,12 +19,10 @@ app.use(morgan('dev'));
 const limiter = rateLimit({
     //units: minutes/seconds/miliseconds, the memory buffer will reset every 15 minutes
   windowMs: 15 * 60 * 1000, 
-  max: 2000, 
+  max: 20, 
   message: { error: 'Too many requests, please try again later.' }
 });
 app.use(limiter);
-
-//security: define who is allowed to connect and use the app
 
 //lets express read json 
 app.use(express.json());
