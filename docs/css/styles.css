@@ -1629,9 +1629,13 @@ nav .nav-footer p:focus {
   display: flex;
   gap: 0.5rem;
 }
+.chatbot-content .chat-area .dialogue-box .ai-chat-div > div:nth-of-type(1) {
+  flex-shrink: 0;
+}
 .chatbot-content .chat-area .dialogue-box .ai-chat-div .chat-content {
   color: var(--chat-dialogue-text);
   margin-bottom: 0.1rem;
+  white-space: pre-wrap;
 }
 .chatbot-content .chat-area .dialogue-box .ai-chat-div .chat-time {
   color: var(--chatbot-darkgray);
@@ -1644,9 +1648,13 @@ nav .nav-footer p:focus {
   display: flex;
   gap: 0.5rem;
 }
+.chatbot-content .chat-area .dialogue-box .user-chat-div > div:nth-of-type(1) {
+  flex-shrink: 0;
+}
 .chatbot-content .chat-area .dialogue-box .user-chat-div .chat-content {
   color: var(--chat-dialogue-text);
   margin-bottom: 0.1rem;
+  white-space: pre-wrap;
 }
 .chatbot-content .chat-area .dialogue-box .user-chat-div .chat-time {
   color: var(--chatbot-darkgray);
