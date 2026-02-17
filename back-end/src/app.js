@@ -8,7 +8,10 @@ const app = express();
 
 app.use(cors({
 // allow connections specified in .env 
-  origin: process.env.ALLOWED_ORIGIN
+  origin: process.env.ALLOWED_ORIGIN,
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'ngrok-skip-browser-warning'],
+  credentials: true
 }));
 
 
