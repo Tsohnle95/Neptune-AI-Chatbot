@@ -1640,7 +1640,6 @@ nav .nav-footer p:focus {
   white-space: pre-wrap;
   min-width: 0;
   overflow-wrap: anywhere;
-  word-break: break-all;
   white-space: pre-wrap;
   max-width: 100%;
 }
@@ -1666,7 +1665,6 @@ nav .nav-footer p:focus {
   white-space: pre-wrap;
   min-width: 0;
   overflow-wrap: anywhere;
-  word-break: break-all;
   white-space: pre-wrap;
   max-width: 100%;
 }
