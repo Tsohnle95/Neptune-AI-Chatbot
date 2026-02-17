@@ -104,20 +104,8 @@ const createAiMessageDiv = (prompt) => {
     return aiChatDiv;
 }
 
-
-// <div class="ai-chat-div">
-//     <div class="aiMessageImageContainer">
-//         <img src="img/svg/neptune-icon.svg" alt="Neptune ai icon">
-//     </div>
-//     <div class=="aiChatContentDiv">
-//         <p class="chat-content">
-//         </p>
-//         <p class="chat-time">
-//             04:58 PM
-//         </p>
-//     </div>
-// </div>
-
+// Helper to create a pause
+const delay = (ms) => new Promise(res => setTimeout(res, ms));
 //handles form submission. builds user message div, adds input value to message element, and appends to scroll container.
 const form = document.querySelector('form');
 form.addEventListener('submit', async (event) => {
@@ -135,10 +123,17 @@ form.addEventListener('submit', async (event) => {
         dialogueBox.classList.remove('hidden');
     }
 
-    //send the message to the llm through the backend
+    /** 
+     * --- text streaming logic ---
+     */
+    const newAiMessage = createAiMessageDiv("Thinking..."); 
+    scrollContainer.appendChild(newAiMessage);
+    
+    // select the specific paragraph tag inside the new div to update its text
+    const aiParagraph = newAiMessage.querySelector('.chat-content');
+
     try {
-        // const response = await fetch('http://localhost:3000/api/chat', {
-        const response = await fetch('https://mammal-capable-really.ngrok-free.app/api/chat', {
+        const response = await fetch('https://mammal-capable-really.ngrok-free.app/api/chat', { 
             method: 'post',
             headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
             body: JSON.stringify({ prompt: message })
@@ -148,22 +143,49 @@ form.addEventListener('submit', async (event) => {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
 
-        const data = await response.json();
+        /**
+         * --- reading the stream ---
+         *    Instead of `await response.json()`, we use a reader.
+         *    this allows us to process the response chunk by chunk.
+         */
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder();
+        
+        // Clear the placeholder 'thinking' text
+        aiParagraph.innerText = "";
 
-        const newAiMessage = createAiMessageDiv(data.response);
+        while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
 
-        scrollContainer.appendChild(newAiMessage);
-        console.log('Response from backend:', data);
+            //  Get the chunk of text
+            const chunk = decoder.decode(value, { stream: true });
+
+            //  Split chunk into individual characters
+            const characters = chunk.split('');
+
+            // Loop through each character to type it out slowly
+            for (const char of characters) {
+                aiParagraph.textContent += char;
+                scrollContainer.scrollTop = scrollContainer.scrollHeight;
+                
+                // adjust speed here (Lower = Faster, Higher = Slower)
+                // 10ms to 30ms is usually a good natural speed.
+                await delay(0); 
+            }
+        }
 
     } catch (error) {
-        console.error('Error', error)
+        console.error('Error', error);
+        aiParagraph.innerText = "Error connecting to server.";
     }
+
 });
 
 /* removes chat-content-div and brings in dialogue div after user clicks a submit prompt button */
 const submitPrompt = document.querySelectorAll('.submit-prompt');
 submitPrompt.forEach(prompt => {
-    prompt.addEventListener('click', () => {
+    prompt.addEventListener('click', async () => {
         const message = prompt.querySelector('.recommendation-content').innerText;
         //create the user message div structure
         const newChatMessage = createUserMessageDiv(message);
@@ -172,7 +194,49 @@ submitPrompt.forEach(prompt => {
 
         chatContent.classList.add('hidden');
         dialogueBox.classList.remove('hidden');
-        // formInput.focus();
+
+     
+        const newAiMessage = createAiMessageDiv("Thinking..."); 
+        scrollContainer.appendChild(newAiMessage);
+        const aiParagraph = newAiMessage.querySelector('.chat-content');
+
+        try {
+            const response = await fetch('https://mammal-capable-really.ngrok-free.app/api/chat', { 
+                method: 'post',
+                headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+                body: JSON.stringify({ prompt: message })
+            });
+
+            if (!response.ok) throw new Error(`HTTP error!`);
+
+            const reader = response.body.getReader();
+            const decoder = new TextDecoder();
+            
+            aiParagraph.innerText = "";
+
+            while (true) {
+                const { done, value } = await reader.read();
+                if (done) break;
+                
+                const chunk = decoder.decode(value, { stream: true });
+                
+                // split into characters for typing effect
+                const characters = chunk.split('');
+
+                for (const char of characters) {
+                    aiParagraph.textContent += char;
+                    scrollContainer.scrollTop = scrollContainer.scrollHeight;
+                    
+                   
+                    await delay(0);
+                }
+            }
+
+        } catch (error) {
+            console.error('Error', error);
+            aiParagraph.innerText = "Error.";
+        }
+        
     });
 });
 
@@ -184,7 +248,6 @@ const scrollToBottom = () => {
         lastChild.scrollIntoView({ behavior: "smooth", block: "end" });
     }
 
-    // safeguard: force container scroll position just in case
     // using a slight delay to ensure the browser has recalculated the new height after element is added
     setTimeout(() => {
         scrollContainer.scrollTop = scrollContainer.scrollHeight;
@@ -199,11 +262,5 @@ const observer = new MutationObserver((mutationsList) => {
 // observe children being added | text changing
 observer.observe(scrollContainer, {
     childList: true,
-    subtree: true,
-    characterData: true,
     attributes: true     // watches for attribute changes (like class changes)
 });
-
-
-
-
