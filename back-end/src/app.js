@@ -6,6 +6,9 @@ import chatRoutes from './routes/chatRoutes.js';
 
 const app = express();
 
+//tells express to trust the first proxy it encounters (which is ngrok tunnel) to allow the rate limiter to see the user's actual ip address instead of seeing Ngrok's ip for every single person
+app.set('trust proxy', 1); 
+
 app.use(cors({
 // allow connections specified in .env 
   origin: process.env.ALLOWED_ORIGIN,
@@ -23,6 +26,7 @@ const limiter = rateLimit({
     //units: minutes/seconds/miliseconds, the memory buffer will reset every 15 minutes
   windowMs: 15 * 60 * 1000, 
   max: 20, 
+  validate: { xForwardedForHeader: false }, 
   message: { error: 'Too many requests, please try again later.' }
 });
 app.use(limiter);
