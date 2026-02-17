@@ -137,8 +137,8 @@ form.addEventListener('submit', async (event) => {
 
     //send the message to the llm through the backend
     try {
-        const response = await fetch('http://localhost:3000/api/chat', {
-        // const response = await fetch('https://mammal-capable-really.ngrok-free.app/api/chat', {
+        // const response = await fetch('http://localhost:3000/api/chat', {
+        const response = await fetch('https://mammal-capable-really.ngrok-free.app/api/chat', {
             method: 'post',
             headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
             body: JSON.stringify({ prompt: message })
