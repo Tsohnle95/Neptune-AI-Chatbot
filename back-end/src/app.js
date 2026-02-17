@@ -11,7 +11,8 @@ app.set('trust proxy', 1);
 
 app.use(cors({
 // allow connections specified in .env 
-  origin: process.env.ALLOWED_ORIGIN,
+  origin: [process.env.ALLOWED_ORIGIN,
+  'http://127.0.0.1:5500'],
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'ngrok-skip-browser-warning'],
   credentials: true
