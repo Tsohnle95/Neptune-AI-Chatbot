@@ -12,7 +12,7 @@ let userChatDiv = document.querySelectorAll('.user-chat-div');
 //check server status (heartbeat mechanism) - if receive response in 200-299 range, call setOnlineStatus with true argument
 //this updates the 'online' or 'offline' server status indicator under the title on the chat page
 const statusIndicator = document.querySelector('.server-status');
-const API_URL = 'http://localhost:3000/api/health';
+const API_URL = 'https://mammal-capable-really.ngrok-free.app/api/health';
 async function checkServerStatus() {
     try {
         // implement a timeout so if the server doesn't respond, we don't wait forever
@@ -182,12 +182,17 @@ form.addEventListener('submit', async (event) => {
     const aiParagraph = newAiMessage.querySelector('.chat-content');
 
     try {
-        const response = await fetch('http://localhost:3000/api/chat', { 
-        // const response = await fetch('https://mammal-capable-really.ngrok-free.app/api/chat', { 
+        // const response = await fetch('http://localhost:3000/api/chat', { 
+        const response = await fetch('https://mammal-capable-really.ngrok-free.app/api/chat', { 
             method: 'post',
             headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
             body: JSON.stringify({ prompt: message })
         });
+
+        if (response.status === 429) {
+            aiParagraph.innerText = "Message limit reached. Try again in 15 minutes.";
+            return;
+        }
 
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
@@ -251,12 +256,17 @@ submitPrompt.forEach(prompt => {
         const aiParagraph = newAiMessage.querySelector('.chat-content');
 
         try {
-            const response = await fetch('http://localhost:3000/api/chat', { 
-            // const response = await fetch('https://mammal-capable-really.ngrok-free.app/api/chat', { 
+            // const response = await fetch('http://localhost:3000/api/chat', { 
+            const response = await fetch('https://mammal-capable-really.ngrok-free.app/api/chat', { 
                 method: 'post',
                 headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
                 body: JSON.stringify({ prompt: message })
             });
+
+             if (response.status === 429) {
+            aiParagraph.innerText = "Max message limit reached. Try again in 15 minutes.";
+            return;
+        }
 
             if (!response.ok) throw new Error(`HTTP error!`);
 
