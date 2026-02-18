@@ -27,8 +27,19 @@
     border-radius: 25px;
 }
 
-/*********** disable landing page while working by commenting out chatbot-content, and uncommenting landing-page-content ***********/
+.online {
+    font-weight: bold;
+    color: rgb(45, 180, 45);
+}
 
+.offline {
+    font-weight: bold;
+    color: rgb(192, 3, 3);
+}
+
+.bold-font {
+    font-weight: 500 !important;
+}
 
 
 .user-chat-div {

@@ -35,6 +35,10 @@ app.use(limiter);
 //lets express read json 
 app.use(express.json());
 
+app.get('/api/health', (req, res) => {
+  res.status(200).send('OK');
+});
+
 // if url starts with /api, stop processing and send request to chatroutes file
 app.use('/api', chatRoutes);
 
@@ -44,4 +48,6 @@ app.get('/', (req, res) => {
 });
 
 export default app;
+
+
 

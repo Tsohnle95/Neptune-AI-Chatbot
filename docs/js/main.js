@@ -9,6 +9,55 @@ const chatContent = document.querySelector('.chat-content-div');
 const scrollContainer = document.querySelector('.scroll-container');
 let userChatDiv = document.querySelectorAll('.user-chat-div');
 
+//check server status (heartbeat mechanism) - if receive response in 200-299 range, call setOnlineStatus with true argument
+//this updates the 'online' or 'offline' server status indicator under the title on the chat page
+const statusIndicator = document.querySelector('.server-status');
+const API_URL = 'http://localhost:3000/api/health';
+async function checkServerStatus() {
+    try {
+        // implement a timeout so if the server doesn't respond, we don't wait forever
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
+
+        const response = await fetch(API_URL, { 
+            method: 'GET',
+            signal: controller.signal
+        });
+
+        clearTimeout(timeoutId);
+
+        if (response.ok) {
+            setOnlineStatus(true);
+        } else {
+            // server responded, but with an error 
+            setOnlineStatus(false);
+        }
+    } catch (error) {
+        // network error, server down, or timeout
+        console.log('Backend server is offline');
+        setOnlineStatus(false);
+    }
+}
+
+function setOnlineStatus(isOnline) {
+    if (isOnline) {
+        statusIndicator.classList.add('online');
+        statusIndicator.classList.remove('offline');
+        statusIndicator.innerText = "Online";
+        statusIndicator.classList.add('bold-font');
+    } else {
+        statusIndicator.classList.add('offline');
+        statusIndicator.classList.remove('online');
+        statusIndicator.innerText = "Offline";
+        statusIndicator.classList.add('bold-font');
+    }
+}
+
+// run on load
+checkServerStatus();
+// run every 5 seconds to ensure relatively accuate status update
+setInterval(checkServerStatus, 5000);
+
 //removes landing page and brings in initial chat area when user clicks chat now
 chatButtons.forEach(button => {
     button.addEventListener('click', () => {
@@ -133,7 +182,8 @@ form.addEventListener('submit', async (event) => {
     const aiParagraph = newAiMessage.querySelector('.chat-content');
 
     try {
-        const response = await fetch('https://mammal-capable-really.ngrok-free.app/api/chat', { 
+        const response = await fetch('http://localhost:3000/api/chat', { 
+        // const response = await fetch('https://mammal-capable-really.ngrok-free.app/api/chat', { 
             method: 'post',
             headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
             body: JSON.stringify({ prompt: message })
@@ -201,7 +251,8 @@ submitPrompt.forEach(prompt => {
         const aiParagraph = newAiMessage.querySelector('.chat-content');
 
         try {
-            const response = await fetch('https://mammal-capable-really.ngrok-free.app/api/chat', { 
+            const response = await fetch('http://localhost:3000/api/chat', { 
+            // const response = await fetch('https://mammal-capable-really.ngrok-free.app/api/chat', { 
                 method: 'post',
                 headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
                 body: JSON.stringify({ prompt: message })
