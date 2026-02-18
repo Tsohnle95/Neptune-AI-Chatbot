@@ -26,7 +26,7 @@ app.use(morgan('dev'));
 const limiter = rateLimit({
     //units: minutes/seconds/miliseconds, the memory buffer will reset every 15 minutes
   windowMs: 15 * 60 * 1000, 
-  max: 2022, 
+  max: 10, 
   validate: { xForwardedForHeader: false }, 
   message: { error: 'Too many requests, please try again later.' }
 });
@@ -42,7 +42,7 @@ app.get('/api/health', (req, res) => {
 // if url starts with /api, stop processing and send request to chatroutes file
 app.use('/api', chatRoutes);
 
-// 6. Basic Health Check (to see if server is alive)
+// basic Health Check (to see if server is alive)
 app.get('/', (req, res) => {
   res.send('LLM Backend is active.');
 });
