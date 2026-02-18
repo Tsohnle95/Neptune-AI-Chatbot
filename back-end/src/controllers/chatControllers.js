@@ -28,7 +28,11 @@ export const handleChat = async (req, res) => {
                 model: "llama3.2:1b",
                 prompt: prompt,
                 stream: true, 
-                system: "You are Neptune, a brief, polite assistant."
+                system: "You are Neptune. Be extremely concise. Keep answers under 5 sentences.",
+                options: {
+                    num_predict: 450,
+                    temperature: 0.6
+                }
             })
         });
 
