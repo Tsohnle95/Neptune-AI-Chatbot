@@ -190,7 +190,7 @@ form.addEventListener('submit', async (event) => {
         });
 
         if (response.status === 429) {
-            aiParagraph.innerText = "Max message limit reached. Try again in 15 minutes.";
+            aiParagraph.innerText = "Message limit reached. Try again in 15 minutes.";
             return;
         }
 
