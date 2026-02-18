@@ -19,8 +19,15 @@ app.use(cors({
 }));
 
 
+morgan.token('local-time', function (req, res) {
+  return new Date().toLocaleString(); // this uses my computer's system clock to find time, which we pass into the code below to log the time in the console
+});
 //helps to debug by printing info to the terminal when requests are received by my server 
-app.use(morgan('dev'));
+app.use(morgan(':method :url :status :response-time ms - [:local-time] - :user-agent :req[x-forwarded-for]'));
+//displays this info in the console for a single request: 
+//1|llm-api  | POST /api/chat 200 309.392 ms - [2/17/2026, 9:11:30 PM] - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 xxx.x.xxx.xxx
+
+
 
 //rate limiter: limits amount of requests per ip address per timer interval
 const limiter = rateLimit({
