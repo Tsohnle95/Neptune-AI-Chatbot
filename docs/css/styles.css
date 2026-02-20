@@ -1646,6 +1646,13 @@ nav .nav-footer p:focus {
 }
 .chatbot-content .chat-area .dialogue-box .ai-chat-div > div:nth-of-type(1) {
   flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+}
+.chatbot-content .chat-area .dialogue-box .ai-chat-div > div:nth-of-type(2) {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 0.3rem;
 }
 .chatbot-content .chat-area .dialogue-box .ai-chat-div .chat-content {
   color: var(--chat-dialogue-text);
@@ -1671,6 +1678,13 @@ nav .nav-footer p:focus {
 }
 .chatbot-content .chat-area .dialogue-box .user-chat-div > div:nth-of-type(1) {
   flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+}
+.chatbot-content .chat-area .dialogue-box .user-chat-div > div:nth-of-type(2) {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 0.45rem;
 }
 .chatbot-content .chat-area .dialogue-box .user-chat-div .chat-content {
   color: var(--chat-dialogue-text);

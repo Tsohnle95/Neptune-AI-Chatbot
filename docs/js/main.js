@@ -13,6 +13,7 @@ let userChatDiv = document.querySelectorAll('.user-chat-div');
 //this updates the 'online' or 'offline' server status indicator under the title on the chat page
 const statusIndicator = document.querySelector('.server-status');
 const API_URL = 'https://mammal-capable-really.ngrok-free.app/api/health';
+// const API_URL = 'http://localhost:3000/api/health';
 async function checkServerStatus() {
     try {
         // implement a timeout so if the server doesn't respond, we don't wait forever
@@ -164,12 +165,8 @@ let conversationHistory = [
 You are Neptune, a friendly AI assistant.
 
 Formatting rules (strict):
-- Always use Markdown.
-- For code, use triple backticks with the correct language (e.g., \`\`\`js).
-- Never wrap code in \`\`\`markdown.
-- Use headings with ## when helpful.
 - Use short paragraphs (1–2 sentences max).
-- Insert a blank line between paragraphs.
+- Insert a blank line between paragraphs and sentences.
 - Keep responses under 5 sentences unless asked for detail.
 `
 }
