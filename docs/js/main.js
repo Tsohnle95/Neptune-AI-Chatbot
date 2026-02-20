@@ -261,10 +261,13 @@ const submitPrompt = document.querySelectorAll('.submit-prompt');
 submitPrompt.forEach(prompt => {
     prompt.addEventListener('click', async () => {
         const message = prompt.querySelector('.recommendation-content').innerText;
+        if (!message.trim()) return;
         //create the user message div structure
         const newChatMessage = createUserMessageDiv(message);
         //append user div to scroll container
         scrollContainer.appendChild(newChatMessage);
+
+        conversationHistory.push({role: "user", content: message })
 
         chatContent.classList.add('hidden');
         dialogueBox.classList.remove('hidden');
@@ -279,7 +282,7 @@ submitPrompt.forEach(prompt => {
             const response = await fetch('https://mammal-capable-really.ngrok-free.app/api/chat', { 
                 method: 'post',
                 headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
-                body: JSON.stringify({ prompt: message })
+                body: JSON.stringify({ messages: conversationHistory })
             });
 
              if (response.status === 429) {
@@ -294,6 +297,8 @@ submitPrompt.forEach(prompt => {
             
             aiParagraph.innerText = "";
 
+            let fullAiResponse = "";
+
             while (true) {
                 const { done, value } = await reader.read();
                 if (done) break;
@@ -305,12 +310,15 @@ submitPrompt.forEach(prompt => {
 
                 for (const char of characters) {
                     aiParagraph.textContent += char;
+                    fullAiResponse += char; //store each character in the full ai response string 
                     scrollContainer.scrollTop = scrollContainer.scrollHeight;
-                    
+                    await new Promise(r => setTimeout(r, 10)) // a natural typing speed
                    
                     await delay(0);
                 }
             }
+
+            conversationHistory.push({role: "assistant", content: fullAiResponse });
 
         } catch (error) {
             console.error('Error', error);
