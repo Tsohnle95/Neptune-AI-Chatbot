@@ -158,10 +158,21 @@ const delay = (ms) => new Promise(res => setTimeout(res, ms));
 
 //conversation history array 
 let conversationHistory = [
-    {
-        role: "system",
-        content: "You are a friendly assistant named Neptune. Keep answers under 5 sentences."
-    }
+   {
+  role: "system",
+  content: `
+You are Neptune, a friendly AI assistant.
+
+Formatting rules (strict):
+- Always use Markdown.
+- For code, use triple backticks with the correct language (e.g., \`\`\`js).
+- Never wrap code in \`\`\`markdown.
+- Use headings with ## when helpful.
+- Use short paragraphs (1–2 sentences max).
+- Insert a blank line between paragraphs.
+- Keep responses under 5 sentences unless asked for detail.
+`
+}
 ]
 
 //handles form submission. builds user message div, adds input value to message element, and appends to scroll container.
