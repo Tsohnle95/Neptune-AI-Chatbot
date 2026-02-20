@@ -159,7 +159,7 @@ const delay = (ms) => new Promise(res => setTimeout(res, ms));
 //conversation history array 
 let conversationHistory = [
     {
-        role: "System",
+        role: "system",
         content: "You are a friendly assistant named Neptune. Keep answers under 5 sentences."
     }
 ]

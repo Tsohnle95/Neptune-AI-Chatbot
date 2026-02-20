@@ -29,10 +29,10 @@ export const handleChat = async (req, res) => {
                 messages: messages,
                 stream: true, 
                 // system: "You are a friendly assistant named Neptune. Keep answers under 5 sentences.",
-                // options: {
-                //     num_predict: 350,
-                //     temperature: 0.6
-                // }
+                options: {
+                    num_predict: 350,
+                    temperature: 0.6
+                }
             })
         });
 
