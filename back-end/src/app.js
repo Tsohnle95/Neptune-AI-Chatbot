@@ -9,10 +9,10 @@ const app = express();
 //tells express to trust the first proxy it encounters (which is ngrok tunnel) to allow the rate limiter to see the user's actual ip address instead of seeing Ngrok's ip for every single person
 app.set('trust proxy', 1); 
 
+const origins = process.env.ALLOWED_ORIGIN.split(',');
 app.use(cors({
 // allow connections specified in .env 
-  origin: [process.env.ALLOWED_ORIGIN,
-  'http://127.0.0.1:5500'],
+  origin: origins,
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'ngrok-skip-browser-warning'],
   credentials: true
@@ -27,7 +27,10 @@ app.use(morgan(':method :url :status :response-time ms - [:local-time] - :user-a
 //displays this info in the console for a single request: 
 //1|llm-api  | POST /api/chat 200 309.392 ms - [2/17/2026, 9:11:30 PM] - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36 xxx.x.xxx.xxx
 
-
+//heartbeat api
+app.get('/api/health', (req, res) => {
+  res.status(200).send('OK');
+});
 
 //rate limiter: limits amount of requests per ip address per timer interval
 const limiter = rateLimit({

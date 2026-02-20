@@ -2,10 +2,10 @@
 
 export const handleChat = async (req, res) => {
     // destructure 'prompt' from the request body
-    const { prompt } = req.body;
+    const { messages } = req.body;
 
     // validation
-    if (!prompt || typeof prompt !== 'string') {
+    if (!messages || !Array.isArray(messages)) {
         return res.status(400).json({ error: 'Prompt is required' });
     }
 
@@ -21,18 +21,18 @@ export const handleChat = async (req, res) => {
          * partial JSON objects as they are generated, rather than 
          * waiting for the whole thought process to finish.
          */
-        const response = await fetch('http://localhost:11434/api/generate', {
+        const response = await fetch('http://localhost:11434/api/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 model: "llama3.2:1b",
-                prompt: prompt,
+                messages: messages,
                 stream: true, 
-                system: "You are a friendly assistant named Neptune. Keep answers under 5 sentences.",
-                options: {
-                    num_predict: 350,
-                    temperature: 0.6
-                }
+                // system: "You are a friendly assistant named Neptune. Keep answers under 5 sentences.",
+                // options: {
+                //     num_predict: 350,
+                //     temperature: 0.6
+                // }
             })
         });
 
@@ -65,8 +65,8 @@ export const handleChat = async (req, res) => {
                     // Parse the specific line
                     const json = JSON.parse(line);
                     // Write just the text response part to the client immediately
-                    if (json.response) {
-                        res.write(json.response);
+                    if (json.message && json.message.content) {
+                        res.write(json.message.content);
                     }
                 } catch (e) {
                     console.error("Error parsing JSON line", e);

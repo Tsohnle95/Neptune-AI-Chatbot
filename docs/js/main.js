@@ -155,17 +155,30 @@ const createAiMessageDiv = (prompt) => {
 
 // Helper to create a pause
 const delay = (ms) => new Promise(res => setTimeout(res, ms));
+
+//conversation history array 
+let conversationHistory = [
+    {
+        role: "System",
+        content: "You are a friendly assistant named Neptune. Keep answers under 5 sentences."
+    }
+]
+
 //handles form submission. builds user message div, adds input value to message element, and appends to scroll container.
 const form = document.querySelector('form');
 form.addEventListener('submit', async (event) => {
     event.preventDefault();
     let formInput = event.target.elements['chat-input'];
     let message = formInput.value;
+    if (!message.trim()) return;
+
     form.reset();
 
     //call createUserMessageDiv to build message structure, append it to chat container, and reset form.
     const newChatMessage = createUserMessageDiv(message);
     scrollContainer.appendChild(newChatMessage);
+
+    conversationHistory.push({role: "user", content: message })
 
     if (!chatContent.classList.contains('hidden') && dialogueBox.classList.contains('hidden')) {
         chatContent.classList.add('hidden');
@@ -186,7 +199,7 @@ form.addEventListener('submit', async (event) => {
         const response = await fetch('https://mammal-capable-really.ngrok-free.app/api/chat', { 
             method: 'post',
             headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
-            body: JSON.stringify({ prompt: message })
+            body: JSON.stringify({ messages: conversationHistory })
         });
 
         if (response.status === 429) {
@@ -209,6 +222,8 @@ form.addEventListener('submit', async (event) => {
         // Clear the placeholder 'thinking' text
         aiParagraph.innerText = "";
 
+        let fullAiResponse = "";
+
         while (true) {
             const { done, value } = await reader.read();
             if (done) break;
@@ -222,13 +237,17 @@ form.addEventListener('submit', async (event) => {
             // Loop through each character to type it out slowly
             for (const char of characters) {
                 aiParagraph.textContent += char;
+                fullAiResponse += char; //store each character in the full ai response string 
                 scrollContainer.scrollTop = scrollContainer.scrollHeight;
+                await new Promise(r => setTimeout(r, 10)) // a natural typing speed
                 
                 // adjust speed here (Lower = Faster, Higher = Slower)
                 // 10ms to 30ms is usually a good natural speed.
                 await delay(0); 
             }
         }
+
+        conversationHistory.push({role: "assistant", content: fullAiResponse });
 
     } catch (error) {
         console.error('Error', error);
