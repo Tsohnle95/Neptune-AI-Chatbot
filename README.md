@@ -5,7 +5,7 @@ https://tsohnle95.github.io/Neptune-AI-Chatbot/
 
 Latest Implementations:
 - backend server heartbeat checker (displays green online text if the backend is live and red offline text if not)
-- conversation history (model will remember all messages sent during that conversation)
+- conversation history: model will remember all messages sent during that conversation (32k context window)
 - abort button to stop fetch request after prompt is sent
 - chat streaming: the model streams broken up json lines to the front end as it processes its response. to the user, this makes the model appear to respond almost instantly, instead of having you sit there for multiple seconds until the entire response object is resolved at once, and appears on the front end abruptly
 
