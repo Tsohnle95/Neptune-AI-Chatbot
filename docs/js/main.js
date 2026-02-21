@@ -16,8 +16,8 @@ const submitButton = document.getElementById('submit');
 //check server status (heartbeat mechanism) - if receive response in 200-299 range, call setOnlineStatus with true argument
 //this updates the 'online' or 'offline' server status indicator under the title on the chat page
 const statusIndicator = document.querySelector('.server-status');
-// const API_URL = 'https://mammal-capable-really.ngrok-free.app/api/health';
-const API_URL = 'http://localhost:3000/api/health';
+const API_URL = 'https://mammal-capable-really.ngrok-free.app/api/health';
+// const API_URL = 'http://localhost:3000/api/health';
 async function checkServerStatus() {
     try {
         // implement a timeout so if the server doesn't respond, we don't wait forever
