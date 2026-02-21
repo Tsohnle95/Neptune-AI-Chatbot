@@ -1589,6 +1589,48 @@ nav .nav-footer p:focus {
   width: 30px;
   height: 30px;
 }
+.chatbot-content .chat-area footer form .input-container button .abort-button {
+  background-color: rgb(46, 44, 44);
+  background-color: rgb(72, 59, 59);
+  border-radius: 50%;
+  height: 2rem;
+  width: 2rem;
+  color: white;
+  display: grid;
+  place-items: center;
+  position: relative;
+  margin-bottom: 0.25rem;
+}
+.chatbot-content .chat-area footer form .input-container button .abort-button::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top: 2px solid rgb(255, 255, 255);
+  /* visible part */
+  animation: spin2 1.5s linear infinite;
+}
+.chatbot-content .chat-area footer form .input-container button .abort-button::before {
+  content: "";
+  display: block;
+  width: 12px;
+  aspect-ratio: 1/1;
+  background: rgb(255, 255, 255);
+}
+@keyframes spin1 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes spin2 {
+  to {
+    transform: rotate(360deg);
+  }
+}
 .chatbot-content .chat-area footer form input {
   display: block;
   width: 100%;

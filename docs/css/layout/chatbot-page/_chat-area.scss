@@ -47,6 +47,8 @@
             p:last-of-type {
                 color: var(--menu-gray);
             }
+
+
         }
 
         .recommendation-flex-main-container {
@@ -61,6 +63,7 @@
             @media (width > 1200px) {
                 gap: 1.5rem;
             }
+
         }
 
         .recommendation-flex-container {
@@ -69,6 +72,8 @@
             align-items: center;
             gap: .75rem;
             width: 100%;
+
+
 
             @media (width >=800px) {
                 flex-direction: row;
@@ -202,10 +207,63 @@
                     border: none;
                     cursor: pointer;
 
+
                     img {
                         width: 30px;
                         height: 30px;
                     }
+
+
+                    .abort-button {
+                        background-color: rgb(46, 44, 44);
+                        background-color: rgb(72, 59, 59);
+
+                        border-radius: 50%;
+                        height: 2rem;
+                        width: 2rem;
+                        // padding: 1rem;
+                        color: white;
+                        display: grid;
+                        place-items: center;
+                        position: relative;
+                        margin-bottom: .25rem;
+                    }
+
+                    .abort-button::after {
+                        content: "";
+                        position: absolute;
+                        inset: -1px;
+                        border-radius: 50%;
+                        border: 2px solid transparent;
+                        border-top: 2px solid rgb(255, 255, 255);
+                        /* visible part */
+                        animation: spin2 1.5s linear infinite;
+                    }
+
+                    .abort-button::before {
+                        content: "";
+                        display: block;
+                        width: 12px;
+                        aspect-ratio: 1 / 1;
+                        background: rgb(255, 255, 255);
+                    }
+
+                    @keyframes spin1 {
+                        from {
+                            transform: rotate(0deg);
+                        }
+
+                        to {
+                            transform: rotate(360deg);
+                        }
+                    }
+
+                    @keyframes spin2 {
+                        to {
+                            transform: rotate(360deg);
+                        }
+                    }
+
                 }
             }
 

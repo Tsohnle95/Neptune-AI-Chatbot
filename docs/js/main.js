@@ -8,19 +8,23 @@ const dialogueBox = document.querySelector('.dialogue-box');
 const chatContent = document.querySelector('.chat-content-div');
 const scrollContainer = document.querySelector('.scroll-container');
 let userChatDiv = document.querySelectorAll('.user-chat-div');
+const abortButton = document.querySelector('.abort-button');
+const submitButton = document.getElementById('submit');
+
+
 
 //check server status (heartbeat mechanism) - if receive response in 200-299 range, call setOnlineStatus with true argument
 //this updates the 'online' or 'offline' server status indicator under the title on the chat page
 const statusIndicator = document.querySelector('.server-status');
-const API_URL = 'https://mammal-capable-really.ngrok-free.app/api/health';
-// const API_URL = 'http://localhost:3000/api/health';
+// const API_URL = 'https://mammal-capable-really.ngrok-free.app/api/health';
+const API_URL = 'http://localhost:3000/api/health';
 async function checkServerStatus() {
     try {
         // implement a timeout so if the server doesn't respond, we don't wait forever
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
 
-        const response = await fetch(API_URL, { 
+        const response = await fetch(API_URL, {
             method: 'GET',
             signal: controller.signal
         });
@@ -155,13 +159,13 @@ const createAiMessageDiv = (prompt) => {
 }
 
 // Helper to create a pause
-const delay = (ms) => new Promise(res => setTimeout(res, ms));
+// const delay = (ms) => new Promise(res => setTimeout(res, ms));
 
 //conversation history array 
 let conversationHistory = [
-   {
-  role: "system",
-  content: `
+    {
+        role: "system",
+        content: `
 You are Neptune, a friendly AI assistant.
 
 Formatting rules (strict):
@@ -169,9 +173,10 @@ Formatting rules (strict):
 - Insert a blank line between paragraphs and sentences.
 - Keep responses under 5 sentences unless asked for detail.
 `
-}
+    }
 ]
 
+let abortController = null;
 //handles form submission. builds user message div, adds input value to message element, and appends to scroll container.
 const form = document.querySelector('form');
 form.addEventListener('submit', async (event) => {
@@ -183,31 +188,38 @@ form.addEventListener('submit', async (event) => {
     form.reset();
 
     //call createUserMessageDiv to build message structure, append it to chat container, and reset form.
+
+    submitButton.querySelector('img').classList.add('hidden');
+    abortButton.classList.remove('hidden');
     const newChatMessage = createUserMessageDiv(message);
     scrollContainer.appendChild(newChatMessage);
 
-    conversationHistory.push({role: "user", content: message })
+    conversationHistory.push({ role: "user", content: message })
 
     if (!chatContent.classList.contains('hidden') && dialogueBox.classList.contains('hidden')) {
         chatContent.classList.add('hidden');
         dialogueBox.classList.remove('hidden');
     }
 
+    abortController = new AbortController();
+    const signal = abortController.signal;
+
     /** 
      * --- text streaming logic ---
      */
-    const newAiMessage = createAiMessageDiv("Thinking..."); 
+    const newAiMessage = createAiMessageDiv("Thinking...");
     scrollContainer.appendChild(newAiMessage);
-    
+
     // select the specific paragraph tag inside the new div to update its text
     const aiParagraph = newAiMessage.querySelector('.chat-content');
 
     try {
-        // const response = await fetch('http://localhost:3000/api/chat', { 
-        const response = await fetch('https://mammal-capable-really.ngrok-free.app/api/chat', { 
+        const response = await fetch('http://localhost:3000/api/chat', {
+            // const response = await fetch('https://mammal-capable-really.ngrok-free.app/api/chat', {
             method: 'post',
             headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
-            body: JSON.stringify({ messages: conversationHistory })
+            body: JSON.stringify({ messages: conversationHistory }),
+            signal: signal
         });
 
         if (response.status === 429) {
@@ -226,7 +238,7 @@ form.addEventListener('submit', async (event) => {
          */
         const reader = response.body.getReader();
         const decoder = new TextDecoder();
-        
+
         // Clear the placeholder 'thinking' text
         aiParagraph.innerText = "";
 
@@ -244,25 +256,48 @@ form.addEventListener('submit', async (event) => {
 
             // Loop through each character to type it out slowly
             for (const char of characters) {
+                if (signal.aborted) break;
                 aiParagraph.textContent += char;
                 fullAiResponse += char; //store each character in the full ai response string 
                 scrollContainer.scrollTop = scrollContainer.scrollHeight;
                 await new Promise(r => setTimeout(r, 10)) // a natural typing speed
-                
-                // adjust speed here (Lower = Faster, Higher = Slower)
-                // 10ms to 30ms is usually a good natural speed.
-                await delay(0); 
             }
+
+            // If aborted during character loop, stop the whole stream
+            if (signal.aborted) break;
         }
 
-        conversationHistory.push({role: "assistant", content: fullAiResponse });
+        if (!signal.aborted) {
+            conversationHistory.push({ role: "assistant", content: fullAiResponse });
+        }
+        // else {
+        //     aiParagraph.textContent += " [Message stopped by user]";
+        // }
+
 
     } catch (error) {
+        if (error.name === 'AbortError') { // check this later, i dont think this error name is correct
+            console.log('User aborted the request.');
+            return;
+        }
         console.error('Error', error);
         aiParagraph.innerText = "Error connecting to server.";
+    } finally {
+        abortController = null;
+        submitButton.querySelector('img').classList.remove('hidden');
+        abortButton.classList.add('hidden');
     }
 
 });
+
+
+abortButton.addEventListener('click', () => {
+    console.log('abort button clicked');
+    if (abortController) {
+        abortController.abort();
+        abortController = null;
+    }
+})
 
 /* removes chat-content-div and brings in dialogue div after user clicks a submit prompt button */
 const submitPrompt = document.querySelectorAll('.submit-prompt');
@@ -275,34 +310,41 @@ submitPrompt.forEach(prompt => {
         //append user div to scroll container
         scrollContainer.appendChild(newChatMessage);
 
-        conversationHistory.push({role: "user", content: message })
+        conversationHistory.push({ role: "user", content: message })
+
+        submitButton.querySelector('img').classList.add('hidden');
+        abortButton.classList.remove('hidden');
 
         chatContent.classList.add('hidden');
         dialogueBox.classList.remove('hidden');
 
-     
-        const newAiMessage = createAiMessageDiv("Thinking..."); 
+        abortController = new AbortController();
+        const signal = abortController.signal;
+
+
+        const newAiMessage = createAiMessageDiv("Thinking...");
         scrollContainer.appendChild(newAiMessage);
         const aiParagraph = newAiMessage.querySelector('.chat-content');
 
         try {
-            // const response = await fetch('http://localhost:3000/api/chat', { 
-            const response = await fetch('https://mammal-capable-really.ngrok-free.app/api/chat', { 
+            const response = await fetch('http://localhost:3000/api/chat', {
+                // const response = await fetch('https://mammal-capable-really.ngrok-free.app/api/chat', {
                 method: 'post',
                 headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
-                body: JSON.stringify({ messages: conversationHistory })
+                body: JSON.stringify({ messages: conversationHistory }),
+                signal: signal
             });
 
-             if (response.status === 429) {
-            aiParagraph.innerText = "Max message limit reached. Try again in 15 minutes.";
-            return;
-        }
+            if (response.status === 429) {
+                aiParagraph.innerText = "Max message limit reached. Try again in 15 minutes.";
+                return;
+            }
 
             if (!response.ok) throw new Error(`HTTP error!`);
 
             const reader = response.body.getReader();
             const decoder = new TextDecoder();
-            
+
             aiParagraph.innerText = "";
 
             let fullAiResponse = "";
@@ -310,29 +352,40 @@ submitPrompt.forEach(prompt => {
             while (true) {
                 const { done, value } = await reader.read();
                 if (done) break;
-                
+
                 const chunk = decoder.decode(value, { stream: true });
-                
+
                 // split into characters for typing effect
                 const characters = chunk.split('');
 
                 for (const char of characters) {
+                    if (signal.aborted) break;
                     aiParagraph.textContent += char;
                     fullAiResponse += char; //store each character in the full ai response string 
                     scrollContainer.scrollTop = scrollContainer.scrollHeight;
                     await new Promise(r => setTimeout(r, 10)) // a natural typing speed
-                   
-                    await delay(0);
                 }
+                // If aborted during character loop, stop the whole stream
+                if (signal.aborted) break;
             }
 
-            conversationHistory.push({role: "assistant", content: fullAiResponse });
+            if (!signal.aborted) {
+                conversationHistory.push({ role: "assistant", content: fullAiResponse });
+            }
 
         } catch (error) {
+            if (error.name === 'AbortError') {
+                console.log('User aborted the request.');
+                return;
+            }
             console.error('Error', error);
-            aiParagraph.innerText = "Error.";
+            aiParagraph.innerText = "Error connecting to server.";
+        } finally {
+            abortController = null;
+            submitButton.querySelector('img').classList.remove('hidden');
+            abortButton.classList.add('hidden');
         }
-        
+
     });
 });
 

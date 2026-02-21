@@ -9,11 +9,22 @@ export const handleChat = async (req, res) => {
         return res.status(400).json({ error: 'Prompt is required' });
     }
 
+    const ollamaAbortController = new AbortController();
+
+    // if the user cancels the request in the browser, trigger the kill switch for the ollama connection.
+  res.on('close', () => {
+        // If the stream hasn't finished naturally, but the response closed,
+        // it means the user disconnected or aborted.
+        if (!res.writableEnded) {
+            console.log("Client disconnected/aborted. Stopping Ollama...");
+            ollamaAbortController.abort();
+        }
+    });
 
     res.setHeader('Content-Type', 'text/event-stream');
     res.setHeader('Cache-Control', 'no-cache');
     res.setHeader('Connection', 'keep-alive');
-    res.setHeader('X-Accel-Buffering', 'no'); 
+    res.setHeader('X-Accel-Buffering', 'no');
 
     try {
         /**
@@ -24,10 +35,11 @@ export const handleChat = async (req, res) => {
         const response = await fetch('http://localhost:11434/api/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
+            signal: ollamaAbortController.signal,
             body: JSON.stringify({
                 model: "llama3.2:1b",
                 messages: messages,
-                stream: true, 
+                stream: true,
                 // system: "You are a friendly assistant named Neptune. Keep answers under 5 sentences.",
                 options: {
                     num_predict: 550,
@@ -55,9 +67,9 @@ export const handleChat = async (req, res) => {
 
             // Split buffer by newlines because Ollama sends one JSON object per line
             let lines = buffer.split('\n');
-            
+
             // Keep the last line in the buffer (it might be incomplete/cut off)
-            buffer = lines.pop(); 
+            buffer = lines.pop();
 
             for (const line of lines) {
                 if (!line.trim()) continue;
@@ -73,12 +85,28 @@ export const handleChat = async (req, res) => {
                 }
             }
         }
-        
+
         // Close the connection when done
         res.end();
+} catch (error) {
+        if (error.name === 'AbortError') {
+            console.log('Ollama request was successfully stopped by backend.');
+        } else {
+            console.error('Streaming Error:', error);
 
-    } catch (error) {
-        console.error('Streaming Error:', error);
-        res.status(500).end();
+            // only send 500 if we haven't started streaming text yet
+            if (!res.headersSent) {
+                res.status(500).json({ error: 'Streaming failed' });
+            } else {
+                // If we already started streaming, just end the connection
+                res.end();
+            }
+        }
+    } finally {
+        // Tensures the response is always closed, 
+        // preventing memory leaks if the loop breaks unexpectedly
+        if (!res.writableEnded) {
+            res.end();
+        }
     }
 };

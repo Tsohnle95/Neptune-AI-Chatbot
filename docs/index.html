@@ -17,7 +17,7 @@
 
 <body>
     <!--landing page content-->
-    <div class="landing-page-content">
+    <div class="landing-page-content hidden">
         <!--Header/Hero-->
         <header class="hero inner-container">
             <!--blue background auras absolutely positioned-->
@@ -217,7 +217,7 @@
     </div>
 
     <!--chatbot content-->
-    <div class="chatbot-content hidden">
+    <div class="chatbot-content ">
 
         <div class="header-dashboard-flex-container">
             <!--TOGGLE NAV MENU-->
@@ -346,12 +346,13 @@
                 <div class="chat-area">
 
                     <!-- chat content div with the 4 recommended ai prompts -->
-                    <div class="chat-content-div">
+                    <div class="chat-content-div hidden">
 
                         <div class="hi-neptune">
                             <img src="img/svg/neptune-icon.svg" alt="Neptune AI icon">
                             <p>Hi, I'm Neptune</p>
                             <p>How can I help you today?</p>
+
                         </div>
 
 
@@ -376,6 +377,7 @@
                                     </div>
                                 </div>
                             </div>
+
 
 
                             <div class="recommendation-flex-container">
@@ -403,7 +405,7 @@
                     </div>
 
                     <!--dialogue box-->
-                    <div class="dialogue-box hidden">
+                    <div class="dialogue-box ">
 
                         <div class="scroll-container">
 
@@ -447,14 +449,19 @@
                             <div class="input-container">
                                 <input type="text" id="chat-input" name="chat-input" placeholder="Type your message...">
 
-                                <button type="submit" id="submit"><img src="img/svg/rocket.svg"
-                                        alt="send button icon"></button>
+                                <button type="submit" id="submit"><img src="img/svg/rocket.svg" alt="send button icon">
+                                    <div class="abort-button hidden">
+
+                                    </div>
+                                </button>
+
                             </div>
                         </form>
+
                     </footer>
                 </div>
 
-
+                
                 <!-- click here to return to the landing page. -->
             </div> <!--end of chatbot content-->
         </div>
