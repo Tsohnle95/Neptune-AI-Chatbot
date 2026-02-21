@@ -1592,6 +1592,8 @@ nav .nav-footer p:focus {
 .chatbot-content .chat-area footer form .input-container button .abort-button {
   background-color: rgb(46, 44, 44);
   background-color: rgb(72, 59, 59);
+  background-color: var(--card-bg);
+  background-color: white;
   border-radius: 50%;
   height: 2rem;
   width: 2rem;
@@ -1607,7 +1609,6 @@ nav .nav-footer p:focus {
   inset: -1px;
   border-radius: 50%;
   border: 2px solid transparent;
-  border-top: 2px solid rgb(255, 255, 255);
   /* visible part */
   animation: spin2 1.5s linear infinite;
 }
@@ -1617,6 +1618,8 @@ nav .nav-footer p:focus {
   width: 12px;
   aspect-ratio: 1/1;
   background: rgb(255, 255, 255);
+  background-color: var(--card-bg);
+  animation: spin1 8s linear infinite;
 }
 @keyframes spin1 {
   from {
