@@ -214,8 +214,8 @@ form.addEventListener('submit', async (event) => {
     const aiParagraph = newAiMessage.querySelector('.chat-content');
 
     try {
-        const response = await fetch('http://localhost:3000/api/chat', {
-            // const response = await fetch('https://mammal-capable-really.ngrok-free.app/api/chat', {
+        // const response = await fetch('http://localhost:3000/api/chat', {
+            const response = await fetch('https://mammal-capable-really.ngrok-free.app/api/chat', {
             method: 'post',
             headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
             body: JSON.stringify({ messages: conversationHistory }),
@@ -327,8 +327,8 @@ submitPrompt.forEach(prompt => {
         const aiParagraph = newAiMessage.querySelector('.chat-content');
 
         try {
-            const response = await fetch('http://localhost:3000/api/chat', {
-                // const response = await fetch('https://mammal-capable-really.ngrok-free.app/api/chat', {
+            // const response = await fetch('http://localhost:3000/api/chat', {
+                const response = await fetch('https://mammal-capable-really.ngrok-free.app/api/chat', {
                 method: 'post',
                 headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
                 body: JSON.stringify({ messages: conversationHistory }),
