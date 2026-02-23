@@ -127,12 +127,14 @@ body {
   font-size: 1.25rem;
   color: var(--text-gray);
   background-color: var(--primary-black);
-  font-family: var(--inter);
+  background-color: black;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 .chatbot-content,
 .landing-page-content {
   background-color: var(--primary-black);
+  background-color: black;
   margin: 0 auto;
 }
 
@@ -156,11 +158,11 @@ body {
 /********* HEADINGS **********/
 .hero h1,
 .hero h2 {
-  font-size: clamp(2.5rem, 2rem + 2.5vw, 4.5rem);
+  font-size: clamp(3rem, 2rem + 2.5vw, 4.5rem);
   color: var(--headings);
   line-height: 115%;
   font-weight: bold;
-  font-family: var(--mona);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 h2 {
@@ -168,656 +170,122 @@ h2 {
   color: var(--headings);
   font-weight: bold;
   line-height: 115%;
-  font-family: var(--mona);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 h3 {
   color: var(--headings);
   font-size: 24px;
   line-height: 115%;
-  font-family: var(--mona);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.landing-page-content {
+  position: relative;
+  overflow-x: hidden;
+  z-index: 1;
+}
+
+.landing-page-content header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 5rem auto 10rem auto;
+}
+.landing-page-content header .aura {
+  /* Container */
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: rgba(152, 16, 250, 0.5);
+  filter: blur(130px);
+  border-radius: 33554400px;
+  top: 35rem;
+  left: clamp(0rem, -17.9104rem + 89.5522vw, 150rem);
+  z-index: -1;
+}
+.landing-page-content header .aura-2 {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  background: rgba(53, 50, 234, 0.6);
+  filter: blur(150px);
+  border-radius: 33554400px;
+  top: 25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
+}
+.landing-page-content header img {
+  width: 4rem;
+  margin-bottom: 1rem;
+}
+.landing-page-content header h2 {
+  background: linear-gradient(90deg, #51A2FF 35%, #C27AFF 50%, #FB64B6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+.landing-page-content header p {
+  margin: 1rem 0 2rem 0;
+}
+.landing-page-content header .button-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  gap: 1rem;
+}
+.landing-page-content header .button-container .chat-now {
+  margin-bottom: 1rem;
+  background-color: #155DFC;
+  color: white;
+  max-width: 20rem;
+}
+.landing-page-content header .button-container .learn-more {
+  max-width: 20rem;
+}
+.landing-page-content header .button-container .chat-now {
+  box-shadow: 0px 10px 15px -3px rgba(255, 255, 255, 0.2), 0px 4px 6px -4px rgba(255, 255, 255, 0.2);
+  margin: unset;
 }
 
 /* hero content */
-.hero {
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  padding-bottom: clamp(3rem, -0.2542rem + 16.2712vw, 15rem);
-  margin-bottom: 10rem;
-}
-
-.hero .span4 {
-  display: block;
-}
-
-.hero img {
-  margin: 0rem 0 1rem 0;
-  width: clamp(4.0625rem, 3.267rem + 3.9773vw, 6.25rem);
-  height: auto;
-}
-
-.hero h1 {
-  margin-bottom: 3rem;
-}
-
-.hero h2 {
-  margin-bottom: 1rem;
-}
-
-.hero p {
-  margin-bottom: 1.5rem;
-  max-width: 60ch;
-}
-
 /* hero grid */
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: linear-gradient(to right, var(--grid) 3px, transparent 1px), linear-gradient(to bottom, var(--grid) 3px, transparent 1px);
-  background-size: 70px 70px;
-  z-index: -3;
-}
-
-/******************** HERO IMAGE/GRID MEDIA QUERIES ********************/
-.hero::after {
-  content: "";
-  position: absolute;
-  top: 2rem;
-  right: -10rem;
-  background-image: url("../img/desktop-images/desktop-chatbox.svg");
-  z-index: 3;
-  width: 285px;
-  height: 285px;
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-
-@media (width >= 370px) {
-  .hero::after {
-    content: "";
-    position: absolute;
-    top: 2rem;
-    right: -8rem;
-    background-image: url("../img/desktop-images/desktop-chatbox.svg");
-    z-index: 3;
-    width: 295px;
-    height: 295px;
-    background-repeat: no-repeat;
-  }
-}
-@media (width >= 420px) {
-  .hero::after {
-    content: "";
-    position: absolute;
-    top: 2rem;
-    right: -6rem;
-    background-image: url("../img/desktop-images/desktop-chatbox.svg");
-    z-index: 3;
-    width: 300px;
-    height: 300px;
-    background-repeat: no-repeat;
-  }
-}
-@media (width >= 450px) {
-  .hero::after {
-    content: "";
-    position: absolute;
-    top: 2rem;
-    right: -6rem;
-    background-image: url("../img/desktop-images/desktop-chatbox.svg");
-    z-index: 3;
-    width: 320px;
-    height: 320px;
-    background-repeat: no-repeat;
-  }
-}
-@media (width >= 500px) {
-  .hero::after {
-    content: "";
-    position: absolute;
-    top: 2rem;
-    right: -3rem;
-    background-image: url("../img/desktop-images/desktop-chatbox.svg");
-    z-index: 3;
-    width: 320px;
-    height: 320px;
-    background-repeat: no-repeat;
-  }
-}
-@media (width >= 550px) {
-  .hero::after {
-    content: "";
-    position: absolute;
-    top: 7rem;
-    right: -29rem;
-    background-image: url("../img/desktop-images/desktop-chatbox.svg");
-    z-index: 3;
-    width: 600px;
-    height: 600px;
-    background-repeat: no-repeat;
-  }
-  .hero {
-    padding-top: 4.5rem;
-  }
-  .hero h2 {
-    max-width: 14ch;
-  }
-  .hero .span4 {
-    display: inline;
-  }
-  .hero h1 {
-    margin-bottom: unset;
-  }
-  .hero p {
-    max-width: 28ch;
-  }
-  .hero img {
-    margin-bottom: 2rem;
-  }
-  /* hero grid */
-  .hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: linear-gradient(to right, var(--grid) 3px, transparent 1px), linear-gradient(to bottom, var(--grid) 3px, transparent 1px);
-    background-size: 100px 100px;
-    z-index: -3;
-  }
-}
-@media (width >= 600px) {
-  .hero::after {
-    content: "";
-    position: absolute;
-    top: 7rem;
-    right: -27rem;
-    background-image: url("../img/desktop-images/desktop-chatbox.svg");
-    z-index: 3;
-    width: 620px;
-    height: 620px;
-    background-repeat: no-repeat;
-  }
-  .hero p {
-    max-width: 32ch;
-  }
-}
-@media (width >= 630px) {
-  .hero::after {
-    content: "";
-    position: absolute;
-    top: 7rem;
-    right: -27rem;
-    background-image: url("../img/desktop-images/desktop-chatbox.svg");
-    z-index: 3;
-    width: 640px;
-    height: 640px;
-    background-repeat: no-repeat;
-  }
-  .hero p {
-    max-width: 32ch;
-  }
-}
-@media (width >= 680px) {
-  .hero::after {
-    content: "";
-    position: absolute;
-    top: 7rem;
-    right: -26rem;
-    background-image: url("../img/desktop-images/desktop-chatbox.svg");
-    z-index: 3;
-    width: 660px;
-    height: 660px;
-    background-repeat: no-repeat;
-  }
-}
-@media (width >= 750px) {
-  .hero::after {
-    content: "";
-    position: absolute;
-    top: 7rem;
-    right: -23rem;
-    background-image: url("../img/desktop-images/desktop-chatbox.svg");
-    z-index: 3;
-    width: 680px;
-    height: 680px;
-    background-repeat: no-repeat;
-  }
-  /* hero grid */
-  .hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: linear-gradient(to right, var(--grid) 3px, transparent 1px), linear-gradient(to bottom, var(--grid) 3px, transparent 1px);
-    background-size: 130px 130px;
-    z-index: -3;
-  }
-}
-@media (width >= 840px) {
-  .hero::after {
-    content: "";
-    position: absolute;
-    top: 7rem;
-    right: -24rem;
-    background-image: url("../img/desktop-images/desktop-chatbox.svg");
-    z-index: 3;
-    width: 700px;
-    height: 700px;
-    background-repeat: no-repeat;
-  }
-  .hero p {
-    max-width: 40ch;
-  }
-}
-@media (width >= 920px) {
-  .hero::after {
-    content: "";
-    position: absolute;
-    top: 7rem;
-    right: -24rem;
-    background-image: url("../img/desktop-images/desktop-chatbox.svg");
-    z-index: 3;
-    width: 720px;
-    height: 720px;
-    background-repeat: no-repeat;
-  }
-  .hero h2 {
-    max-width: 20ch;
-  }
-  .hero p {
-    max-width: 40ch;
-  }
-  .hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: linear-gradient(to right, var(--grid) 3px, transparent 1px), linear-gradient(to bottom, var(--grid) 3px, transparent 1px);
-    background-size: 160px 160px;
-    z-index: -3;
-  }
-}
-@media (width >= 1000px) {
-  .hero::after {
-    content: "";
-    position: absolute;
-    top: 5rem;
-    right: -28rem;
-    background-image: url("../img/desktop-images/desktop-chatbox.svg");
-    z-index: 3;
-    width: 800px;
-    height: 800px;
-    background-repeat: no-repeat;
-  }
-  .hero h2 {
-    max-width: 20ch;
-  }
-  .hero p {
-    max-width: 45ch;
-  }
-}
-@media (width >= 1100px) {
-  .hero::after {
-    content: "";
-    position: absolute;
-    top: 5rem;
-    right: -24rem;
-    background-image: url("../img/desktop-images/desktop-chatbox.svg");
-    z-index: 3;
-    width: 820px;
-    height: 820px;
-    background-repeat: no-repeat;
-  }
-  .hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: linear-gradient(to right, var(--grid) 3px, transparent 1px), linear-gradient(to bottom, var(--grid) 3px, transparent 1px);
-    background-size: 190px 190px;
-    z-index: -3;
-  }
-}
-@media (width >= 1200px) {
-  .hero::after {
-    content: "";
-    position: absolute;
-    top: 5rem;
-    right: -23rem;
-    background-image: url("../img/desktop-images/desktop-chatbox.svg");
-    z-index: 3;
-    width: 840px;
-    height: 840px;
-    background-repeat: no-repeat;
-  }
-  .hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: linear-gradient(to right, var(--grid) 3px, transparent 1px), linear-gradient(to bottom, var(--grid) 3px, transparent 1px);
-    background-size: 190px 190px;
-    z-index: -3;
-  }
-}
-@media (width >= 1300px) {
-  .hero::after {
-    content: "";
-    position: absolute;
-    top: 5rem;
-    right: -18rem;
-    background-image: url("../img/desktop-images/desktop-chatbox.svg");
-    z-index: 3;
-    width: 860px;
-    height: 860px;
-    background-repeat: no-repeat;
-  }
-  .hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: linear-gradient(to right, var(--grid) 3px, transparent 1px), linear-gradient(to bottom, var(--grid) 3px, transparent 1px);
-    background-size: 240px 240px;
-    z-index: -3;
-  }
-}
-@media (width >= 1400px) {
-  .hero::after {
-    content: "";
-    position: absolute;
-    top: 4.5rem;
-    right: -15rem;
-    background-image: url("../img/desktop-images/desktop-chatbox.svg");
-    z-index: 3;
-    width: 860px;
-    height: 860px;
-    background-repeat: no-repeat;
-  }
-  .hero p {
-    max-width: 58ch;
-  }
-}
-@media (width >= 1500px) {
-  .hero::after {
-    content: "";
-    position: absolute;
-    top: 5rem;
-    right: -10rem;
-    background-image: url("../img/desktop-images/desktop-chatbox.svg");
-    z-index: 3;
-    width: 860px;
-    height: 860px;
-    background-repeat: no-repeat;
-  }
-}
-@media (width >= 1650px) {
-  .hero::after {
-    content: "";
-    position: absolute;
-    top: 5rem;
-    right: -5rem;
-    background-image: url("../img/desktop-images/desktop-chatbox.svg");
-    z-index: 3;
-    width: 860px;
-    height: 860px;
-    background-repeat: no-repeat;
-  }
-}
-@media (width >= 1750px) {
-  .hero::after {
-    content: "";
-    position: absolute;
-    top: 5rem;
-    right: -2rem;
-    background-image: url("../img/desktop-images/desktop-chatbox.svg");
-    z-index: 3;
-    width: 860px;
-    height: 860px;
-    background-repeat: no-repeat;
-  }
-}
-@media (width >= 1850px) {
-  .hero::after {
-    content: "";
-    position: absolute;
-    top: 5rem;
-    right: -1rem;
-    background-image: url("../img/desktop-images/desktop-chatbox.svg");
-    z-index: 3;
-    width: 1000px;
-    height: 1000px;
-    background-repeat: no-repeat;
-  }
-}
 /*************** Hero Design Auras *************/
-.aura {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  top: -2rem;
-  left: 1rem;
-  background: radial-gradient(circle, rgba(29, 40, 236, 0.8) 0%, rgba(29, 40, 236, 0) 70%);
-  filter: blur(10px);
-  opacity: 0.4;
-  z-index: -3;
-}
-
-.aura-2 {
-  position: absolute;
-  width: 400px;
-  height: 400px;
-  top: 10rem;
-  left: -5rem;
-  background: radial-gradient(circle, rgba(29, 40, 236, 0.8) 0%, rgba(29, 40, 236, 0) 70%);
-  filter: blur(10px);
-  opacity: 0.3;
-  z-index: -3;
-}
-
-.aura-3 {
-  position: absolute;
-  width: 400px;
-  height: 400px;
-  top: 14rem;
-  left: 9rem;
-  background: radial-gradient(circle, rgba(29, 40, 236, 0.8) 0%, rgba(29, 40, 236, 0) 70%);
-  filter: blur(10px);
-  opacity: 0.3;
-  z-index: -3;
-}
-
-/********** Hero/Header Aura Media queries **********/
-@media (width >= 550px) {
-  .aura-4 {
-    position: absolute;
-    transform: rotate(25deg);
-    width: 70%;
-    height: 600px;
-    top: -3rem;
-    left: 55%;
-    background: linear-gradient(to right, rgba(29, 40, 236, 0.8) 0%, rgba(29, 40, 236, 0) 70%);
-    filter: blur(85px);
-    opacity: 0.7;
-    z-index: -3;
-  }
-  .aura-3 {
-    display: none;
-  }
-  .aura-2 {
-    top: 7rem;
-    filter: blur(20px);
-  }
-  .aura {
-    filter: blur(60px);
-    width: 400px;
-    height: 400px;
-    left: 0rem;
-  }
-}
-@media (width > 700px) {
-  .aura {
-    width: 600px;
-    height: 600px;
-    left: -6rem;
-  }
-  .aura-2 {
-    display: none;
-  }
-  .aura-4 {
-    top: -1rem;
-    height: 700px;
-    filter: blur(120px);
-  }
-}
-@media (width > 950px) {
-  .aura {
-    width: 800px;
-    height: 500px;
-    left: -10rem;
-    top: 1.5rem;
-  }
-}
-@media (width > 1050px) {
-  .aura {
-    width: 1000px;
-    height: 400px;
-    left: -15rem;
-    top: 2.5rem;
-  }
-  .aura-4 {
-    height: 800px;
-    top: -3rem;
-    filter: blur(110px);
-  }
-}
-@media (width > 1200px) {
-  .aura {
-    width: 1200px;
-    height: 400px;
-    left: -20rem;
-    top: 5rem;
-  }
-}
-@media (width > 1350px) {
-  .aura {
-    width: 1400px;
-    height: 400px;
-    left: -20rem;
-    top: 5rem;
-  }
-}
-@media (width > 1600px) {
-  .aura-4 {
-    top: -2rem;
-    height: 900px;
-    transform: rotate(45deg);
-    width: 40%;
-    left: 60%;
-  }
-}
 /********** Footer Design Auras **********/
-.footer-aura {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  left: -4rem;
-  background: radial-gradient(circle, rgba(29, 40, 236, 0.8) 0%, rgba(29, 40, 236, 0) 70%);
-  filter: blur(10px);
-  opacity: 0.3;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.footer-aura-1 {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  left: 8rem;
-  background: radial-gradient(circle, rgba(29, 40, 236, 0.8) 0%, rgba(29, 40, 236, 0) 70%);
-  filter: blur(30px);
-  opacity: 0.3;
-  z-index: 2;
-  padding-top: 22rem;
-  pointer-events: none;
-}
-
 .footer-aura-2 {
+  /* Container */
   position: absolute;
-  width: 200px;
-  height: 200px;
-  margin-top: 14rem;
-  left: -3rem;
-  background: radial-gradient(circle, rgba(29, 40, 236, 0.8) 0%, rgba(29, 40, 236, 0) 70%);
-  filter: blur(40px);
-  opacity: 0.6;
-  z-index: 2;
-  pointer-events: none;
+  width: 400px;
+  height: 400px;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -3rem;
+  background: rgba(21, 93, 252, 0.4);
+  filter: blur(150px);
+  opacity: 0.4;
+  border-radius: 33554400px;
 }
 
-@media (width >= 420px) {
-  .footer-aura-1 {
-    width: 400px;
-  }
-}
-@media (width >= 520px) {
-  .footer-aura-1 {
-    width: 200px;
-    height: 1400px;
-    background: linear-gradient(to right, rgba(29, 40, 236, 0.8) 0%, rgba(29, 40, 236, 0) 70%);
-    filter: blur(85px);
-    opacity: 0.7;
-    padding-top: unset;
-    left: 35rem;
-    transform: rotate(65deg);
-    top: -35rem;
-  }
-  .footer-aura-2 {
-    display: none;
-  }
-}
-@media (width > 630px) {
-  .footer-aura-1 {
-    width: 800px;
-    height: 1500px;
-    top: -20rem;
-    left: 0rem;
-    opacity: 0.3;
-  }
-  .footer-aura {
-    display: none;
-  }
-}
-@media (width > 840px) {
-  .footer-aura-1 {
-    width: 800px;
-    height: 1500px;
-    top: -15rem;
-    left: 5rem;
-    opacity: 0.3;
-  }
-}
-@media (width > 1290px) {
-  .footer-aura-1 {
-    width: 800px;
-    height: 1500px;
-    top: -15rem;
-    left: 17rem;
-    opacity: 0.3;
-  }
-}
-@media (width > 1640px) {
-  .footer-aura-1 {
-    width: 1000px;
-    height: 1500px;
-    top: -10rem;
-    left: 17rem;
-    opacity: 0.3;
-  }
-}
 /* hero buttons */
 .chat-now {
-  color: #fff;
-  background-color: var(--primary-purple);
-  padding: 0.6rem 1rem;
-  border-radius: 7px;
-  margin-right: 1rem;
+  color: white;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 30px;
+  background-color: #155DFC;
+  font-size: 18px;
+  max-width: 30rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.chat-now:hover {
+  transform: scale(1.02);
+  filter: brightness(0.9);
 }
 
 .chat-now:hover,
@@ -827,6 +295,18 @@ h3 {
 
 .learn-more {
   color: #fff;
+  border: 0.1px solid rgba(255, 255, 255, 0.2);
+  width: 100%;
+  padding: 1rem;
+  border-radius: 30px;
+  font-size: 18px;
+  max-width: 30rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.learn-more:hover {
+  transform: scale(1.02);
+  filter: brightness(0.9);
+  background-color: rgba(44, 42, 42, 0.4470588235);
 }
 
 /* tech stack section card buttons */
@@ -996,7 +476,9 @@ h3 {
   }
 }
 .tech-stack {
-  margin-bottom: 8rem;
+  white-space: normal; /* Allows text to wrap onto multiple lines */
+  word-break: normal; /* Forces a break at the exact character the edge is hit */
+  overflow-wrap: anywhere;
 }
 
 .tech-stack > .tech-header p {
@@ -1064,15 +546,69 @@ h3 {
 }
 
 footer {
+  position: relative;
   overflow: hidden;
+  text-align: center;
+}
+footer::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 60%;
+  background: linear-gradient(180deg, #000000 0%, rgba(53, 50, 234, 0.5058823529), #000000 100%);
+  position: absolute;
+  filter: blur(100px);
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+}
+footer h2 {
+  font-size: 60px;
+}
+footer h2:nth-of-type(2) {
+  background: linear-gradient(90deg, #51A2FF 35%, #C27AFF 50%, #FB64B6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+footer > div > div .grid-container > div p {
+  color: var(--text-gray);
+  font-weight: 200;
+}
+footer .chat-now {
+  margin-bottom: 1rem;
+  box-shadow: 0px 10px 15px -3px rgba(255, 255, 255, 0.2), 0px 4px 6px -4px rgba(255, 255, 255, 0.2);
+}
+footer .button-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+}
+footer .button-container button {
+  width: 100%;
+  max-width: 40rem;
+  flex: 1;
+}
+footer .button-container a {
+  width: 100%;
+  max-width: 40rem;
+  flex: 1;
+}
+footer .content-container {
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: anywhere;
 }
 
+/* Container */
 footer > div {
-  padding-top: 15rem;
+  padding-top: 3rem;
 }
 
 footer p {
-  margin: 0.5rem 0 1.25rem 0;
+  margin: 2rem 0;
 }
 
 footer p:last-of-type {
@@ -1084,10 +620,12 @@ footer .grid-container {
   z-index: 1;
   padding: 8rem 0 4rem 0;
   margin-bottom: 10rem;
+  overflow: visible;
 }
 
 .aura-container {
   position: relative;
+  overflow: visible;
 }
 
 .github {
@@ -1104,48 +642,6 @@ footer hr {
 @media (width >= 735px) {
   footer .content-container {
     text-align: center;
-  }
-}
-.grid-container::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: linear-gradient(to right, var(--grid) 3px, transparent 1px), linear-gradient(to bottom, var(--grid) 3px, transparent 1px);
-  background-size: 70px 70px;
-  z-index: -22;
-  margin: 0 -10rem;
-}
-
-@media (width > 540px) {
-  /* footer grid */
-  .grid-container::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: linear-gradient(to right, var(--grid) 3px, transparent 1px), linear-gradient(to bottom, var(--grid) 3px, transparent 1px);
-    background-size: 100px 100px;
-    z-index: -22;
-    margin: 0 -10rem;
-  }
-}
-@media (width > 750px) {
-  .grid-container::before {
-    background-size: 130px 130px;
-  }
-}
-@media (width > 920px) {
-  .grid-container::before {
-    background-size: 160px 160px;
-  }
-}
-@media (width > 1200px) {
-  .grid-container::before {
-    background-size: 190px 190px;
-  }
-}
-@media (width > 1300px) {
-  .grid-container::before {
-    background-size: 240px 240px;
   }
 }
 /*Flexes the navigation against the header and chat area on desktop view simulating a dashboard*/
@@ -1525,6 +1021,7 @@ nav .nav-footer p:focus {
   background-color: var(--card-bg);
   width: 100%;
   padding: 0.75rem 1rem 0.75rem 1rem;
+  background-color: black;
 }
 @media (width >= 800px) {
   .chatbot-content .chat-area footer {
@@ -1536,7 +1033,6 @@ nav .nav-footer p:focus {
 }
 @media (width >= 800px) {
   .chatbot-content .chat-area footer {
-    background-color: var(--primary-black);
     width: 80%;
   }
 }
@@ -1639,6 +1135,7 @@ nav .nav-footer p:focus {
   width: 100%;
   height: 100%;
   background-color: var(--primary-black);
+  background-color: black;
   border: 1px solid var(--chatbot-border);
   border-radius: 16px;
   color: white;
@@ -1646,6 +1143,7 @@ nav .nav-footer p:focus {
   outline: none;
   position: relative;
   z-index: 2;
+  text-align: left;
 }
 .chatbot-content .chat-area footer form input::-moz-placeholder {
   color: var(--chatbot-darkgray);

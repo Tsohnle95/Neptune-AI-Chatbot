@@ -5,11 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neptune AI | A Friendly, Locally Hosted Chatbot</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap"
-        rel="stylesheet">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/main.js" defer></script>
@@ -18,6 +13,7 @@
 <body>
     <!--landing page content-->
     <div class="landing-page-content">
+        <!-- <div class="aura"></div> -->
         <!--Header/Hero-->
         <header class="hero inner-container">
             <!--blue background auras absolutely positioned-->
@@ -30,19 +26,16 @@
             <div class="aura"></div>
 
             <img src="img/svg/neptune-icon.svg" alt="Neptune AI star logo.">
-            <h1>Neptune <span class="span4">AI</span></h1>
-            <h2><span class="span5">A Self </span><span class="span1">Hosted</span> <span class="span2">Large</span>
-                <span class="span3">Language Model</span>
-            </h2>
-
-            <p>Query Neptune; a locally hosted Large Language Model utilizing Gemma2:2b: a light-weight yet
-                high-performing
-                and efficient model packing 2 billion parameters.</p>
-
+            <h1>Neptune AI</h1>
+            <h2>Your friendly AI Assistant</h2>
+            <p>Query Neptune; my locally running llm using llama3.2:1b, a 1.3 gb model with 1 billion parameters.</p>
+            <div class="button-container">
             <button class="chat-now">Chat Now</button>
 
-            <button class="learn-more">Learn More →</button>
-
+            <a href="https://github.com/Tsohnle95" class="learn-more">
+            Learn More
+            </a>
+                </div>
         </header>
         <!--End of Header/Hero-->
 
@@ -59,16 +52,16 @@
 
 
             <!--Responsive Section-->
-            <section class="responsive-by-design">
-                <!--Responsive by design div-->
+            <!-- <section class="responsive-by-design"> -->
+            <!--Responsive by design div-->
 
-                <div class="responsive">
+            <!-- <div class="responsive">
                     <h2>Responsive by Design</h2>
                     <p>Neptune AI isn’t just scaled down; it’s reimagined for every screen. Start your conversation on a
                         desktop and continue on the go with zero friction.</p>
                 </div>
 
-                <!--Desktop view div-->
+
                 <div class="desktop-view">
                     <div class="flex-container">
                         <div>
@@ -88,7 +81,7 @@
                 </div>
 
 
-                <!--Mobile view div-->
+
                 <div class="mobile-view">
                     <div>
                         <h2>Mobile View: Fluid & Responsive</h2>
@@ -101,8 +94,9 @@
                         <img src="img/mobile-images/mobile.svg" alt="A view of the chatbot page on mobile view.">
                     </div>
                 </div>
-                <!--End of Responsive Section-->
-            </section>
+                
+            </section> -->
+            <!--End of Responsive Section-->
 
 
 
@@ -180,7 +174,7 @@
 
         <!--Footer-->
         <footer class="inner-container">
-            <div>
+            <div class="footer-design-container">
                 <div class="aura-container">
                     <!--Blue Auras absolutely positioned-->
                     <div class="footer-aura"></div>
@@ -190,21 +184,24 @@
                     <div class="grid-container">
 
                         <div class="content-container">
-                            <h2>Boost your productivity.</h2>
-                            <h2>Launch into a new orbit with Neptune.</h2>
-                            <p>Powered by Gemma2:2b • 2B Parameters • 100% Locally Hosted</p>
-
-                            <button class="chat-now">Chat Now</button>
-
-                            <button class="learn-more">Learn More →</button>
+                            <h2>Ready to</h2>
+                            <h2>launch?</h2>
+                            <p>Experience the future of private AI.</p>
+                            <div class="button-container">
+                                <button class="chat-now">Chat Now</button>
+                                <!-- <button class="chat-now">Chat Now</button> -->
+                                <a href="https://github.com/Tsohnle95" target="_blank">
+                                    <button class="learn-more">Learn More </button>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <hr>
+                <!-- <hr> -->
                 <div class="github">
                     <a href="https://github.com/Tsohnle95" target="_blank">
-                        <p>My Github</p>
+                        <!-- <p>My Github</p> -->
                     </a>
 
                     <a href="https://github.com/Tsohnle95" target="blank">
@@ -461,7 +458,7 @@
                     </footer>
                 </div>
 
-                
+
                 <!-- click here to return to the landing page. -->
             </div> <!--end of chatbot content-->
         </div>

@@ -1,5 +1,8 @@
 .tech-stack {
-    margin-bottom: 8rem;
+    // margin-bottom: 8rem;
+    white-space: normal;      /* Allows text to wrap onto multiple lines */
+        word-break:normal;    /* Forces a break at the exact character the edge is hit */
+        overflow-wrap: anywhere;
 }
 
 .tech-stack>.tech-header p {
