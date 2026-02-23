@@ -1,7 +1,8 @@
 /********* HEADINGS **********/
 .hero h1,
 .hero h2 {
-    font-size: clamp(3rem, 2rem + 2.5vw, 4.5rem);
+    // font-size: clamp(3rem, 2rem + 2.5vw, 4.5rem);
+    font-size: clamp(3.75rem, 3.3971rem + 1.7647vw, 4.5rem);
    color: var(--headings);
     line-height: 115%;
     font-weight: bold;
