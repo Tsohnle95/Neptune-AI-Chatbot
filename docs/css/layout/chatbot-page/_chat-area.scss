@@ -24,6 +24,7 @@
             align-items: center;
             gap: .5rem;
 
+
             p:first-of-type {
                 font-size: clamp(1rem, 0.4167rem + 2.9167vw, 1.875rem);
             }
@@ -37,7 +38,7 @@
             }
 
             img {
-                width: 4rem;
+                width: clamp(2.5rem, -1.1136rem + 10.9091vh, 4rem);
             }
 
             p {
@@ -94,19 +95,20 @@
                 // background-color: var(--chatbot-suggestion-background);
                 padding: .5rem;
                 &>div .recommendation-content {
-                    font-size: 14px;
+                    font-size: clamp(0.75rem, 0.6071rem + 0.7143vw, 0.875rem);
                 }
                 &>div>div {
                     display: flex;
                     gap: .5rem;
                     p {
                         color: white;
-                        font-size: 16px;
+                        font-size: clamp(0.875rem, 0.7321rem + 0.7143vw, 1rem);
+                        margin-bottom: clamp(0rem, -0.3333rem + 1.6667vw, 0.5rem);
                     }
                 }
 
                 @media (width >=800px) {
-                    padding: 1.5rem;
+                    padding: 1rem;
                 }
 
                 width: clamp(18rem, 13.3333rem + 23.3333vw, 25rem);
