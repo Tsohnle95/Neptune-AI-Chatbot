@@ -918,7 +918,7 @@ nav .nav-footer p:focus {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 .chatbot-content .chat-area .chat-content-div > .hi-neptune p:first-of-type {
   font-size: clamp(1rem, 0.4167rem + 2.9167vw, 1.875rem);
@@ -943,6 +943,7 @@ nav .nav-footer p:focus {
 @media (width >= 800px) {
   .chatbot-content .chat-area .chat-content-div .recommendation-flex-main-container {
     gap: 1.5rem;
+    margin-top: 1rem;
   }
 }
 .chatbot-content .chat-area .chat-content-div .recommendation-flex-container {
@@ -976,12 +977,6 @@ nav .nav-footer p:focus {
 .chatbot-content .chat-area .chat-content-div .recommendation-flex-container > .ai-chat-recommendation > div > div p {
   color: white;
   font-size: clamp(0.875rem, 0.7321rem + 0.7143vw, 1rem);
-  margin-bottom: clamp(0rem, -0.3333rem + 1.6667vw, 0.5rem);
-}
-@media (width >= 800px) {
-  .chatbot-content .chat-area .chat-content-div .recommendation-flex-container > .ai-chat-recommendation {
-    padding: 1rem;
-  }
 }
 .chatbot-content .chat-area .chat-content-div .recommendation-flex-container > .ai-chat-recommendation {
   width: clamp(18rem, 13.3333rem + 23.3333vw, 25rem);
@@ -1137,7 +1132,7 @@ nav .nav-footer p:focus {
   border: 1px solid var(--chatbot-border);
   border-radius: 16px;
   color: white;
-  padding: clamp(1rem, -0.6667rem + 5.3333vw, 2rem) 3.5rem clamp(1rem, -0.6667rem + 5.3333vw, 2rem) 1rem;
+  padding: clamp(1rem, -0.6667rem + 5.3333vw, 1.5rem) 3.5rem clamp(1rem, -0.6667rem + 5.3333vw, 1.5rem) 1rem;
   outline: none;
   position: relative;
   z-index: 2;
