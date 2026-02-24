@@ -965,7 +965,12 @@ nav .nav-footer p:focus {
   gap: 0.5rem;
   border: 1px solid var(--chatbot-border);
   border-radius: 14px;
-  padding: 1rem;
+  padding: 0.5rem;
+}
+@media (width > 800px) {
+  .chatbot-content .chat-area .chat-content-div .recommendation-flex-container > .ai-chat-recommendation {
+    padding: 1rem;
+  }
 }
 .chatbot-content .chat-area .chat-content-div .recommendation-flex-container > .ai-chat-recommendation > div .recommendation-content {
   font-size: clamp(0.75rem, 0.6071rem + 0.7143vw, 0.875rem);

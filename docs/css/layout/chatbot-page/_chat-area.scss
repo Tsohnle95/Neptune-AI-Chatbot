@@ -84,7 +84,10 @@
                 border: 1px solid var(--chatbot-border);
                 border-radius: 14px;
                 // background-color: var(--chatbot-suggestion-background);
-                padding: 1rem;
+                padding: .5rem;
+                @media (width > 800px) {
+                    padding: 1rem;
+                }
                 &>div .recommendation-content {
                     font-size: clamp(0.75rem, 0.6071rem + 0.7143vw, 0.875rem);
                 }
