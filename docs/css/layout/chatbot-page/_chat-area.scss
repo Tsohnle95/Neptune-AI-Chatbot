@@ -22,7 +22,10 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 1rem;
+            gap: .5rem;
+            @media (width > 800px) {
+                gap: 1rem;
+            }
 
 
             p:first-of-type {
