@@ -87,12 +87,28 @@
             }
 
             &>.ai-chat-recommendation {
-                display: flex;
+                // display: flex;
                 gap: .5rem;
                 border: 1px solid var(--chatbot-border);
                 border-radius: 14px;
                 // background-color: var(--chatbot-suggestion-background);
-                padding: 1rem;
+                padding: .5rem;
+                &>div .recommendation-content {
+                    font-size: 14px;
+                }
+                &>div>div {
+                    display: flex;
+                    gap: .5rem;
+                    p {
+                        color: white;
+                        font-size: 16px;
+                    }
+                }
+
+                @media (width >=800px) {
+                    padding: 1.5rem;
+                }
+
                 width: clamp(18rem, 13.3333rem + 23.3333vw, 25rem);
                 cursor: pointer;
                 font-size: 12px;
@@ -239,7 +255,7 @@
                         border-radius: 50%;
                         border: 2px solid transparent;
                         // border-top: 2px solid rgb(255, 255, 255);
-                        
+
                         /* visible part */
                         animation: spin2 1.5s linear infinite;
                     }

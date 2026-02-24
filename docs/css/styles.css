@@ -981,11 +981,28 @@ nav .nav-footer p:focus {
   }
 }
 .chatbot-content .chat-area .chat-content-div .recommendation-flex-container > .ai-chat-recommendation {
-  display: flex;
   gap: 0.5rem;
   border: 1px solid var(--chatbot-border);
   border-radius: 14px;
-  padding: 1rem;
+  padding: 0.5rem;
+}
+.chatbot-content .chat-area .chat-content-div .recommendation-flex-container > .ai-chat-recommendation > div .recommendation-content {
+  font-size: 14px;
+}
+.chatbot-content .chat-area .chat-content-div .recommendation-flex-container > .ai-chat-recommendation > div > div {
+  display: flex;
+  gap: 0.5rem;
+}
+.chatbot-content .chat-area .chat-content-div .recommendation-flex-container > .ai-chat-recommendation > div > div p {
+  color: white;
+  font-size: 16px;
+}
+@media (width >= 800px) {
+  .chatbot-content .chat-area .chat-content-div .recommendation-flex-container > .ai-chat-recommendation {
+    padding: 1.5rem;
+  }
+}
+.chatbot-content .chat-area .chat-content-div .recommendation-flex-container > .ai-chat-recommendation {
   width: clamp(18rem, 13.3333rem + 23.3333vw, 25rem);
   cursor: pointer;
   font-size: 12px;
