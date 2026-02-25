@@ -970,11 +970,11 @@ nav .nav-footer p:focus {
   gap: 0.5rem;
   border: 1px solid var(--chatbot-border);
   border-radius: 14px;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
 }
 @media (width > 800px) {
   .chatbot-content .chat-area .chat-content-div .recommendation-flex-container > .ai-chat-recommendation {
-    padding: 1rem;
+    padding: 0.5rem 1.5rem;
   }
 }
 .chatbot-content .chat-area .chat-content-div .recommendation-flex-container > .ai-chat-recommendation > div .recommendation-content {
@@ -1094,13 +1094,12 @@ nav .nav-footer p:focus {
   background-color: var(--card-bg);
   background-color: white;
   border-radius: 50%;
-  height: 2rem;
-  width: 2rem;
+  height: 2.5rem;
+  width: 2.5rem;
   color: white;
   display: grid;
   place-items: center;
   position: relative;
-  margin-bottom: 0.25rem;
 }
 .chatbot-content .chat-area footer form .input-container button .abort-button::after {
   content: "";
@@ -1114,7 +1113,7 @@ nav .nav-footer p:focus {
 .chatbot-content .chat-area footer form .input-container button .abort-button::before {
   content: "";
   display: block;
-  width: 12px;
+  width: 16px;
   aspect-ratio: 1/1;
   background: rgb(255, 255, 255);
   background-color: var(--card-bg);

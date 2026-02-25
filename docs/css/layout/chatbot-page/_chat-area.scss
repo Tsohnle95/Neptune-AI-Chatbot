@@ -23,6 +23,7 @@
             flex-direction: column;
             align-items: center;
             gap: .5rem;
+
             @media (width > 800px) {
                 gap: 1rem;
             }
@@ -56,7 +57,7 @@
             display: flex;
             flex-direction: column;
             gap: .75rem;
-            
+
             @media (width >=800px) {
                 gap: 1.5rem;
                 margin-top: 1rem;
@@ -87,23 +88,25 @@
                 border: 1px solid var(--chatbot-border);
                 border-radius: 14px;
                 // background-color: var(--chatbot-suggestion-background);
-                padding: .5rem;
+                padding: .5rem 1rem;
+
                 @media (width > 800px) {
-                    padding: 1rem;
+                    padding: .5rem 1.5rem;
                 }
+
                 &>div .recommendation-content {
                     font-size: clamp(0.75rem, 0.6071rem + 0.7143vw, 0.875rem);
                 }
+
                 &>div>div {
                     display: flex;
                     gap: .5rem;
+
                     p {
                         color: white;
                         font-size: clamp(0.875rem, 0.7321rem + 0.7143vw, 1rem);
-                        @media (width > 800px) {
 
-
-                        }
+                        @media (width > 800px) {}
                     }
                 }
 
@@ -236,14 +239,14 @@
                         background-color: white;
 
                         border-radius: 50%;
-                        height: 2rem;
-                        width: 2rem;
+                        height: 2.5rem;
+                        width: 2.5rem;
                         // padding: 1rem;
                         color: white;
                         display: grid;
                         place-items: center;
                         position: relative;
-                        margin-bottom: .25rem;
+                        // margin-bottom: .25rem;
                     }
 
                     .abort-button::after {
@@ -261,7 +264,7 @@
                     .abort-button::before {
                         content: "";
                         display: block;
-                        width: 12px;
+                        width: 16px;
                         aspect-ratio: 1 / 1;
                         background: rgb(255, 255, 255);
                         background-color: var(--card-bg);
@@ -430,7 +433,7 @@
             white-space: pre-wrap;
             max-width: 100%;
         }
-        
+
 
         .chat-time {
             color: var(--chatbot-darkgray);
