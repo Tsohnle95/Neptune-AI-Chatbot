@@ -822,6 +822,8 @@ nav .nav-content::-webkit-scrollbar-thumb:hover {
 }
 nav .nav-content .nav-content-div {
   border-left: 3px solid transparent;
+  max-height: 86px;
+  overflow-y: hidden;
 }
 nav .nav-content .nav-content-div:hover, nav .nav-content .nav-content-div:focus {
   background-color: rgba(255, 255, 255, 0.03);
@@ -857,6 +859,7 @@ nav .nav-content .nav-content-div .chat-title {
 }
 nav .nav-content .nav-content-div .chat-text {
   color: var(--chatbot-darkgray);
+  margin-bottom: 1rem;
 }
 nav .nav-content .nav-content-div .chat-time {
   color: var(--chatbot-darkgray);

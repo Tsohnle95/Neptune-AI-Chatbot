@@ -10,6 +10,10 @@ const scrollContainer = document.querySelector('.scroll-container');
 let userChatDiv = document.querySelectorAll('.user-chat-div');
 const abortButton = document.querySelector('.abort-button');
 const submitButton = document.getElementById('submit');
+const navContentContainer = document.querySelector('.nav-content');
+
+
+
 
 
 
@@ -158,6 +162,34 @@ const createAiMessageDiv = (prompt) => {
     return aiChatDiv;
 }
 
+//creates nav-content-div populated with user and chatbot message history, and appends it to nav-content
+const createChatHistory = (aiMessage, userMessage) => {
+    const navContentDiv = document.createElement('div');
+    const navContentContainer = document.createElement('div');
+    const img = document.createElement('img');
+    img.src = 'img/svg/message.svg';
+    const messageBox = document.createElement('div');
+    const chatTitle = document.createElement('p');
+    const chatText = document.createElement('p');
+    const chatTime = document.createElement('p');
+
+    messageBox.append(chatTitle, chatText, chatTime);
+    navContentContainer.append(img, messageBox);
+    navContentDiv.appendChild(navContentContainer);
+
+    messageBox.classList.add('message-box');
+    navContentDiv.classList.add('nav-content-div');
+    navContentContainer.classList.add('nav-content-container');
+    chatTitle.classList.add('chat-title');
+    chatText.classList.add('chat-text');
+    chatTime.classList.add('chat-time');
+
+    chatText.textContent = aiMessage;
+    chatTitle.textContent = userMessage;
+
+    return navContentDiv;
+}
+
 // Helper to create a pause
 // const delay = (ms) => new Promise(res => setTimeout(res, ms));
 
@@ -175,6 +207,8 @@ Formatting rules (strict):
 `
     }
 ]
+
+let currentHistoryElement = null;
 
 let abortController = null;
 //handles form submission. builds user message div, adds input value to message element, and appends to scroll container.
@@ -215,7 +249,7 @@ form.addEventListener('submit', async (event) => {
 
     try {
         // const response = await fetch('http://localhost:3000/api/chat', {
-            const response = await fetch('https://mammal-capable-really.ngrok-free.app/api/chat', {
+        const response = await fetch('https://mammal-capable-really.ngrok-free.app/api/chat', {
             method: 'post',
             headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
             body: JSON.stringify({ messages: conversationHistory }),
@@ -269,7 +303,30 @@ form.addEventListener('submit', async (event) => {
 
         if (!signal.aborted) {
             conversationHistory.push({ role: "assistant", content: fullAiResponse });
+
+            if (!currentHistoryElement) {
+                // SCENARIO: First message of a new chat
+                currentHistoryElement = createChatHistory(fullAiResponse, message);
+                navContentContainer.appendChild(currentHistoryElement);
+            } else {
+                // SCENARIO: Adding to the same sidebar entry
+                const messageBox = currentHistoryElement.querySelector('.message-box');
+                const chatTime = currentHistoryElement.querySelector('.chat-time');
+
+                const newTitle = document.createElement('p');
+                newTitle.className = 'chat-title';
+                newTitle.textContent = message;
+
+                const newText = document.createElement('p');
+                newText.className = 'chat-text';
+                newText.textContent = fullAiResponse;
+
+                // Append new messages ABOVE the time element
+                messageBox.insertBefore(newTitle, chatTime);
+                messageBox.insertBefore(newText, chatTime);
+            }
         }
+
         // else {
         //     aiParagraph.textContent += " [Message stopped by user]";
         // }
@@ -328,7 +385,7 @@ submitPrompt.forEach(prompt => {
 
         try {
             // const response = await fetch('http://localhost:3000/api/chat', {
-                const response = await fetch('https://mammal-capable-really.ngrok-free.app/api/chat', {
+            const response = await fetch('https://mammal-capable-really.ngrok-free.app/api/chat', {
                 method: 'post',
                 headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
                 body: JSON.stringify({ messages: conversationHistory }),
@@ -413,3 +470,7 @@ observer.observe(scrollContainer, {
     childList: true,
     attributes: true     // watches for attribute changes (like class changes)
 });
+
+
+
+

@@ -209,6 +209,8 @@ nav {
 
         .nav-content-div {
             border-left: 3px solid transparent;
+            max-height: 86px;
+            overflow-y: hidden;
             // display: none;
 
             &:hover,
@@ -249,6 +251,7 @@ nav {
 
             .chat-text {
                 color: var(--chatbot-darkgray);
+                margin-bottom: 1rem;
             }
 
             .chat-time {
