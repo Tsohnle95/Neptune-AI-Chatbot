@@ -25,7 +25,8 @@ export const handleChat = async (req, res) => {
                 },
                 ...messages
             ],
-            model: "llama3-8b-8192", // Fast and lightweight for portfolio use
+            model: "llama-3.3-70b-versatile", 
+            // model: "llama-3.1-8b-instant",
             stream: true,
         });
 
