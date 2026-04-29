@@ -21,7 +21,7 @@ const navContentContainer = document.querySelector('.nav-content');
 //this updates the 'online' or 'offline' server status indicator under the title on the chat page
 const statusIndicator = document.querySelector('.server-status');
 // const API_URL = 'https://mammal-capable-really.ngrok-free.app/api/health';
-const API_URL = 'https://neptune-ai-chatbot.onrender.com';
+const API_URL = 'https://neptune-ai-chatbot.onrender.com/api/health';
 // const API_URL = 'http://localhost:3000/api/health';
 async function checkServerStatus() {
     try {
@@ -252,7 +252,7 @@ form.addEventListener('submit', async (event) => {
     const aiParagraph = newAiMessage.querySelector('.chat-content');
 
     try {
-        const response = await fetch('https://neptune-ai-chatbot.onrender.com', {
+        const response = await fetch('https://neptune-ai-chatbot.onrender.com/api/chat', {
         // const response = await fetch('http://localhost:3000/api/chat', {
         // const response = await fetch('https://mammal-capable-really.ngrok-free.app/api/chat', {
             method: 'post',
@@ -389,7 +389,7 @@ submitPrompt.forEach(prompt => {
         const aiParagraph = newAiMessage.querySelector('.chat-content');
 
         try {
-            const response = await fetch('https://neptune-ai-chatbot.onrender.com', {
+            const response = await fetch('https://neptune-ai-chatbot.onrender.com/api/chat', {
             // const response = await fetch('http://localhost:3000/api/chat', {
             // const response = await fetch('https://mammal-capable-really.ngrok-free.app/api/chat', {
                 method: 'post',
