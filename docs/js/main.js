@@ -31,7 +31,9 @@ async function checkServerStatus() {
         const response = await fetch(API_URL, {
             method: 'GET',
             signal: controller.signal,
-            headers: { 'ngrok-skip-browser-warning': 'true' }
+            headers: {
+                'ngrok-skip-browser-warning': 'true'
+            }
         });
 
         clearTimeout(timeoutId);
