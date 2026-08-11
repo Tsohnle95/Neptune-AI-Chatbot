@@ -4,19 +4,19 @@ Neptune AI is a full-stack AI Chatbot App built with Node.js, Express, HTML, CSS
 
 Originally, the backend and AI model were self-hosted on an old laptop. Due to resource limitations, the backend has been migrated and is now hosted on Render, a reliable hosting provider for Node.js backends.
 
-Users can send a prompt from the responsive front-end. The request is piped through the Node.js backend to the LLM (powered by Groq), which streams the response back through the pipeline to the user's interface.
+Users can send a prompt from the front-end. The request is piped through the Node.js backend to the LLM (powered by Groq), which streams the response back through the pipeline to the user's interface.
 
 **Live URL:** [https://tsohnle95.github.io/Neptune-AI-Chatbot/](https://tsohnle95.github.io/Neptune-AI-Chatbot/)
 
-## 🚀 Features
+## Features
 
 - **Decoupled Architecture:** Front-end and back-end are fully separated for better scalability and maintenance.
-- **AI Integration:** Backend is integrated with the Groq SDK for blazing-fast LLM responses.
-- **Streaming Responses:** The chatbot features real-time text streaming, similar to ChatGPT, providing an interactive user experience.
+- **AI Integration:** Backend is integrated with the Groq SDK for fast LLM responses.
+- **Streaming Responses:** The chatbot features real-time text streaming, similar to SOTA models, providing an interactive user experience.
 - **Responsive Design:** Built with modern CSS/Sass, offering a clean UI that scales beautifully across mobile and desktop devices.
 - **Rate Limiting:** The backend is protected with express-rate-limit to manage and prevent abuse.
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Front-End
 - **HTML5 & CSS3** (Styled with Sass)
@@ -30,7 +30,7 @@ Users can send a prompt from the responsive front-end. The request is piped thro
 - **Morgan & CORS** (For logging and cross-origin resource sharing)
 - Hosted on **Render**
 
-## 💻 Running the Project Locally
+## Running the Project Locally
 
 If you'd like to run Neptune AI locally, follow these steps:
 
@@ -68,7 +68,7 @@ npm run dev
 ```
 Navigate to the local URL provided by Vite (usually `http://localhost:5173`) to view the application.
 
-## 🗺️ Roadmap (Future Enhancements)
+## Roadmap (Future Enhancements)
 
 - Implement Markdown parsing to style the AI's output using markdown syntax.
 - Implement session memory / chat history using localstorage or a server-side database.
