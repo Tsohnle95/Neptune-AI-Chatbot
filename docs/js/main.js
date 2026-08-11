@@ -1,5 +1,3 @@
-console.log('Hello World!');
-
 // Global variables
 let pageOne = document.querySelector('.landing-page-content');
 let chatBotContent = document.querySelector('.chatbot-content');
@@ -12,6 +10,109 @@ const abortButton = document.querySelector('.abort-button');
 const submitButton = document.getElementById('submit');
 const navContentContainer = document.querySelector('.nav-content');
 
+// Initialize HistoryManager and render sidebar on DOM load
+function initializeHistory() {
+    historyManager.loadHistory();
+    renderHistorySidebar();
+    checkServerStatus();
+}
+
+// History Management
+class HistoryManager {
+    constructor() {
+        this.history = [];
+        this.currentChatId = null;
+        this.storageKey = 'neptune-chat-history';
+        this.loadHistory();
+    }
+
+    loadHistory() {
+        try {
+            const saved = localStorage.getItem(this.storageKey);
+            this.history = saved ? JSON.parse(saved) : [];
+        } catch (error) {
+            console.error('Error loading history:', error);
+            this.history = [];
+        }
+    }
+
+    saveHistory() {
+        try {
+            localStorage.setItem(this.storageKey, JSON.stringify(this.history));
+        } catch (error) {
+            console.error('Error saving history:', error);
+        }
+    }
+
+    createChatId() {
+        return Date.now().toString(36) + Math.random().toString(36).substr(2);
+    }
+
+    createChatSession(userMessage, aiMessage) {
+        const chatId = this.createChatId();
+        const session = {
+            id: chatId,
+            userMessage: userMessage,
+            aiMessage: aiMessage,
+            timestamp: Date.now(),
+            historyElements: []
+        };
+        this.history.unshift(session);
+        this.saveHistory();
+        return session;
+    }
+
+    getChat(id) {
+        return this.history.find(chat => chat.id === id);
+    }
+
+    getAllChats() {
+        return this.history;
+    }
+
+    updateChatHistoryElements(chatId, elements) {
+        const chat = this.getChat(chatId);
+        if (chat) {
+            chat.historyElements = elements;
+            this.saveHistory();
+        }
+    }
+
+    saveChatSession(userMessage, aiMessage) {
+        return this.createChatSession(userMessage, aiMessage);
+    }
+
+    deleteChat(id) {
+        this.history = this.history.filter(chat => chat.id !== id);
+        this.saveHistory();
+    }
+
+    clearAllHistory() {
+        this.history = [];
+        this.saveHistory();
+    }
+
+    exportHistory() {
+        return {
+            history: this.history,
+            exportDate: new Date().toISOString()
+        };
+    }
+
+    importHistory(data) {
+        try {
+            this.history = data.history || [];
+            this.saveHistory();
+            return true;
+        } catch (error) {
+            console.error('Error importing history:', error);
+            return false;
+        }
+    }
+}
+
+const historyManager = new HistoryManager();
+
 
 
 
@@ -21,8 +122,8 @@ const navContentContainer = document.querySelector('.nav-content');
 //this updates the 'online' or 'offline' server status indicator under the title on the chat page
 const statusIndicator = document.querySelector('.server-status');
 // const API_URL = 'https://mammal-capable-really.ngrok-free.app/api/health';
-const API_URL = 'https://neptune-ai-chatbot.onrender.com/api/health';
-// const API_URL = 'http://localhost:3000/api/health';
+const API_URL = 'http://localhost:3000/api/health';
+// const API_URL = 'https://neptune-ai-chatbot.onrender.com/api/health';
 async function checkServerStatus() {
     try {
         // implement a timeout so if the server doesn't respond, we don't wait forever
@@ -166,6 +267,22 @@ const createAiMessageDiv = (prompt) => {
     return aiChatDiv;
 }
 
+// Render history sidebar from stored data
+function renderHistorySidebar() {
+    navContentContainer.innerHTML = '';
+    const chats = historyManager.getAllChats();
+    
+    chats.forEach(chat => {
+        const historyElement = createChatHistoryElement(chat.aiMessage, chat.userMessage, chat.timestamp, chat.id);
+        historyElement.addEventListener('click', () => loadChatSession(chat.id));
+        historyElement.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            deleteChatSession(chat.id, historyElement);
+        });
+        navContentContainer.appendChild(historyElement);
+    });
+}
+
 //creates nav-content-div populated with user and chatbot message history, and appends it to nav-content
 const createChatHistory = (aiMessage, userMessage) => {
     const navContentDiv = document.createElement('div');
@@ -192,6 +309,138 @@ const createChatHistory = (aiMessage, userMessage) => {
     chatTitle.textContent = userMessage;
 
     return navContentDiv;
+}
+
+//creates sidebar history element with timestamp and delete button
+const createChatHistoryElement = (aiMessage, userMessage, timestamp, chatId) => {
+    const navContentDiv = document.createElement('div');
+    const navContentContainer = document.createElement('div');
+    const img = document.createElement('img');
+    img.src = 'img/svg/message.svg';
+    const messageBox = document.createElement('div');
+    const chatTitle = document.createElement('p');
+    const chatText = document.createElement('p');
+    const chatTime = document.createElement('p');
+    const deleteButton = document.createElement('button');
+
+    const timeAgo = getTimeAgo(timestamp);
+
+    messageBox.append(chatTitle, chatText, chatTime, deleteButton);
+    navContentContainer.append(img, messageBox);
+    navContentDiv.appendChild(navContentContainer);
+
+    messageBox.classList.add('message-box');
+    navContentDiv.classList.add('nav-content-div');
+    navContentContainer.classList.add('nav-content-container');
+    chatTitle.classList.add('chat-title');
+    chatText.classList.add('chat-text');
+    chatTime.classList.add('chat-time');
+    deleteButton.classList.add('delete-chat-btn');
+    deleteButton.innerHTML = '<img src="img/svg/trash.svg" alt="Delete">';
+
+    chatText.textContent = aiMessage;
+    chatTitle.textContent = userMessage;
+    chatTime.textContent = timeAgo;
+    navContentDiv.dataset.chatId = chatId;
+
+    deleteButton.addEventListener('click', (e) => {
+        e.stopPropagation();
+        deleteChatSession(chatId, navContentDiv);
+    });
+
+    return navContentDiv;
+}
+
+// Utility to format relative time
+function getTimeAgo(timestamp) {
+    const now = Date.now();
+    const diff = now - timestamp;
+    const minutes = Math.floor(diff / 60000);
+    const hours = Math.floor(diff / 3600000);
+    const days = Math.floor(diff / 86400000);
+
+    if (minutes < 1) return 'Just now';
+    if (minutes < 60) return `${minutes}m ago`;
+    if (hours < 24) return `${hours}h ago`;
+    if (days === 1) return 'Yesterday';
+    return `${days}d ago`;
+}
+
+// Load a specific chat session and display it in the main chat area
+function loadChatSession(chatId) {
+    const chat = historyManager.getChat(chatId);
+    if (!chat) return;
+    
+    // Clear current chat
+    conversationHistory = [{ role: "system", content: `
+You are Neptune, a friendly AI assistant.
+
+Formatting rules (strict):
+- Use short paragraphs (1–2 sentences max).
+- Insert a blank line between paragraphs and sentences.
+- Keep responses under 5 sentences unless asked for detail.
+` }];
+    
+    // Clear scroll container
+    scrollContainer.innerHTML = '';
+    
+    // Create user message div
+    const newChatMessage = createUserMessageDiv(chat.userMessage);
+    scrollContainer.appendChild(newChatMessage);
+    conversationHistory.push({ role: "user", content: chat.userMessage });
+    
+    // Create AI message div with typing effect
+    const newAiMessage = createAiMessageDiv("");
+    scrollContainer.appendChild(newAiMessage);
+    const aiParagraph = newAiMessage.querySelector('.chat-content');
+    
+    // Simulate the AI response with typing effect
+    const fullAiResponse = chat.aiMessage;
+    let currentIndex = 0;
+    const typeResponse = () => {
+        if (currentIndex < fullAiResponse.length) {
+            aiParagraph.textContent += fullAiResponse[currentIndex];
+            currentIndex++;
+            setTimeout(typeResponse, 10);
+        } else {
+            conversationHistory.push({ role: "assistant", content: fullAiResponse });
+        }
+    };
+    typeResponse();
+    
+    // Update UI state
+    chatContent.classList.add('hidden');
+    dialogueBox.classList.remove('hidden');
+    submitButton.querySelector('img').classList.add('hidden');
+    abortButton.classList.remove('hidden');
+}
+
+// Delete a chat session
+function deleteChatSession(chatId, element) {
+    historyManager.deleteChat(chatId);
+    renderHistorySidebar();
+    if (historyManager.getAllChats().length === 0) {
+        resetMainChatArea();
+    }
+}
+
+// Reset main chat area to initial state
+function resetMainChatArea() {
+    conversationHistory = [{ role: "system", content: `
+You are Neptune, a friendly AI assistant.
+
+Formatting rules (strict):
+- Use short paragraphs (1–2 sentences max).
+- Insert a blank line between paragraphs and sentences.
+- Keep responses under 5 sentences unless asked for detail.
+` }];
+    
+    scrollContainer.innerHTML = '';
+    chatContent.classList.remove('hidden');
+    dialogueBox.classList.add('hidden');
+    submitButton.querySelector('img').classList.remove('hidden');
+    abortButton.classList.add('hidden');
+    currentHistoryElement = null;
 }
 
 // Helper to create a pause
@@ -252,8 +501,8 @@ form.addEventListener('submit', async (event) => {
     const aiParagraph = newAiMessage.querySelector('.chat-content');
 
     try {
-        const response = await fetch('https://neptune-ai-chatbot.onrender.com/api/chat', {
-        // const response = await fetch('http://localhost:3000/api/chat', {
+        const response = await fetch('http://localhost:3000/api/chat', {
+        // const response = await fetch('https://neptune-ai-chatbot.onrender.com/api/chat', {
         // const response = await fetch('https://mammal-capable-really.ngrok-free.app/api/chat', {
             method: 'post',
             headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
@@ -308,38 +557,15 @@ form.addEventListener('submit', async (event) => {
 
         if (!signal.aborted) {
             conversationHistory.push({ role: "assistant", content: fullAiResponse });
-
-            if (!currentHistoryElement) {
-                // SCENARIO: First message of a new chat
-                currentHistoryElement = createChatHistory(fullAiResponse, message);
-                navContentContainer.appendChild(currentHistoryElement);
-            } else {
-                // SCENARIO: Adding to the same sidebar entry
-                const messageBox = currentHistoryElement.querySelector('.message-box');
-                const chatTime = currentHistoryElement.querySelector('.chat-time');
-
-                const newTitle = document.createElement('p');
-                newTitle.className = 'chat-title';
-                newTitle.textContent = message;
-
-                const newText = document.createElement('p');
-                newText.className = 'chat-text';
-                newText.textContent = fullAiResponse;
-
-                // Append new messages ABOVE the time element
-                messageBox.insertBefore(newTitle, chatTime);
-                messageBox.insertBefore(newText, chatTime);
-            }
+            historyManager.saveChatSession(message, fullAiResponse);
+            renderHistorySidebar();
         }
-
-        // else {
-        //     aiParagraph.textContent += " [Message stopped by user]";
-        // }
 
 
     } catch (error) {
-        if (error.name === 'AbortError') { // check this later, i dont think this error name is correct
+        if (error.name === 'AbortError') {
             console.log('User aborted the request.');
+            aiParagraph.innerText = "Message cancelled.";
             return;
         }
         console.error('Error', error);
@@ -365,7 +591,9 @@ abortButton.addEventListener('click', () => {
 const submitPrompt = document.querySelectorAll('.submit-prompt');
 submitPrompt.forEach(prompt => {
     prompt.addEventListener('click', async () => {
-        const message = prompt.querySelector('.recommendation-content').innerText;
+        const recContent = prompt.querySelector('.recommendation-content');
+        if (!recContent) return;
+        const message = recContent.innerText;
         if (!message.trim()) return;
         //create the user message div structure
         const newChatMessage = createUserMessageDiv(message);
@@ -389,8 +617,8 @@ submitPrompt.forEach(prompt => {
         const aiParagraph = newAiMessage.querySelector('.chat-content');
 
         try {
-            const response = await fetch('https://neptune-ai-chatbot.onrender.com/api/chat', {
-            // const response = await fetch('http://localhost:3000/api/chat', {
+            // const response = await fetch('https://neptune-ai-chatbot.onrender.com/api/chat', {
+            const response = await fetch('http://localhost:3000/api/chat', {
             // const response = await fetch('https://mammal-capable-really.ngrok-free.app/api/chat', {
                 method: 'post',
                 headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
@@ -434,11 +662,14 @@ submitPrompt.forEach(prompt => {
 
             if (!signal.aborted) {
                 conversationHistory.push({ role: "assistant", content: fullAiResponse });
+                historyManager.saveChatSession(message, fullAiResponse);
+                renderHistorySidebar();
             }
 
         } catch (error) {
             if (error.name === 'AbortError') {
                 console.log('User aborted the request.');
+                aiParagraph.innerText = "Message cancelled.";
                 return;
             }
             console.error('Error', error);
@@ -476,6 +707,19 @@ observer.observe(scrollContainer, {
     childList: true,
     attributes: true     // watches for attribute changes (like class changes)
 });
+
+// Initialize everything when DOM is loaded
+function initApp() {
+    // Wait for DOM to be fully loaded
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initializeHistory);
+    } else {
+        initializeHistory();
+    }
+}
+
+// Start the app
+initApp();
 
 
 
