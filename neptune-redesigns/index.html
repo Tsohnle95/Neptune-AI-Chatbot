@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080d19">
+  <title>Neptune — Chat Concepts</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <section id="previewRoot" aria-label="Neptune chat preview"></section>
+  <section id="themePicker" class="theme-picker" aria-labelledby="activeTitle" hidden>
+    <div class="theme-picker-heading">
+      <div>
+        <p class="theme-picker-count"><span id="activeNumber">01</span> / <span id="activeCount">14</span></p>
+        <h2 id="activeTitle">Blue Current</h2>
+      </div>
+      <div class="theme-picker-controls">
+        <button id="previousConcept" type="button" aria-label="Previous theme">←</button>
+        <button id="nextConcept" type="button" aria-label="Next theme">→</button>
+      </div>
+    </div>
+    <p id="activeDescription" class="theme-picker-description"></p>
+    <nav id="conceptNav" class="concept-nav" aria-label="Choose a Neptune theme"></nav>
+  </section>
+</body>
+</html>

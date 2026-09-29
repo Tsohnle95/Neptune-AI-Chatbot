@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17191e">
+  <title>Neptune — History Panel Studies</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="history-panel-ideas.css">
+  <script src="history-panel-ideas.js" defer></script>
+</head>
+<body data-theme="portfolio-spectrum">
+  <section id="previewRoot" aria-label="Neptune history panel explorations">
+    <div class="t3-screen theme-portfolio-spectrum">
+      <aside id="historySidebar" class="t3-sidebar" aria-label="Neptune navigation"></aside>
+      <main class="t3-main" id="chat">
+        <div class="t3-toolbar">
+          <span id="activePanelLabel" class="history-lab-label">01 <i></i> Orbit Timeline</span>
+          <div class="toolbar-right">
+            <button type="button" class="icon-button" aria-label="Recent activity"><svg class="ui-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.2 2"/></svg></button>
+            <button id="historyPickerToggle" type="button" class="icon-button" aria-label="Choose a history panel design" aria-haspopup="true" aria-expanded="false"><svg class="ui-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h5m4 0h7M4 17h9m4 0h3"/><circle cx="11" cy="7" r="2"/><circle cx="15" cy="17" r="2"/></svg></button>
+          </div>
+        </div>
+        <div class="t3-content"><h1>How can I help you?</h1>
+          <div class="mode-pills" aria-label="Prompt category"><button type="button" class="selected"><span>✳</span> Create</button><button type="button"><span>▤</span> Explore</button><button type="button"><span>‹›</span> Code</button><button type="button"><span>◇</span> Learn</button></div>
+          <div class="suggestion-list"><button type="button">How do Neptune’s atmospheric bands form?<span>↗</span></button><button type="button">What are Neptune’s rings made from?</button><button type="button">Could a moon hide an ocean beneath its ice?</button><button type="button">What should a future Neptune mission investigate?</button></div>
+          <div id="conversationLog" class="conversation-log" aria-live="polite"></div>
+        </div>
+        <form class="t3-composer" id="demoComposer"><label class="sr-only" for="messageInput">Message Neptune</label><textarea id="messageInput" rows="1" placeholder="Type your message here..."></textarea><div class="composer-toolbar"><div class="composer-left"><button type="button" class="composer-model">Neptune Core <span class="model-cost">$$</span><span>⌄</span></button><button type="button" class="composer-tool"><span>ϟ</span> Instant</button><button type="button" class="composer-tool"><span>◎</span> Search</button><button type="button" class="composer-tool"><span>↗</span> Attach</button></div><span class="composer-hint">Enter to send · Shift + Enter for new line</span><button type="submit" class="composer-send" aria-label="Send message"><svg class="ui-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button></div></form>
+      </main>
+    </div>
+  </section>
+  <aside id="historyPicker" class="history-picker" aria-labelledby="historyPickerTitle" hidden>
+    <div class="history-picker-heading">
+      <div><p class="history-picker-kicker"><span id="panelNumber">01</span> / 15 · HISTORY STUDIES</p><h2 id="historyPickerTitle">Orbit Timeline</h2></div>
+      <div class="history-picker-controls"><button id="previousPanel" type="button" aria-label="Previous panel">←</button><button id="nextPanel" type="button" aria-label="Next panel">→</button></div>
+    </div>
+    <p id="panelDescription" class="history-picker-description"></p>
+    <nav id="panelNav" class="history-panel-nav" aria-label="Choose a history panel design"></nav>
+  </aside>
+</body>
+</html>

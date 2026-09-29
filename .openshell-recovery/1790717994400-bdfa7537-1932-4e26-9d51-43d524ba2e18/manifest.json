@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "id": "1790717994400-bdfa7537-1932-4e26-9d51-43d524ba2e18",
+  "operation": "save",
+  "originalPath": "docs/css/layout/chatbot-page/_header-chat.scss",
+  "createdAt": 1790717994401,
+  "phase": "complete",
+  "acknowledged": [
+    "temporary",
+    "original",
+    "proposed"
+  ],
+  "reason": "saved"
+}

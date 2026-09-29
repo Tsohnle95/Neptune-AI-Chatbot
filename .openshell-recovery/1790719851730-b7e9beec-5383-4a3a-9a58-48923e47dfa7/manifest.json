@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "id": "1790719851730-b7e9beec-5383-4a3a-9a58-48923e47dfa7",
+  "operation": "save",
+  "originalPath": "docs/css/base/_base.scss",
+  "createdAt": 1790719851730,
+  "phase": "complete",
+  "acknowledged": [
+    "temporary",
+    "original",
+    "proposed"
+  ],
+  "reason": "saved"
+}

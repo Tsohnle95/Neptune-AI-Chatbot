@@ -1,0 +1,181 @@
+:root {
+  color-scheme: dark;
+  --canvas: #080c16;
+  --ink: #e9eef8;
+  --muted: #8c97aa;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--canvas); color: var(--ink); }
+button, input, textarea { font: inherit; }
+button { color: inherit; }
+a { color: inherit; text-decoration: none; }
+button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid #83bbff; outline-offset: 3px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+#previewRoot { min-height: 100vh; }
+.theme-picker { position: fixed; z-index: 5; top: 58px; right: 16px; width: min(340px, calc(100vw - 32px)); max-height: calc(100vh - 74px); overflow-y: auto; padding: 15px; border: 1px solid rgba(145,171,216,.16); border-radius: 10px; background: #11121a; color: #e9eef8; box-shadow: 0 18px 50px rgba(0,0,0,.38); }
+.theme-picker[hidden] { display: none; }
+.theme-picker-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }.theme-picker-count { margin: 0 0 3px; color: #7f8da5; font: 10px ui-monospace,monospace; }.theme-picker-count span { color: #9acaff; }.theme-picker h2 { margin: 0; color: inherit; font-size: 16px; font-weight: 600; letter-spacing: -.03em; }.theme-picker-description { margin: 8px 0 11px; color: #8d99ad; font-size: 11px; line-height: 1.5; }
+.theme-picker-controls { display: flex; gap: 5px; }.theme-picker-controls button { width: 29px; height: 29px; border: 1px solid rgba(155,179,221,.17); border-radius: 6px; background: rgba(255,255,255,.03); color: #b5c0d2; font-size: 14px; cursor: pointer; }.theme-picker-controls button:hover { background: rgba(102,151,221,.14); color: #fff; }
+.concept-nav { display: grid; gap: 3px; }.concept-link { width: 100%; min-height: 42px; display: grid; grid-template-columns: 26px minmax(0,1fr) 16px; align-items: center; gap: 8px; padding: 5px 8px; border: 1px solid transparent; border-radius: 7px; background: transparent; color: inherit; text-align: left; cursor: pointer; }.concept-link:hover { background: rgba(148,174,220,.07); }.concept-link.is-active { border-color: rgba(112,157,222,.2); background: rgba(80,124,191,.15); }.concept-index { color: #718099; font: 10px ui-monospace,monospace; }.concept-link.is-active .concept-index { color: #9acaff; }.concept-link-text { min-width: 0; }.concept-link-text strong { display: block; overflow: hidden; color: #c4cede; font-size: 12px; font-weight: 550; text-overflow: ellipsis; white-space: nowrap; }.concept-link.is-active .concept-link-text strong { color: #f0f4fb; }.concept-link-text small { display: block; margin-top: 2px; overflow: hidden; color: #77849a; font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }.concept-chevron { opacity: 0; color: #9acaff; font-size: 13px; }.concept-link:hover .concept-chevron, .concept-link.is-active .concept-chevron { opacity: 1; }
+body[data-theme="ice-giant"] { color-scheme: light; }body[data-theme="ice-giant"] .theme-picker { border-color: rgba(62,93,132,.18); background: #f3f8fd; color: #293b52; box-shadow: 0 18px 50px rgba(40,65,92,.18); }body[data-theme="ice-giant"] .theme-picker-description, body[data-theme="ice-giant"] .theme-picker-count, body[data-theme="ice-giant"] .concept-link-text small { color: #72869e; }body[data-theme="ice-giant"] .theme-picker-count span, body[data-theme="ice-giant"] .concept-link.is-active .concept-index { color: #357caf; }body[data-theme="ice-giant"] .concept-link-text strong { color: #526981; }body[data-theme="ice-giant"] .concept-link.is-active .concept-link-text strong { color: #293b52; }
+
+/* One shared T3-style desktop shell. Each concept changes the planet treatment,
+   color system, and surface finish while keeping the same familiar chat anatomy. */
+.t3-screen { --main: #1e1e1e; --side: #121212; --surface: #242424; --surface-hover: #303030; --text: #f2f2f2; --muted: #b2b2b2; --quiet: #7b7b7b; --line: rgba(255,255,255,.075); --accent: #6daee8; --accent-soft: rgba(78,139,203,.15); --accent-strong: #386ca5; --action: #a54f69; --action-soft: rgba(143,54,79,.18); --planet-a: #9be0ff; --planet-b: #3e83c4; --planet-c: #172f67;
+  position: relative; width: 100%; height: 100vh; min-height: 640px; display: grid; grid-template-columns: 252px minmax(0,1fr); overflow: hidden; color: var(--text); background: var(--side); font-family: inherit; font-size: 15px; letter-spacing: .005em;
+}
+.ui-icon { display: block; flex: 0 0 auto; }
+.t3-sidebar { position: relative; z-index: 1; min-width: 0; display: flex; flex-direction: column; padding: 5px 12px 11px; border-right: 1px solid rgba(255,255,255,.035); background: var(--side); }
+.t3-sidebar-brand { height: 45px; flex: 0 0 45px; display: flex; align-items: center; gap: 8px; margin-bottom: 5px; padding: 0 4px; color: var(--text); }
+.brand-name { white-space: nowrap; font-size: 20px; font-weight: 650; letter-spacing: -.055em; line-height: 1; }.brand-ai { padding-left: 2px; color: var(--accent); font-size: 9px; font-weight: 650; letter-spacing: .01em; }
+.collapse-sidebar, .sidebar-new-chat { width: 25px; height: 25px; flex: 0 0 auto; display: grid; place-items: center; padding: 0; border: 0; border-radius: 5px; background: transparent; color: var(--muted); cursor: pointer; }.sidebar-new-chat { margin-left: auto; }.collapse-sidebar:hover, .sidebar-new-chat:hover { background: var(--surface-hover); }
+.neptune-logo { position: relative; width: 20px; height: 20px; flex: 0 0 auto; display: inline-block; overflow: visible; border-radius: 50%; background: radial-gradient(circle at 32% 25%, var(--planet-a), var(--planet-b) 42%, var(--planet-c) 82%); box-shadow: inset -3px -4px 7px rgba(4,10,30,.46), 0 0 11px color-mix(in srgb, var(--accent) 20%, transparent); }
+.neptune-logo::after { position: absolute; inset: 7px -4px; border: 1px solid color-mix(in srgb, var(--planet-a) 65%, transparent); border-radius: 50%; content: ""; transform: rotate(-28deg); }.neptune-logo i { position: absolute; inset: 0; border-radius: 50%; background: repeating-linear-gradient(164deg, transparent 0 4px, rgba(211,242,255,.25) 5px 6px, transparent 7px 10px); clip-path: circle(48%); }.neptune-logo b { position: absolute; z-index: 2; right: 2px; top: 7px; width: 4px; height: 4px; border-radius: 50%; background: #d5f2ff; box-shadow: 0 0 5px var(--planet-a); }
+.new-chat { height: 36px; flex: 0 0 36px; display: flex; align-items: center; justify-content: center; padding: 0 12px; border: 1px solid color-mix(in srgb, var(--action) 48%, transparent); border-radius: 9px; background: linear-gradient(180deg, color-mix(in srgb, var(--action) 21%, var(--side)), color-mix(in srgb, var(--action) 16%, var(--side))); color: #f2e8ec; font-size: 14px; font-weight: 600; letter-spacing: 0; cursor: pointer; }.new-chat:hover { background: color-mix(in srgb, var(--action) 27%, var(--side)); }
+.thread-search { height: 42px; flex: 0 0 42px; display: flex; align-items: center; gap: 10px; margin-top: 7px; padding: 0 8px; border-bottom: 1px solid var(--line); color: var(--muted); }.thread-search > span { display: grid; place-items: center; }.thread-search input { min-width: 0; flex: 1; border: 0; outline: 0; background: transparent; color: var(--text); font-size: 13px; letter-spacing: .01em; }.thread-search input::placeholder { color: var(--quiet); }
+.thread-day { margin: 22px 6px 8px; color: var(--muted); font-size: 11px; line-height: 16px; letter-spacing: .005em; }.thread-item { display: flex; align-items: center; min-height: 32px; overflow: hidden; padding: 0 12px; border-radius: 4px; color: var(--muted); font-size: 13px; letter-spacing: 0; line-height: 1.35; text-overflow: ellipsis; white-space: nowrap; }.thread-item.active { color: #bdbdbd; }.thread-orbit { display: none; }
+.sidebar-account { display: flex; align-items: center; gap: 10px; margin-top: auto; padding: 8px 7px 5px 10px; border-top: 0; color: var(--muted); font-size: 14px; letter-spacing: 0; }.account-symbol { width: 20px; height: 20px; display: grid; place-items: center; border-radius: 0; background: transparent; color: var(--muted); }
+.t3-main { position: relative; min-width: 0; height: calc(100vh - 14px); min-height: 0; display: flex; flex-direction: column; isolation: isolate; margin-top: 14px; border: 1px solid var(--line); border-radius: 10px 12px 0 10px; background: var(--main); }
+.t3-main::before { position: absolute; z-index: -1; inset: 0; border-radius: inherit; content: ""; pointer-events: none; background: radial-gradient(ellipse at 50% 45%, color-mix(in srgb, var(--accent) 2.5%, transparent), transparent 43%); }
+.t3-toolbar { position: relative; z-index: 1; height: 26px; flex: 0 0 26px; display: flex; align-items: center; justify-content: flex-end; padding: 0 1px; }
+.t3-toolbar::before { position: absolute; z-index: 0; top: -15px; right: -1px; width: 82px; height: 50px; border-bottom-left-radius: 25px; background: var(--side); content: ""; pointer-events: none; }
+.toolbar-left, .toolbar-right { position: relative; z-index: 1; display: flex; align-items: center; gap: 6px; }.icon-button { width: 28px; height: 28px; display: grid; place-items: center; padding: 0; border: 0; border-radius: 6px; background: transparent; color: var(--muted); cursor: pointer; }.icon-button:hover { background: var(--surface-hover); color: var(--text); }
+.t3-content { position: relative; z-index: 1; width: min(100% - 34px, 674px); flex: 1; display: flex; flex-direction: column; justify-content: flex-start; align-self: center; padding: 145px 0 4px; transform: translateX(8px); }.welcome-mark { display: none; }
+.t3-content h1 { margin: 0 0 21px; color: var(--text); font-size: 30px; font-weight: 650; letter-spacing: -.03em; line-height: 36px; text-align: left; }
+.mode-pills { display: flex; justify-content: flex-start; flex-wrap: wrap; gap: 8px; margin-bottom: 21px; }.mode-pills button { min-height: 39px; display: flex; align-items: center; gap: 8px; padding: 0 15px; border: 1px solid rgba(255,255,255,.055); border-radius: 22px; background: rgba(255,255,255,.045); color: #c4c4c4; font-size: 13px; font-weight: 600; letter-spacing: 0; cursor: pointer; }.mode-pills button:hover { border-color: color-mix(in srgb, var(--accent) 34%, var(--line)); background: var(--accent-soft); color: var(--text); }.mode-pills button.selected { color: #dedede; }.mode-pills button span { display: flex; align-items: center; color: #d1d1d1; }
+.suggestion-list { display: grid; }.suggestion-list button { min-height: 49px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 11px; border: 0; border-bottom: 1px solid var(--line); background: transparent; color: #c8c8c8; font-size: 15px; font-weight: 400; letter-spacing: .005em; line-height: 1.4; text-align: left; cursor: pointer; }.suggestion-list button:last-child { border-bottom-color: transparent; }.suggestion-list button:hover { background: color-mix(in srgb, var(--accent) 7%, transparent); color: var(--text); }.suggestion-list button span { display: flex; align-items: center; color: var(--accent); }.suggestion-list button:first-child span { opacity: 0; }.suggestion-list button:first-child:hover span { opacity: 1; }
+.t3-composer { position: relative; z-index: 1; width: min(100% - 34px, 755px); height: 122px; flex: 0 0 122px; margin: 0 auto; padding: 11px 12px 9px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); box-shadow: 0 7px 22px rgba(0,0,0,.12); transform: translateX(8px); }.t3-composer textarea { width: 100%; min-height: 64px; max-height: 120px; display: block; resize: vertical; padding: 7px 1px 8px; border: 0; outline: 0; background: transparent; color: var(--text); font-size: 15px; letter-spacing: .005em; line-height: 1.4; }.t3-composer textarea::placeholder { color: #858585; }
+.composer-toolbar { display: flex; align-items: center; gap: 7px; min-height: 36px; }.composer-left { display: flex; align-items: center; gap: 7px; }.composer-model, .composer-tool { min-height: 31px; display: inline-flex; align-items: center; gap: 7px; padding: 0 9px; border: 1px solid var(--line); border-radius: 18px; background: transparent; color: #bdbdbd; font-size: 12px; letter-spacing: 0; white-space: nowrap; cursor: pointer; }.composer-model { gap: 6px; padding: 0 7px; border-color: transparent; }.composer-model:hover, .composer-tool:hover { background: var(--accent-soft); color: var(--text); }.composer-model .model-cost { color: #66d5a5; font-size: 9px; font-weight: 650; letter-spacing: -.03em; }.composer-model > .ui-icon { color: #8e8e8e; }.composer-tool > span { display: flex; align-items: center; color: #c7c7c7; }.composer-hint { display: none; }.composer-send { width: 36px; height: 36px; flex: 0 0 auto; display: grid; place-items: center; margin-left: auto; padding: 0; border: 1px solid color-mix(in srgb, var(--action) 44%, transparent); border-radius: 9px; background: var(--action-soft); color: #bd7489; cursor: pointer; }.composer-send:hover { background: var(--action); color: #fff; }
+.demo-turn { max-width: 87%; margin: 8px 0; padding: 8px 10px; border-radius: 7px; font-size: 9px; line-height: 1.55; }.demo-user { margin-left: auto; background: var(--accent-soft); color: var(--text); }.demo-reply { background: color-mix(in srgb, var(--surface) 80%, transparent); color: var(--muted); }.conversation-log:empty { display: none; }
+
+/* 01 — Blue Current */
+.theme-blue-current { --main:#1e1e1e; --side:#121212; --surface:#242424; --surface-hover:#303030; --text:#f2f2f2; --muted:#b2b2b2; --quiet:#7b7b7b; --line:rgba(255,255,255,.075); --accent:#6daee8; --accent-soft:rgba(78,145,210,.17); --accent-strong:#327caf; --action:#a54f69; --action-soft:rgba(143,54,79,.18); --planet-a:#b5e9ff; --planet-b:#4f99d2; --planet-c:#1a386c; }
+
+/* 02 — Triton Ice: glacial cyan over a deep blue night */
+.theme-triton-ice { --main:#0b1623; --side:#08111c; --surface:#122130; --surface-hover:#1c3040; --text:#e8f4ff; --muted:#9eb3c4; --quiet:#6e899c; --line:rgba(192,230,246,.12); --accent:#8ad9f2; --accent-soft:rgba(91,183,216,.15); --accent-strong:#367f9c; --planet-a:#e1fbff; --planet-b:#69b6d0; --planet-c:#173d5a; }
+.theme-triton-ice .t3-main::before { background:radial-gradient(ellipse at 50% 34%,rgba(88,174,213,.11),transparent 43%); }
+
+/* 03 — Great Dark Spot: near-black storm and cyan */
+.theme-great-dark-spot { --main:#080d12; --side:#070a0f; --surface:#111920; --surface-hover:#19252b; --text:#e6f0f0; --muted:#92a5a8; --quiet:#637679; --line:rgba(177,216,217,.1); --accent:#5ac9c8; --accent-soft:rgba(55,177,178,.14); --accent-strong:#247d83; --planet-a:#91e9ed; --planet-b:#317f89; --planet-c:#112f42; }.theme-great-dark-spot .neptune-logo b { width:5px; height:5px; top:8px; right:6px; background:#0b2330; box-shadow:inset 1px 1px 1px rgba(177,234,237,.3); }.theme-great-dark-spot .t3-main::before { background:radial-gradient(ellipse at 88% 24%, rgba(27,125,131,.12), transparent 36%); }.theme-great-dark-spot .t3-main::after { position:absolute; z-index:0; top:18%; right:9%; width:148px; height:148px; border-radius:50%; background:radial-gradient(circle at 37% 34%,rgba(72,139,166,.25),rgba(10,19,31,.08) 52%,transparent 72%); box-shadow:0 0 54px rgba(57,123,156,.09); content:""; pointer-events:none; }
+
+/* 04 — Ringed Horizon: understated indigo with fine orbital geometry */
+.theme-ringed-horizon { --main:#111221; --side:#0b0d19; --surface:#191b2b; --surface-hover:#22243a; --text:#ececff; --muted:#a1a3c0; --quiet:#6e718d; --line:rgba(203,204,255,.1); --accent:#8b9df7; --accent-soft:rgba(111,125,218,.16); --accent-strong:#596dc3; --planet-a:#d3deff; --planet-b:#697ed1; --planet-c:#252d68; }.theme-ringed-horizon .neptune-logo::after { inset:6px -6px; transform:rotate(25deg); }.theme-ringed-horizon .t3-main::before { background:radial-gradient(ellipse at 76% 40%, rgba(116,115,222,.11), transparent 33%); }.theme-ringed-horizon .t3-main::after { position:absolute; z-index:0; top:12%; right:-20%; width:67%; height:56%; border:1px solid rgba(162,173,255,.09); border-radius:50%; box-shadow:0 0 0 18px rgba(0,0,0,0),0 0 0 19px rgba(162,173,255,.055); content:""; transform:rotate(-23deg); pointer-events:none; }
+
+/* 05 — Methane Blue: soft atmospheric bands */
+.theme-methane-blue { --main:#0d1520; --side:#09111a; --surface:#141e2a; --surface-hover:#1d2a38; --text:#e4effb; --muted:#9aafc5; --quiet:#687e94; --line:rgba(180,217,244,.11); --accent:#79bce8; --accent-soft:rgba(75,145,190,.15); --accent-strong:#387eac; --planet-a:#b5e6ff; --planet-b:#418fc1; --planet-c:#193958; }.theme-methane-blue .neptune-logo i { background:repeating-linear-gradient(168deg,transparent 0 2px,rgba(198,238,255,.32) 3px 4px,transparent 5px 7px); }.theme-methane-blue .t3-main::before { background:linear-gradient(165deg, transparent 25%, rgba(77,145,188,.045) 26%, transparent 29%, transparent 58%, rgba(77,145,188,.04) 59%, transparent 63%); }
+
+/* 06 — Aurora Drift: blue-green glow over deep navy */
+.theme-aurora-drift { --main:#0a151c; --side:#081116; --surface:#10202a; --surface-hover:#182b34; --text:#e8f3f1; --muted:#9ab3b2; --quiet:#678380; --line:rgba(182,225,218,.1); --accent:#73d0bd; --accent-soft:rgba(67,175,152,.15); --accent-strong:#318f85; --planet-a:#bdfff0; --planet-b:#4caa9c; --planet-c:#16465b; }.theme-aurora-drift .t3-main::before { background:radial-gradient(ellipse at 47% 0%, rgba(64,193,163,.12), transparent 40%),radial-gradient(ellipse at 94% 34%, rgba(49,126,183,.1), transparent 36%); }
+
+/* 07 — Moonlit Neptune: graphite and cool silver */
+.theme-moonlit-neptune { --main:#171a20; --side:#101318; --surface:#20242b; --surface-hover:#292f37; --text:#e9edf2; --muted:#a5adb8; --quiet:#747f8d; --line:rgba(218,226,235,.1); --accent:#9bbad3; --accent-soft:rgba(138,175,206,.15); --accent-strong:#557f9f; --planet-a:#effaff; --planet-b:#7999b1; --planet-c:#364b66; }.theme-moonlit-neptune .neptune-logo { filter:saturate(.55); }.theme-moonlit-neptune .t3-main::before { background:radial-gradient(circle at 50% 38%, rgba(177,204,224,.08), transparent 36%); }
+
+/* 08 — Voyager Signal: restrained mission telemetry */
+.theme-voyager-signal { --main:#0b1321; --side:#080f1a; --surface:#111d2c; --surface-hover:#1a2a3d; --text:#e4edfb; --muted:#96abc5; --quiet:#637a99; --line:rgba(164,198,237,.11); --accent:#79b5f2; --accent-soft:rgba(80,143,212,.16); --accent-strong:#376fa9; --planet-a:#d4f1ff; --planet-b:#5794d2; --planet-c:#20396a; }.theme-voyager-signal .t3-main::before { background-image:radial-gradient(circle at 17% 21%,rgba(174,210,255,.35) 0 1px,transparent 1.4px),radial-gradient(circle at 81% 18%,rgba(174,210,255,.3) 0 1px,transparent 1.4px),radial-gradient(circle at 88% 71%,rgba(174,210,255,.22) 0 1px,transparent 1.4px),radial-gradient(ellipse at 50% 45%,rgba(88,130,187,.08),transparent 48%); }
+
+/* 09 — Deep Orbit: saturated blue and a soft planetary halo */
+.theme-deep-orbit { --main:#10172a; --side:#0b1120; --surface:#171f34; --surface-hover:#202b43; --text:#e8efff; --muted:#9eacc8; --quiet:#697b9a; --line:rgba(181,200,245,.11); --accent:#83aaff; --accent-soft:rgba(98,136,221,.17); --accent-strong:#496ebc; --planet-a:#c8ecff; --planet-b:#608ed8; --planet-c:#253a82; }.theme-deep-orbit .t3-main::before { background:radial-gradient(ellipse at 50% 40%,rgba(69,113,229,.14),transparent 48%); }
+
+/* 10 — Ice Giant: full frost light theme */
+.theme-ice-giant { --main:#f3f8fd; --side:#e6eff8; --surface:#fff; --surface-hover:#edf4fa; --text:#293b52; --muted:#72869e; --quiet:#9aaabe; --line:rgba(62,93,132,.15); --accent:#357caf; --accent-soft:rgba(78,145,210,.16); --accent-strong:#245f8c; --action:#357caf; --action-soft:rgba(78,145,210,.16); --planet-a:#b5e9ff; --planet-b:#4f99d2; --planet-c:#1a386c; }.theme-ice-giant .t3-main::before { background:radial-gradient(ellipse at 50% 38%,rgba(108,169,218,.16),transparent 44%); }.theme-ice-giant .suggestion-list button { color:#495e77; }.theme-ice-giant .suggestion-list button:hover { color:#243b56; }.theme-ice-giant .mode-pills button { background:rgba(255,255,255,.4); color:#526981; border-color:rgba(62,93,132,.1); }.theme-ice-giant .mode-pills button.selected { color:#293b52; }.theme-ice-giant .mode-pills button span { color:#357caf; }.theme-ice-giant .composer-hint { color:#8798ad; }.theme-ice-giant .t3-sidebar { background:#e6eff8; --text:#344c67; --muted:#71859b; --quiet:#8ea1b4; --line:rgba(62,93,132,.14); --surface-hover:#dce8f3; --accent:#357caf; --accent-soft:rgba(78,145,210,.16); }.theme-ice-giant .thread-search input { color:#344c67; }.theme-ice-giant .thread-item { color:#657b93; }.theme-ice-giant .thread-item.active { color:#294969; }.theme-ice-giant .new-chat { color:#293b52; border-color:rgba(53,124,175,.32); background:rgba(53,124,175,.1); }.theme-ice-giant .composer-send { color:#357caf; border-color:rgba(53,124,175,.28); }
+
+/* 11 — Studio Mint: portfolio charcoal, mint focus, and a lilac orbit */
+.theme-studio-mint {
+  --main: #17191e; --side: #12151a; --surface: #20242a; --surface-hover: #292e36;
+  --text: #ededeb; --muted: #afb3bc; --quiet: #777f88; --line: rgba(237,237,235,.09);
+  --accent: #a5f3de; --accent-soft: rgba(165,243,222,.13); --accent-strong: #75e0c0;
+  --action: #f2d67c; --action-soft: rgba(242,214,124,.15);
+  --planet-a: #d8fff5; --planet-b: #75e0c0; --planet-c: #182d47;
+}
+.theme-studio-mint .new-chat { border-color: rgba(242,214,124,.38); background: rgba(242,214,124,.09); color: #ededeb; }
+.theme-studio-mint .composer-send { border-color: rgba(242,214,124,.34); color: var(--action); }
+.theme-studio-mint .composer-model .model-cost { color: var(--accent); }
+.theme-studio-mint .neptune-logo::after { border-color: rgba(198,184,255,.72); }
+.theme-studio-mint .t3-main::before { background: radial-gradient(ellipse at 50% 28%, rgba(165,243,222,.09), transparent 43%); }
+.theme-studio-mint .t3-main::after { position: absolute; z-index: 0; top: 13%; right: -15%; width: 62%; height: 54%; border: 1px solid rgba(198,184,255,.07); border-radius: 50%; box-shadow: 0 0 0 17px transparent, 0 0 0 18px rgba(165,243,222,.035); content: ""; transform: rotate(-23deg); pointer-events: none; }
+
+/* 12 — Lilac Orbit: the portfolio note color over ink and indigo */
+.theme-lilac-orbit {
+  --main: #17151e; --side: #11111a; --surface: #211f2b; --surface-hover: #2b2838;
+  --text: #f0eef7; --muted: #b1adbf; --quiet: #777186; --line: rgba(220,211,255,.1);
+  --accent: #c6b8ff; --accent-soft: rgba(198,184,255,.14); --accent-strong: #9784d4;
+  --action: #f2d67c; --action-soft: rgba(242,214,124,.14);
+  --planet-a: #e5ddff; --planet-b: #8974cc; --planet-c: #252047;
+}
+.theme-lilac-orbit .new-chat { border-color: rgba(242,214,124,.34); background: rgba(242,214,124,.08); color: #f0eef7; }
+.theme-lilac-orbit .composer-send { border-color: rgba(242,214,124,.34); color: var(--action); }
+.theme-lilac-orbit .composer-model .model-cost { color: var(--accent); }
+.theme-lilac-orbit .neptune-logo::after { inset: 6px -6px; border-color: rgba(198,184,255,.8); transform: rotate(25deg); }
+.theme-lilac-orbit .t3-main::before { background: radial-gradient(ellipse at 76% 37%, rgba(198,184,255,.1), transparent 38%); }
+.theme-lilac-orbit .t3-main::after { position: absolute; z-index: 0; top: 10%; right: -20%; width: 66%; height: 58%; border: 1px solid rgba(198,184,255,.07); border-radius: 50%; box-shadow: 0 0 0 18px transparent, 0 0 0 19px rgba(165,243,222,.035); content: ""; transform: rotate(-23deg); pointer-events: none; }
+
+/* 13 — Peach Comet: portfolio warmth against Neptune’s deep night */
+.theme-peach-comet {
+  --main: #07121f; --side: #08101a; --surface: #112033; --surface-hover: #1a2b40;
+  --text: #edf1f6; --muted: #abb6c3; --quiet: #718194; --line: rgba(213,226,240,.1);
+  --accent: #ff9e83; --accent-soft: rgba(255,158,131,.13); --accent-strong: #d87963;
+  --action: #f2d67c; --action-soft: rgba(242,214,124,.14);
+  --planet-a: #ffd6c7; --planet-b: #df806c; --planet-c: #17314a;
+}
+.theme-peach-comet .new-chat { border-color: rgba(242,214,124,.34); background: rgba(242,214,124,.08); color: #edf1f6; }
+.theme-peach-comet .composer-send { border-color: rgba(242,214,124,.32); color: var(--action); }
+.theme-peach-comet .composer-model .model-cost { color: var(--accent); }
+.theme-peach-comet .neptune-logo::after { border-color: rgba(242,214,124,.82); }
+.theme-peach-comet .t3-main::before { background: radial-gradient(ellipse at 87% 30%, rgba(255,158,131,.1), transparent 34%), radial-gradient(ellipse at 50% 55%, rgba(43,103,152,.07), transparent 48%); }
+.theme-peach-comet .t3-main::after { position: absolute; z-index: 0; top: 24%; right: 9%; width: 128px; height: 128px; border: 1px solid rgba(255,158,131,.06); border-radius: 50%; box-shadow: 0 0 0 12px transparent, 0 0 0 13px rgba(242,214,124,.035); content: ""; pointer-events: none; }
+
+/* 14 — Portfolio Spectrum: the four accent colors become gentle UI signals */
+.theme-portfolio-spectrum {
+  --main: #17191e; --side: #12151a; --surface: #20242a; --surface-hover: #292e36;
+  --text: #ededeb; --muted: #afb3bc; --quiet: #777f88; --line: rgba(237,237,235,.09);
+  --accent: #a5f3de; --accent-soft: rgba(165,243,222,.13); --accent-strong: #75e0c0;
+  --action: #f2d67c; --action-soft: rgba(242,214,124,.15);
+  --planet-a: #c6b8ff; --planet-b: #75e0c0; --planet-c: #07121f;
+}
+.theme-portfolio-spectrum .composer-send { border-color: rgba(242,214,124,.34); color: var(--action); }
+.theme-portfolio-spectrum .composer-model .model-cost { color: var(--accent); }
+.theme-portfolio-spectrum .mode-pills button:nth-child(1) { --mode-color: #a5f3de; }
+.theme-portfolio-spectrum .mode-pills button:nth-child(2) { --mode-color: #c6b8ff; }
+.theme-portfolio-spectrum .mode-pills button:nth-child(3) { --mode-color: #f2d67c; }
+.theme-portfolio-spectrum .mode-pills button:nth-child(4) { --mode-color: #ff9e83; }
+.theme-portfolio-spectrum .mode-pills button { border-color: color-mix(in srgb, var(--mode-color) 17%, transparent); }
+.theme-portfolio-spectrum .mode-pills button span { color: var(--mode-color); }
+.theme-portfolio-spectrum .mode-pills button:hover { background: color-mix(in srgb, var(--mode-color) 12%, transparent); }
+.theme-portfolio-spectrum .suggestion-list button:nth-child(1) { border-bottom-color: color-mix(in srgb, #a5f3de 18%, transparent); }
+.theme-portfolio-spectrum .suggestion-list button:nth-child(2) { border-bottom-color: color-mix(in srgb, #c6b8ff 18%, transparent); }
+.theme-portfolio-spectrum .suggestion-list button:nth-child(3) { border-bottom-color: color-mix(in srgb, #f2d67c 18%, transparent); }
+.theme-portfolio-spectrum .neptune-logo::after { border-color: rgba(198,184,255,.84); box-shadow: 0 0 0 2px rgba(165,243,222,.15); }
+.theme-portfolio-spectrum .t3-main::before { background: radial-gradient(ellipse at 50% 22%, rgba(165,243,222,.08), transparent 38%), radial-gradient(ellipse at 88% 55%, rgba(198,184,255,.055), transparent 34%); }
+
+/* Match the palette picker to each of the new portfolio-inspired themes. */
+body[data-theme="studio-mint"] { --picker-panel: #17191e; --picker-text: #ededeb; --picker-title: #d6dad8; --picker-muted: #afb3bc; --picker-line: rgba(165,243,222,.18); --picker-accent: #a5f3de; }
+body[data-theme="lilac-orbit"] { --picker-panel: #17151e; --picker-text: #f0eef7; --picker-title: #e2def0; --picker-muted: #b1adbf; --picker-line: rgba(198,184,255,.18); --picker-accent: #c6b8ff; }
+body[data-theme="peach-comet"] { --picker-panel: #07121f; --picker-text: #edf1f6; --picker-title: #dfe8f0; --picker-muted: #abb6c3; --picker-line: rgba(255,158,131,.18); --picker-accent: #ff9e83; }
+body[data-theme="portfolio-spectrum"] { --picker-panel: #17191e; --picker-text: #ededeb; --picker-title: #d6dad8; --picker-muted: #afb3bc; --picker-line: rgba(165,243,222,.18); --picker-accent: #a5f3de; }
+.theme-picker { border-color: var(--picker-line, rgba(145,171,216,.16)); background: var(--picker-panel, #11121a); color: var(--picker-text, #e9eef8); }
+.theme-picker-count, .theme-picker-description, .concept-link-text small { color: var(--picker-muted, #8d99ad); }
+.theme-picker-count span, .concept-link.is-active .concept-index, .concept-chevron { color: var(--picker-accent, #9acaff); }
+.theme-picker-controls button { border-color: var(--picker-line, rgba(155,179,221,.17)); color: var(--picker-muted, #b5c0d2); }
+.theme-picker-controls button:hover { background: color-mix(in srgb, var(--picker-accent, #6697dd) 14%, transparent); color: var(--picker-text, #fff); }
+.concept-link:hover { background: color-mix(in srgb, var(--picker-accent, #94aedc) 7%, transparent); }
+.concept-link.is-active { border-color: color-mix(in srgb, var(--picker-accent, #709ddd) 20%, transparent); background: color-mix(in srgb, var(--picker-accent, #507cbf) 15%, transparent); }
+.concept-link-text strong { color: var(--picker-title, #c4cede); }
+.concept-link.is-active .concept-link-text strong { color: var(--picker-text, #f0f4fb); }
+
+/* All fourteen concepts share the same T3 screen geometry; palette and planetary atmosphere vary. */
+
+@media (max-width: 980px) {
+  .t3-screen { grid-template-columns: 210px minmax(0,1fr); }.t3-sidebar { padding-right: 9px; padding-left: 9px; }.t3-content, .t3-composer { transform: translateX(4px); }
+}
+@media (max-width: 720px) {
+  .t3-screen { grid-template-columns: 190px minmax(0,1fr); }.t3-content { width: min(100% - 28px, 650px); }.t3-composer { width: min(100% - 24px, 720px); }
+}
+@media (max-width: 560px) {
+  .t3-screen { grid-template-columns: 1fr; }.t3-sidebar { display: none; }.t3-main { height: calc(100vh - 10px); min-height: calc(100vh - 10px); margin-top: 10px; }.t3-toolbar { height: 26px; flex-basis: 26px; }.t3-content { width: calc(100% - 36px); padding-top: clamp(96px, 14vh, 125px); transform: none; }.t3-content h1 { font-size: 22px; line-height: 28px; }.mode-pills { gap: 5px; margin-bottom: 18px; }.mode-pills button { min-height: 34px; padding: 0 10px; font-size: 10px; }.suggestion-list button { min-height: 43px; padding: 0 7px; font-size: 12px; }.t3-composer { width: calc(100% - 20px); height: 108px; flex-basis: 108px; padding: 8px; transform: none; }.t3-composer textarea { min-height: 54px; font-size: 13px; }.composer-left { max-width: calc(100% - 43px); overflow-x: auto; gap: 4px; }.composer-model, .composer-tool { min-height: 27px; padding: 0 8px; font-size: 9px; }.composer-toolbar { gap: 4px; }.composer-send { width: 32px; height: 32px; }.theme-picker { top: 49px; right: 8px; width: min(340px, calc(100vw - 16px)); }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior:auto !important; transition-duration:.01ms !important; } }
