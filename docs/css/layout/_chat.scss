@@ -9,6 +9,18 @@
   position: relative;
 }
 
+// One canvas spans the mobile menu, top spacing, and chat content.
+@media (width < 650px) {
+  body {
+    background-color: var(--color-chat-main-charcoal);
+  }
+
+  .container,
+  .container > section {
+    background: transparent;
+  }
+}
+
 body {
   .pointer svg {
     color: var(--color-text-layout-muted-gray);
@@ -289,7 +301,7 @@ section {
       gap: .5rem;
     }
 
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 
     button {
       border: 1px solid rgba(165, 243, 222, 0.17);
