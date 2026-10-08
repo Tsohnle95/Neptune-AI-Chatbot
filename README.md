@@ -1,4 +1,4 @@
-# Neptune-AI-Chatbot 🤖
+# Neptune-AI-Chatbot 🤖 - I am currently in the process of re-designing the front-end, back-end functionality (Model responses) will be unavailable during this time!
 
 Neptune AI is a full-stack AI Chatbot App built with Node.js, Express, HTML, CSS (Sass), and Vanilla JavaScript. 
 
