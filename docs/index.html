@@ -5,196 +5,169 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neptune AI | A Friendly, Locally Hosted Chatbot</title>
-    <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/styles.scss">
     <script src="js/main.js" defer></script>
 </head>
 
 <body>
-    <!--landing page content-->
-    
-
-    <!--chatbot content-->
-    <div class="chatbot-content">
-
-        <div class="header-dashboard-flex-container">
-            <!--TOGGLE NAV MENU-->
-            
-            <!--end of hamburger menu-->
+    <div class="pointer">
+        <svg class="side-menu-button" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="4" width="18" height="16" rx="2" />
+            <path d="M9 4v16" />
+        </svg>
+    </div>
 
 
+    <!--chatbot html-->
+    <div class="container">
+
+        <!--hidden side panel-->
+        <div class="side-menu">
+            <!--side panel icon/button -->
 
 
-            <div class="header-chat-area-wrapper">
-                <header>
-                    <div class="header-container">
-
-                        <div class="flex">
-
-                            <!--hamburger menu dropdown-->
-                            <div class="header-svg1">
-                                <button class="toggle-btn">
-                                    <img src="img/svg/hamburger.svg" alt="Main Menu">
-                                </button>
-
-
-
-                                <!--left arrow return button -->
-                                <img src="img/svg/arrow-left.svg" alt="Click to Close Menu" class="left-arrow">
-                            </div>
-
-                            <div class="chatbot-header-text">
-                                <!-- <img src="img/svg/arrow-left.svg" alt="Click to Close Menu" class="desktop-arrow"> -->
-                                <div>
-                                    <h2>Neptune AI</h2>
-                                    <p class="server-status"></p>
-                                </div>
-                            </div>
-                        </div> <!--end of flex-->
-
-                        <button>
-                            <img src="img/svg/elipses.svg" alt="Secondary Menu" class="svg-2">
-                        </button>
-
-                    </div><!--end of header container-->
-                </header>
-
-
-
-
-
-                <!--chat area content-->
-                <div class="chat-area">
-
-                    <!-- chat content div with the 4 recommended ai prompts -->
-                    <div class="chat-content-div">
-
-                        <div class="hi-neptune">
-                            <img src="img/svg/neptune-icon.svg" alt="Neptune AI icon">
-                            <p>Hi, I'm Neptune</p>
-                            <p>How can I help you today?</p>
-
-                        </div>
-
-
-                        <div class="recommendation-flex-main-container">
-                            <div class="recommendation-flex-container">
-
-                                <!-- chat recommendation divs  -->
-                                <div class="ai-chat-recommendation submit-prompt">
-                                    <div>
-                                        <div>
-                                            <img src="img/lightbulb.png" alt="lightbulb icon">
-                                            <p>Explain a concept</p>
-                                        </div>
-                                        <p class="recommendation-content">How does async/await work?</p>
-                                    </div>
-                                </div>
-
-                                <!-- chat recommendation divs  -->
-                                <div class="ai-chat-recommendation submit-prompt">
-                                    <div>
-                                        <div>
-                                            <img src="img/wrench.png" alt="wrench icon">
-                                            <p>Debug code</p>
-                                        </div>
-                                        <p class="recommendation-content">Help fix my react component</p>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-                            <div class="recommendation-flex-container">
-
-                                <!-- chat recommendation divs  -->
-                                <div class="ai-chat-recommendation submit-prompt">
-                                    <div>
-                                        <div>
-                                            <img src="img/star.png" alt="star icon">
-                                            <p>Generate code</p>
-                                        </div>
-                                        <p class="recommendation-content">Write a sorting function</p>
-                                    </div>
-                                </div>
-
-                                <!-- chat recommendation divs  -->
-                                <div class="ai-chat-recommendation submit-prompt">
-                                    <div>
-                                        <div>
-                                            <img src="img/books.png" alt="books icon">
-                                            <p>Best practices</p>
-                                        </div>
-                                        <p class="recommendation-content">Teach me REST API design</p>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div><!--end of ai chat recommmendation-->
-                    </div>
-
-                    <!--dialogue box-->
-                    <div class="dialogue-box hidden">
-
-                        <div class="scroll-container">
-
-                            <!-- <div class="ai-chat-div">
-                                <div>
-                                    <img src="img/svg/neptune-icon.svg" alt="Neptune ai icon">
-                                </div>
-                                <div>
-                                    <p class="chat-content">
-                                    </p>
-                                    <p class="chat-time">
-                                        04:58 PM
-                                    </p>
-                                </div>
-                            </div> -->
-
-                            <!--delete user chat div after i get the js working-->
-                            <!-- <div class="user-chat-div">
-                                <div>
-                                    <img src="img/user-icon.png" alt="Neptune ai icon">
-                                </div>
-                                <div>
-                                    <p class="chat-content">
-
-                                    </p>
-                                    <p class="chat-time">
-                                        04:59 PM
-                                    </p>
-                                </div>
-
-                            </div> -->
-
-
-                        </div>
-
-                    </div>
-
-                    <!--chat input -->
-                    <footer>
-                        <form>
-                            <div class="input-container">
-                                <input type="text" id="chat-input" name="chat-input" placeholder="Type your message...">
-
-                                <button type="submit" id="submit"><img src="img/svg/rocket.svg" alt="send button icon">
-                                    <div class="abort-button hidden">
-
-                                    </div>
-                                </button>
-
-                            </div>
-                        </form>
-
-                    </footer>
+            <!--side panel-->
+            <div class="side-panel inner-container">
+                <div class="flex">
+                    <p>Neptune</p>
+                    <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.7"
+                        stroke-linecap="round" aria-hidden="true">
+                        <path d="M12 5v14M5 12h14" class="add-new"></path>
+                    </svg>
                 </div>
 
+                <!--form search input -->
+                <form action="POST">
+                    <div>
+                        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor"
+                            stroke-width="1.7" stroke-linecap="round" aria-hidden="true">
+                            <circle cx="10.5" cy="10.5" r="6.5"></circle>
+                            <path d="m15.5 15.5 4.5 4.5"></path>
+                        </svg>
+                        <input type="text" name="search" id="search" placeholder="Search library">
+                    </div>
+                </form>
+                <!--all | saved tabs-->
+                <div class="all-saved-tabs">
+                    <span>All</span>
+                    <span>Saved</span>
+                </div>
 
-                <!-- click here to return to the landing page. -->
-            </div> <!--end of chatbot content-->
-        </div>
+                <!--pinned messages-->
+                <div class="pinned-messages">
+                    <div>
+                        <h2 class="pinned">PINNED</h2>
+                        <span class="pinned-count">04</span>
+                    </div>
+
+                    <button class="pinned-message">
+                    <span class="library-star">✦</span> <span>Neptune's Great Dark Spot</span>
+                    </button>
+                    <button class="pinned-message">
+                    <span class="library-star">✦</span> <span>Neptune's Great Dark Spot</span>
+                    </button>
+                    <button class="pinned-message">
+                    <span class="library-star">✦</span> <span>Neptune's Great Dark Spot</span>
+                    </button>
+                    <button class="pinned-message">
+                    <span class="library-star">✦</span> <span>Neptune's Great Dark Spot</span>
+                </button>
+                </div>
+
+                <!--recent messages-->
+                <div class="recent-messages">
+                    <h2>RECENT</h2>
+                    <button>
+                <span>Life Beneath Triton's ice</span>
+                </button>
+                    <button>
+                <span>Why Neptune looks blue</span>
+                </button>
+                    <button>
+                <span>Neptune's orbital mechanics</span>
+                </button>
+                </div>
+
+                <!--earlier converstaions area-->
+                <div class="earlier-conversations">
+                    <div class="accordion">
+                        <span>Earlier conversations</span>
+                        <div>
+                            <span>02</span>
+                            <svg class="rotate dropdown-arrow" viewBox="0 0 24 24" width="13" height="13" fill="none"
+                                stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true">
+                                <path d="m8 10 4 4 4-4"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <!--earlier conversations dropdown-->
+                <div class="earlier-convo-dropdown d-none">
+                    <button>Could a moon hide an ocean?</button>
+                    <button>Comparing the ice giants</button>
+                </div>
+
+                <div class="spring">
+                    <div>
+                        <span>T</span>
+                        <p>Personal space</p>
+                    </div>
+                    <button>
+                    ...
+                </button>
+                </div>
+
+            </div>
+
+        </div> <!--end of side-panel-->
+
+
+        <section class="inner-container">
+            <div class="contents">
+                <div class="contents-container">
+                <h1>How can i help you?</h1>
+                <div class="recommended-prompt-categories">
+                    <button type="button"><span>✳</span>Create</button>
+                    <button type="button"><span>▤</span>Explore</button>
+                    <button><span>&lsaquo;&rsaquo;</span> Code</button>
+                    <button type="button"><span>◇</span>Learn</button>
+                </div>
+
+                <div class="recommended-prompts">
+                    <div>
+                        <p>How do Neptune’s atmospheric bands form?</p>
+                    </div>
+                    <div>
+                        <p>What are Neptune’s rings made from?</p>
+                    </div>
+                    <div>
+                        <p>Could a moon hide an ocean beneath its ice?</p>
+                    </div>
+                    <div>
+                        <p>What should a future Neptune mission investigate?</p>
+                    </div>
+                </div>
+                </div>
+                <div class="chatbot-input">
+                    <form action="post">
+                        <textarea
+                name="chat-input"
+                id="chat-input"
+                placeholder="Type your message here..."></textarea>
+                    </form>
+
+                    <div class="input-row">
+                        <button class="send-prompt"><svg class="ui-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"></path></svg></button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
     </div>
+
 
 </body>
 

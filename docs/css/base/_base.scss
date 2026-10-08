@@ -1,67 +1,94 @@
-/* 
-SPACING:
-.5rem | 1rem | 1.25rem | 2rem | 3rem | 10rem
-*/
-
+//Root and general CSS classes
 :root {
-    --primary-black: #0F172B;
-    --button-background: #121724;
-    --primary-blue: #2B7FFF;
-    --primary-purple: #5655FF;
-    --chatbot-border: #314158;
-    --chatbot-darkgray: #62748E;
-    --chatbot-suggestion-background: rgba(29, 41, 61, 0.5);
-    --menu-gray: #90A1B9;
-    --text-gray: #8E8DA5;
-    --card-bg: #1A2332;
-    --aura: #1D28EC;
-    --grid: #161B28;
-    --chat-dialogue-text: #CAD5E2;
-    --card-text: #86899C;
-    --headings: #f1ebeb;
-    --mona: "Mona Sans", sans-serif;
-    --inter: "Inter", sans-serif;
+  /* Portfolio Spectrum: primary surfaces */
+  --color-chat-canvas-deep-navy: #080c16;
+  --color-chat-main-charcoal: #17191e;
+  --color-chat-sidebar-deep-charcoal: #12151a;
+  --color-chat-composer-surface: #20242a;
+  --color-chat-surface-hover: #292e36;
 
+  /* Primary content and secondary UI text */
+  --color-text-primary-soft-white: #ededeb;
+  --color-text-active-thread-white: #f0f2ee;
+  --color-text-secondary-muted-gray: #afb3bc;
+  --color-text-thread-muted-gray: #9fa5aa;
+  --color-text-tertiary-label-gray: #858c93;
+  --color-text-placeholder-gray: #777f88;
+  --color-text-subtle-count-gray: #606870;
+  --color-text-interactive-hover-gray: #d2d5d1;
+
+  /* Portfolio Spectrum's four semantic accent colors */
+  --color-accent-mint-focus-and-create: #a5f3de;
+  --color-accent-lavender-saved-and-profile: #c6b8ff;
+  --color-accent-gold-code-and-primary-action: #f2d67c;
+  --color-accent-coral-learn-and-warm-highlight: #ff9e83;
+  --color-accent-mint-bright-highlight: #75e0c0;
+
+  /* Portfolio Spectrum canvas aura, matching the reference theme */
+  --color-canvas-aura-mint: rgba(165, 243, 222, 0.08);
+  --color-canvas-aura-lavender: rgba(198, 184, 255, 0.055);
+
+  /* Borders, focus rings, and translucent surface states */
+  --color-border-subtle-on-charcoal: rgba(237, 237, 235, 0.09);
+  --color-border-sidebar-divider: rgba(237, 237, 235, 0.055);
+  --color-border-sidebar-matched-to-main: rgba(237, 237, 235, 0.11);
+  --color-border-sidebar-section: rgba(237, 237, 235, 0.07);
+  --color-border-accent-mint-focus: rgba(165, 243, 222, 0.72);
+  --color-border-accent-mint-search-focus: rgba(165, 243, 222, 0.55);
+  --color-surface-thread-active-mint-wash: rgba(165, 243, 222, 0.045);
+  --color-surface-thread-hover-white-wash: rgba(237, 237, 235, 0.035);
+  --color-surface-brand-hover-white-wash: rgba(237, 237, 235, 0.06);
+  --color-surface-backdrop-dark-overlay: rgba(4, 7, 12, 0.58);
+  --color-shadow-mobile-sidebar-black: rgba(0, 0, 0, 0.32);
+
+  /* Text colors used by existing layout styles */
+  --color-text-layout-muted-gray: #afb3bc;
 }
 
 html {
-    font-size: 100%;
-    scroll-behavior: smooth;
+  font-size: 100%;
+  scroll-behavior: smooth;
 }
 
 body {
-    line-height: 1.5;
-    font-size: 1.25rem;
-    color: var(--text-gray);
-    background-color: var(--primary-black);
-    background-color: black;
-    // font-family: var(--inter);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-}
-
-.chatbot-content,
-.landing-page-content {
-    background-color: var(--primary-black);
-    background-color: black;
-    // max-width: 2000px;
-    margin: 0 auto;
-
+  line-height: 1.5;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  height: 100vh;
+  isolation: isolate;
+  background-color: var(--color-chat-canvas-deep-navy);
+  background-image:
+    radial-gradient(ellipse at 50% 22%, var(--color-canvas-aura-mint), transparent 38%),
+    radial-gradient(ellipse at 88% 55%, var(--color-canvas-aura-lavender), transparent 34%);
+  color: var(--color-text-primary-soft-white);
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .inner-container {
-    padding: clamp(1rem, 0.25rem + 3.75vw, 4rem);
-    max-width: 2000px;
-    margin: 0 auto;
+  padding: 1rem;
 }
 
-.flex {
-    display: flex;
+.d-none {
+  display: none !important;
 }
 
-/* chatbot dom structure */
-.chatbot-content {
-    height: 100dvh;
-    display: flex;
-    flex-direction: column;
-    background-color: var(--primary-black);
+.rotate {
+  transform: rotate(180deg);
+
+}
+
+.dropdown-arrow {
+  transition: transform 0.3s ease;
+}
+
+button {
+  cursor: pointer !important;
+}
+
+.side-menu-button {
+  cursor: pointer;
 }
